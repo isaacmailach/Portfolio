@@ -3,11 +3,34 @@ html, body {
     margin: 0;
     width: 100%;
 }
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.page-header-titlebox-logobox-logo {
+    border-radius: 3px;
+}
 
 .page {
     margin: auto;
     max-width: 1250px;
     padding: 0 100px;
+}
+.page-content {
+    clear: both;
+    height: 30px;
+}
+.page-footer {
+    background-color: gray;
+    clear: both;
+    height: 100px;
+    margin: 0 -100px;
+    padding: 15px;
+    text-align: center;
+}
+.page-footer-nav-link {
+    margin: 7.5px;
 }
 .page-header {
     width: 100%;
@@ -16,19 +39,53 @@ html, body {
     height: 120px;
     margin: 100px 0;
 }
-.page-header-titlebox-logo {
+.page-header-titlebox-logobox {
     float: left;
+    height: 100%;
+    position: relative;
+}
+.page-header-titlebox-logobox:after {
+    background-color: white;
+    bottom: 0;
+    content: "";
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-header-titlebox-logobox:hover:after {
+    opacity: 0.25;
+}
+.page-header-titlebox-logobox-logo {
     height: 100%;
 }
 .page-header-titlebox-title {
     float: left;
+    font-family: Raleway;
+    font-weight: 200;
+    height: 100%;
     margin: 0 0 0 30px;
+    position: relative;
+}
+.page-header-titlebox-title-heading {
+    font-size: 3.75rem;
+    margin: 10px 0;
+}
+.page-header-titlebox-title-subheading {
+    bottom: 0;
+    margin: 10px 0;
+    position: absolute;
 }
 .page-header-nav {
     clear: both;
     width: 100%;
 }
 .page-header-nav-link {
+    font-family: Montserrat;
+    font-size: 1.25rem;
+    font-weight: 700;
     margin: 0 20px;
 }
 .page-header-nav-link_left {
@@ -37,13 +94,21 @@ html, body {
 .page-header-nav-link_right {
     float: right;
 }
-.page-footer {
-    background-color: gray;
-    clear: both;
-    height: 50px;
+
+#spacer1 {
+    margin: 0 0 -100px 0;
+    min-height: 100vh;
 }
 
-#wrapper1 {
-    margin: 0 0 -200px 0;
-    min-height: 100vh;
+@font-face {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 700;
+    src: url('/font/Montserrat-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 200;
+    src: url('/font/Raleway-ExtraLight.ttf') format('truetype');
 }
