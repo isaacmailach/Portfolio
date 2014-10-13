@@ -1,7 +1,8 @@
 html, body {
     font-family: Arial, sans-serif;
+    height: 100%;
     margin: 0;
-    width: 100%;
+    /*width: 100%;*/
 }
 a {
     color: inherit;
@@ -13,27 +14,39 @@ a {
 }
 
 .page {
-    margin: auto;
-    max-width: 1250px;
-    padding: 0 100px;
+    width: 100%;
 }
 .page-content {
     clear: both;
-    height: 30px;
+    margin: auto;
+    max-width: 1250px;
+    padding: 100px 100px 200px 100px;
+}
+.page-content-grid {
+    align-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+}
+.page-content-grid-item {
+    background-color: gray;
+    flex: 1 0 250px;
+    height: 250px;
+    margin: 5px;
 }
 .page-footer {
     background-color: gray;
     clear: both;
     height: 100px;
-    margin: 0 -100px;
-    padding: 15px;
+    padding: 25px;
     text-align: center;
 }
 .page-footer-nav-link {
     margin: 7.5px;
 }
 .page-header {
-    width: 100%;
+    margin: auto;
+    max-width: 1250px;
+    padding: 0 100px;
 }
 .page-header-titlebox {
     height: 120px;
