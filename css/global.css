@@ -51,6 +51,7 @@ a {
 .page-content-grid-item-overlay {
     background-color: rgba(0, 0, 0, 0.5);
     bottom: 0;
+    color: white;
     left: 0;
     opacity: 0;
     padding: 10px;
@@ -63,7 +64,9 @@ a {
     opacity: 1;
 }
 .page-content-grid-item-overlay-heading {
-    color: white;
+}
+.page-content-grid-item-overlay-meta {
+    display: block;
 }
 .page-footer {
     background-color: gray;
@@ -205,6 +208,16 @@ a {
     min-height: 100vh;
 }
 
+@font-face {
+    font-family: 'icon';
+    src: url('../font/icon.eot');
+    src: url('../font/icon.eot?#iefix') format('embedded-opentype'),
+         url('../font/icon.woff') format('woff'),
+         url('../font/icon.ttf') format('truetype'),
+         url('../font/icon.svg#icon') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
 @font-face {
     font-family: Montserrat;
     font-style: normal;
