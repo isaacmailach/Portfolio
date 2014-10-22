@@ -1,7 +1,6 @@
 $(document).ready(function () {
-    if (window.location.search.substring(1)) {
-        var query = JSON.parse('{"' + decodeURI(window.location.search.substring(1)).replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-        OpenPopup(query.id);
+    if (CheckQueries().id) {
+        OpenPopup(CheckQueries().id);
     }
     $.getJSON('data/musical-compositions.json', function (database) {
         for (var i = 0; i < database.item.length; i++) {
@@ -25,11 +24,20 @@ $(document).ready(function () {
         ClosePopup();
     });
     
+    function CheckQueries () {
+        var query = {};
+        var substring = window.location.search.substring(1).split('&');
+        for (var i = 0; i < substring.length; i++) {
+            var vars = substring[i].split('=');
+            query[vars[0]] = vars[1];
+        }
+        return query;
+    }
     function OpenPopup (id) {
         $.get('text/musical-compositions/' + id + '.txt', function (text) {
             $('.popup-content-image').attr('src', 'img/musical-compositions/' + id + '/cover.jpg');
             $('.popup-content-body').html(marked(text));
-            window.history.replaceState('', 'Isaac Mailach - Musical Compositions', '/index.html?id=' + id);
+            window.history.replaceState('', 'Isaac Mailach - Musical Compositions', window.location.pathname + '?id=' + id);
             $('.popup').css('display', 'block');
             setTimeout(function () {$('.popup').addClass('open');}, 50);
         }, 'text').fail(function () {
@@ -37,7 +45,7 @@ $(document).ready(function () {
         });
     }
     function ClosePopup () {
-        window.history.replaceState('', 'Isaac Mailach - Musical Compositions', '/index.html');
+        window.history.replaceState('', 'Isaac Mailach - Musical Compositions', window.location.pathname);
         $('.popup').removeClass('open');
         setTimeout(function () {$('.popup').css('display', 'none');}, 1001);
     }
