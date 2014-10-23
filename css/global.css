@@ -2,14 +2,18 @@ html, body {
     font-family: Quicksand, Arial, sans-serif;
     height: 100%;
     margin: 0;
-    /*width: 100%;*/
+}
+body {
+    background-image: url('../img/background.png');
+    background-repeat: no-repeat;
+    background-size: 1250px;
 }
 a {
     color: inherit;
     text-decoration: none;
 }
 
-.page-content-grid-item, .page-header-titlebox-logobox-logo, .popup-content {
+.page-content-grid-item, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logobox-logo, .popup-content {
     border-radius: 3px;
 }
 
@@ -87,7 +91,10 @@ a {
     padding: 0 100px;
 }
 .page-header-nav {
+    background-color: rgba(255, 255, 255, 0.5);
     clear: both;
+    overflow: auto;
+    padding: 15px 0;
     width: 100%;
 }
 .page-header-nav-link {
@@ -111,8 +118,10 @@ a {
     float: right;
 }
 .page-header-titlebox {
+    background-color: rgba(255, 255, 255, 0.5);
     height: 120px;
     margin: 100px 0;
+    padding: 15px;
 }
 .page-header-titlebox-logobox {
     float: left;
@@ -188,6 +197,7 @@ a {
     margin: 0;
 }
 .popup-content-body p {
+    font-family: Roboto;
     margin: 0 0 10px 0;
 }
 .popup-content-body small {
@@ -251,4 +261,10 @@ a {
     font-style: normal;
     font-weight: 700;
     src: url('../font/Quicksand-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/Roboto-Regular.ttf') format('truetype');
 }
