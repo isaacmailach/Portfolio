@@ -10,8 +10,17 @@ $(document).ready(function () {
     }
     $.getJSON('data/musical-compositions.json', function (database) {
         for (var i = 0; i < database.item.length; i++) {
-            $('.page-content-grid').append('<div class="page-content-grid-item" data-id="' + database.item[i].id + '" style="flex: ' + Math.random() + ' 0 ' + (250 + (Math.random() * 250)) + 'px;"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
+            $('.page-content-grid').append('<div class="page-content-grid-item hide" data-id="' + database.item[i].id + '" style="flex: ' + Math.random() + ' 0 ' + (250 + (Math.random() * 250)) + 'px;"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
         }
+        var counter = 0;
+        (function FadeIn () {
+            if (counter == database.item.length) return;
+            setTimeout(function () {
+                $('.page-content-grid-item:nth-of-type(' + (counter + 1) + ')').removeClass('hide');
+                counter++;
+                FadeIn();
+            }, 75);
+        })();
         $('.page-content-grid-item').click(function () {
             OpenPopup($(this).data('id'));
         });
@@ -76,7 +85,7 @@ $(document).ready(function () {
             var item = this;
             if ($(this).text().search(new RegExp(phrase, "i")) < 0) {
                 $(this).addClass('hide');
-                setTimeout(function () {$(item).css('display', 'none');}, 271);
+                setTimeout(function () {$(item).css('display', 'none');}, 501);
             } else {
                 $(this).css('display', 'block');
                 setTimeout(function () {$(item).removeClass('hide');}, 1);
