@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Isaac Mailach - Musical Compositions</title>
-        
+
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <meta name="description" content="Composer for Visual Media" />
@@ -10,7 +10,7 @@
         <meta name="author" content="Isaac Mailach" />
         <meta name="language" content="english" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-		
+
         <link rel="apple-touch-icon-precomposed" href="img/logo-3x.png" />
         <link rel=”author” href=”https://plus.google.com/+IsaacMailach-profile”/>
         <link rel="icon" type="image/icon" href="favicon.ico" />
@@ -59,12 +59,34 @@
         <!-- Popups -->
         <div class="popup">
             <div class="popup-content">
-                <img class="popup-content-image" />
+                <div class="popup-content-header">
+                    <img class="popup-content-header-image" />
+                    <div class="popup-content-header-close">&times;</div>
+                    <div class="popup-content-header-toolbar">
+                        <div class="popup-content-header-toolbar-icon popup-content-header-toolbar-icon_play icon">&#xf04b;</div>
+                        <div class="popup-content-header-toolbar-share">
+                            <div class="popup-content-header-toolbar-share-icon popup-content-header-toolbar-share-icon_facebook icon">&#xf09a;</div>
+                            <div class="popup-content-header-toolbar-share-icon popup-content-header-toolbar-share-icon_google icon">&#xf0d5;</div>
+                            <div class="popup-content-header-toolbar-share-icon popup-content-header-toolbar-share-icon_pinterest icon">&#xf0d2;</div>
+                            <div class="popup-content-header-toolbar-share-icon popup-content-header-toolbar-share-icon_linkedin icon">&#xf0e1;</div>
+                            <div class="popup-content-header-toolbar-share-icon popup-content-header-toolbar-share-icon_tumblr icon">&#xf173;</div>
+                            <div class="popup-content-header-toolbar-share-icon popup-content-header-toolbar-share-icon_twitter icon">&#xf099;</div>
+                        </div>
+                        <div class="popup-content-header-toolbar-progress">
+                            <div class="popup-content-header-toolbar-progress-time">0:00 / 0:00</div>
+                            <div class="popup-content-header-toolbar-progress-bar">
+                                <div class="popup-content-header-toolbar-progress-bar-loaded"></div>
+                                <div class="popup-content-header-toolbar-progress-bar-played"></div>
+                            </div>
+                        </div>
+                        <div class="popup-content-header-toolbar-share"></div>
+                    </div>
+                </div>
                 <div class="popup-content-body">
                     <h3 class="popup-content-body-heading"></h3>
                     <small class="popup-content-body-meta"><time class="popup-content-body-meta-date"></time></small>
                 </div>
-                <div class="popup-content-close">&times;</div>
+                <audio class="popup-content-audio"></audio>
             </div>
         </div>
     </body>

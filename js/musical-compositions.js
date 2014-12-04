@@ -1,6 +1,9 @@
 $(document).ready(function () {
+    var audio = $('.popup-content-audio')[0];
+    var play = false;
     var query = {};
     var subString = window.location.search.substring(1).split('&');
+    
     for (var i = 0; i < subString.length; i++) {
         var vars = subString[i].split('=');
         query[vars[0]] = vars[1];
@@ -35,11 +38,15 @@ $(document).ready(function () {
         if (e.keyCode === 27) {
             ClosePopup();
         }
+        if (e.keyCode === 32) {
+            ToggleAudio();
+            e.preventDefault(); 
+        }
     });
     $('.popup-content').click(function () {
         event.stopPropagation();
     });
-    $('.popup, .popup-content-close').click(function () {
+    $('.popup, .popup-content-header-close').click(function () {
         ClosePopup();
     });
     
@@ -53,14 +60,48 @@ $(document).ready(function () {
         UpdateQueries();
     });
     
+    $('.popup-content-header-toolbar-icon_play').click(function () {
+        ToggleAudio();
+    });
+    audio.ontimeupdate = function () {
+        $('.popup-content-header-toolbar-progress-time').text(ConvertTime(audio.currentTime) + ' / ' + ConvertTime(audio.duration));
+        $('.popup-content-header-toolbar-progress-bar-played').css('width', audio.currentTime / audio.duration * 100 + '%');
+        $('.popup-content-header-toolbar-progress-bar-loaded').css('width', audio.buffered.end(audio.buffered.length - 1) / audio.duration * 100 + '%');
+    }
+    
+    function ToggleAudio () {
+        if (play) {
+            play = false;
+            $('.popup-content-header-toolbar-icon_play').html('&#xf04b;');
+            audio.pause();
+        } else {
+            play = true;
+            $('.popup-content-header-toolbar-icon_play').html('&#xf04c;');
+            audio.play();
+        }
+    }
+    function ConvertTime (time) {
+        var intTime = Math.ceil(time);
+        var seconds = intTime % 60;
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        }
+        if (time >= 0) {
+            return Math.floor(intTime / 60) + ':' + seconds;
+        } else {
+            return '0:00';
+        }
+    }
     function OpenPopup (id) {
         $.get('text/musical-compositions/' + id + '.txt', function (text) {
-            $('.popup-content-image').attr('src', 'img/musical-compositions/' + id + '/cover.jpg');
+            $('.popup-content-header-image').attr('src', 'img/musical-compositions/' + id + '/cover.jpg');
+            $('.popup-content-audio').html('<source src="audio/musical-compositions/' +id + '.mp3" type="audio/mp3" /><source src="audio/musical-compositions/' +id + '.ogg type="audio/ogg" />')
             $('.popup-content-body').html(marked(text));
             query.id = id;
             UpdateQueries();
             $('.popup').css('display', 'block');
             setTimeout(function () {$('.popup').addClass('open');}, 50);
+            audio.load();
         }, 'text').fail(function () {
             alert('Sorry! Could not load the webpage properly. Make sure you are connected to the Internet and then try refreshing the page.');
         });
@@ -70,6 +111,11 @@ $(document).ready(function () {
         UpdateQueries();
         $('.popup').removeClass('open');
         setTimeout(function () {$('.popup').css('display', 'none');}, 1001);
+        audio.pause();
+        play = false;
+        $('.popup-content-header-toolbar-icon_play').html('&#xf04b;');
+        $('.popup-content-header-toolbar-progress-bar-played').css('width', 0);
+        $('.popup-content-header-toolbar-progress-bar-loaded').css('width', 0);
     }
     function UpdateQueries () {
         var queryString = '';
