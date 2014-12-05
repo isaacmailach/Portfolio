@@ -234,7 +234,7 @@ a {
     width: 30px;
 }
 .popup-content-header-close:hover {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.24);
 }
 .popup-content-header-image {
     width: 100%;
@@ -271,6 +271,7 @@ a {
 }
 .popup-content-header-toolbar-progress-bar {
     background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -294,6 +295,8 @@ a {
     float: right;
     line-height: 100%;
     margin: 0 0 0 12px;
+    min-width: 90px;
+    text-align: center;
 }
 .popup-content-header-toolbar-share {
     float: right;
@@ -313,12 +316,27 @@ a {
 .white {
     color: white
 }
-.white {
-    
+.white .popup-content-header-close {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.white .popup-content-header-close:hover {
+    background-color: rgba(0, 0, 0, 0.56);
+}
+.white .popup-content-header-toolbar {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.white .popup-content-header-toolbar-icon:hover, .white .popup-content-header-toolbar-share-icon:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.white .popup-content-header-toolbar-progress-bar, .white .popup-content-header-toolbar-progress-bar-loaded {
+    background-color: rgba(255, 255, 255, 0.2)
+}
+.white .popup-content-header-toolbar-progress-bar-played {
+    background-color: white;
 }
 
 .icon {
-    font-family: test;
+    font-family: icon;
     font-style: normal;
 }
 #spacer1 {
@@ -333,7 +351,7 @@ a {
 }
 
 @font-face {
-    font-family: test;
+    font-family: icon;
     src: url('../font/icon.eot');
     src: url('../font/icon.eot?#iefix') format('embedded-opentype'),
          url('../font/icon.woff') format('woff'),
