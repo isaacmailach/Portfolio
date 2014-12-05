@@ -3,16 +3,15 @@ $(document).ready(function () {
     var play = false;
     var query = {};
     var subString = window.location.search.substring(1).split('&');
+    var item_data = {};
     
     for (var i = 0; i < subString.length; i++) {
         var vars = subString[i].split('=');
         query[vars[0]] = vars[1];
     }
-    if (query.id) {
-        OpenPopup(query.id);
-    }
     $.getJSON('data/musical-compositions.json', function (database) {
         for (var i = 0; i < database.item.length; i++) {
+            item_data[database.item[i].id] = database.item[i];
             $('.page-content-grid').append('<div class="page-content-grid-item hide" data-id="' + database.item[i].id + '" style="flex: ' + Math.random() + ' 0 ' + (250 + (Math.random() * 250)) + 'px;"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
         }
         var counter = 0;
@@ -34,6 +33,9 @@ $(document).ready(function () {
     }).fail(function () {
         alert('Sorry! Could not load the webpage properly. Make sure you are connected to the Internet and then try refreshing the page.');
     });
+    if (query.id) {
+        OpenPopup(query.id);
+    }
     $(document).keydown(function (e) {
         if (e.keyCode === 27) {
             ClosePopup();
@@ -67,7 +69,13 @@ $(document).ready(function () {
         $('.popup-content-header-toolbar-progress-time').text(ConvertTime(audio.currentTime) + ' / ' + ConvertTime(audio.duration));
         $('.popup-content-header-toolbar-progress-bar-played').css('width', audio.currentTime / audio.duration * 100 + '%');
         $('.popup-content-header-toolbar-progress-bar-loaded').css('width', audio.buffered.end(audio.buffered.length - 1) / audio.duration * 100 + '%');
+        if (audio.duration === audio.currentTime) {
+            ToggleAudio();
+        }
     }
+    $('.popup-content-header-toolbar-progress-bar').click(function (e) {
+        audio.currentTime = ((e.pageX - $(this).offset().left) / $(this).innerWidth()) * audio.duration;
+    });
     
     function ToggleAudio () {
         if (play) {
@@ -102,6 +110,11 @@ $(document).ready(function () {
             $('.popup').css('display', 'block');
             setTimeout(function () {$('.popup').addClass('open');}, 50);
             audio.load();
+            if (item_data[id].dark) {
+                $('.popup-content-header').addClass('white');
+            } else {
+                $('.popup-content-header').removeClass('white');
+            }
         }, 'text').fail(function () {
             alert('Sorry! Could not load the webpage properly. Make sure you are connected to the Internet and then try refreshing the page.');
         });
@@ -110,12 +123,15 @@ $(document).ready(function () {
         query.id = '';
         UpdateQueries();
         $('.popup').removeClass('open');
-        setTimeout(function () {$('.popup').css('display', 'none');}, 1001);
-        audio.pause();
-        play = false;
-        $('.popup-content-header-toolbar-icon_play').html('&#xf04b;');
-        $('.popup-content-header-toolbar-progress-bar-played').css('width', 0);
-        $('.popup-content-header-toolbar-progress-bar-loaded').css('width', 0);
+        setTimeout(function () {
+            $('.popup').css('display', 'none');
+            $('.popup-content-header-toolbar-icon_play').html('&#xf04b;');
+            $('.popup-content-header-toolbar-progress-bar-played').css('width', 0);
+            $('.popup-content-header-toolbar-progress-bar-loaded').css('width', 0);
+        }, 1001);
+        if (play) {
+            ToggleAudio();
+        }
     }
     function UpdateQueries () {
         var queryString = '';
