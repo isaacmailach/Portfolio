@@ -24,6 +24,7 @@ $(document).ready(function () {
                 FadeIn();
             }, 75);
         })();
+        $('.page-content-search').removeClass('hide');
         $('.page-content-grid-item').click(function () {
             OpenPopup($(this).data('id'));
         });
@@ -56,6 +57,9 @@ $(document).ready(function () {
     $('.page-content-search-icon').click(function () {
         $('.page-content-search-input').focus();
     });
+    $(document).scroll(function (e) {
+        e.preventDefault();
+    });
     
     $('.page-content-search-input').keyup(function () {
         SearchItems($(this).val());
@@ -70,9 +74,9 @@ $(document).ready(function () {
         $('.popup-content-header-toolbar-progress-time').text(ConvertTime(audio.currentTime) + ' / ' + ConvertTime(audio.duration));
         $('.popup-content-header-toolbar-progress-bar-played').css('width', audio.currentTime / audio.duration * 100 + '%');
         $('.popup-content-header-toolbar-progress-bar-loaded').css('width', audio.buffered.end(audio.buffered.length - 1) / audio.duration * 100 + '%');
-        if (audio.duration === audio.currentTime) {
-            ToggleAudio();
-        }
+    }
+    audio.onended = function () {
+        ToggleAudio();
     }
     $('.popup-content-header-toolbar-progress-bar').click(function (e) {
         audio.currentTime = ((e.pageX - $(this).offset().left) / $(this).innerWidth()) * audio.duration;
