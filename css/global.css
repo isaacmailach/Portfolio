@@ -222,19 +222,21 @@ a {
 }
 .popup-content-header-close {
     background-color: rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    font-size: 2rem;
     height: 30px;
-    line-height: 30px;
     position: absolute;
     right: 0;
-    text-align: center;
     top: 0;
-    transition: background-color 0.27s cubic-bezier(0.4, 0, 0.2, 1);
     width: 30px;
 }
-.popup-content-header-close:hover {
-    background-color: rgba(0, 0, 0, 0.24);
+.popup-content-header-close-icon {
+    cursor: pointer;
+    font-size: 2rem;
+    line-height: 30px;
+    text-align: center;
+    transition: background-color 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.popup-content-header-close-icon:hover {
+    background-color: rgba(0, 0, 0, 0.2);
 }
 .popup-content-header-image {
     width: 100%;
@@ -254,6 +256,8 @@ a {
 .popup-content-header-toolbar-icon {
     float: left;
     font-size: 1.4rem;
+    text-align: center;
+    width: 18px;
 }
 .popup-content-header-toolbar-icon, .popup-content-header-toolbar-share-icon {
     cursor: pointer;
@@ -264,7 +268,7 @@ a {
     background-color: rgba(0, 0, 0, 0.2);
 }
 .popup-content-header-toolbar-progress {
-    border-right: 1px solid rgba(0, 0, 0, 0.5);
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
     overflow: hidden;
     padding: 12px 12px;
@@ -319,14 +323,17 @@ a {
 .white .popup-content-header-close {
     background-color: rgba(0, 0, 0, 0.4);
 }
-.white .popup-content-header-close:hover {
-    background-color: rgba(0, 0, 0, 0.56);
+.white .popup-content-header-close-icon:hover {
+    background-color: rgba(0, 0, 0, 0.4);
 }
 .white .popup-content-header-toolbar {
     background-color: rgba(0, 0, 0, 0.4);
 }
 .white .popup-content-header-toolbar-icon:hover, .white .popup-content-header-toolbar-share-icon:hover {
     background-color: rgba(0, 0, 0, 0.4);
+}
+.white .popup-content-header-toolbar-progress {
+    border-right: 1px solid rgba(255, 255, 255, 0.6);
 }
 .white .popup-content-header-toolbar-progress-bar, .white .popup-content-header-toolbar-progress-bar-loaded {
     background-color: rgba(255, 255, 255, 0.2)

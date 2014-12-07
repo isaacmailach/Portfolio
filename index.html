@@ -10,6 +10,7 @@
         <meta name="author" content="Isaac Mailach" />
         <meta name="language" content="english" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name='og:image' content='img/logo-3x.png'>
 
         <link rel="apple-touch-icon-precomposed" href="img/logo-3x.png" />
         <link rel=”author” href=”https://plus.google.com/+IsaacMailach-profile”/>
@@ -61,16 +62,16 @@
             <div class="popup-content">
                 <div class="popup-content-header">
                     <img class="popup-content-header-image" />
-                    <div class="popup-content-header-close">&times;</div>
+                    <div class="popup-content-header-close"><div class="popup-content-header-close-icon">&times;</div></div>
                     <div class="popup-content-header-toolbar">
                         <div class="popup-content-header-toolbar-icon popup-content-header-toolbar-icon_play icon">&#xf04b;</div>
                         <div class="popup-content-header-toolbar-share">
-                            <div class="popup-content-header-toolbar-share-icon popup-content-header-toolbar-share-icon_facebook icon">&#xf09a;</div>
-                            <div class="popup-content-header-toolbar-share-icon popup-content-header-toolbar-share-icon_google icon">&#xf0d5;</div>
-                            <div class="popup-content-header-toolbar-share-icon popup-content-header-toolbar-share-icon_pinterest icon">&#xf0d2;</div>
-                            <div class="popup-content-header-toolbar-share-icon popup-content-header-toolbar-share-icon_linkedin icon">&#xf0e1;</div>
-                            <div class="popup-content-header-toolbar-share-icon popup-content-header-toolbar-share-icon_tumblr icon">&#xf173;</div>
-                            <div class="popup-content-header-toolbar-share-icon popup-content-header-toolbar-share-icon_twitter icon">&#xf099;</div>
+                            <a class="popup-content-header-toolbar-share-icon_facebook" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=330,width=583');return false;" target="_blank"><div class="popup-content-header-toolbar-share-icon icon">&#xf09a;</div></a>
+                            <a class="popup-content-header-toolbar-share-icon_google" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=468,width=512');return false;" target="_blank"><div class="popup-content-header-toolbar-share-icon icon">&#xf0d5;</div></a>
+                            <a class="popup-content-header-toolbar-share-icon_pinterest" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=315,width=750');return false;" target="_blank"><div class="popup-content-header-toolbar-share-icon icon">&#xf0d2;</div></a>
+                            <a class="popup-content-header-toolbar-share-icon_linkedin" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank"><div class="popup-content-header-toolbar-share-icon icon">&#xf0e1;</div></a>
+                            <a class="popup-content-header-toolbar-share-icon_tumblr" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=466,width=434');return false;" target="_blank"><div class="popup-content-header-toolbar-share-icon icon">&#xf173;</div></a>
+                            <a class="popup-content-header-toolbar-share-icon_twitter" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank"><div class="popup-content-header-toolbar-share-icon icon">&#xf099;</div></a>
                         </div>
                         <div class="popup-content-header-toolbar-progress">
                             <div class="popup-content-header-toolbar-progress-time">0:00 / 0:00</div>
@@ -83,8 +84,6 @@
                     </div>
                 </div>
                 <div class="popup-content-body">
-                    <h3 class="popup-content-body-heading"></h3>
-                    <small class="popup-content-body-meta"><time class="popup-content-body-meta-date"></time></small>
                 </div>
                 <audio class="popup-content-audio"></audio>
             </div>

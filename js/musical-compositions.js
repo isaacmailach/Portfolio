@@ -4,6 +4,7 @@ $(document).ready(function () {
     var query = {};
     var subString = window.location.search.substring(1).split('&');
     var item_data = {};
+    var current_url = 'http%3A%2F%2Fisaacmailach.github.io%2FPortfolio';
     
     for (var i = 0; i < subString.length; i++) {
         var vars = subString[i].split('=');
@@ -48,7 +49,7 @@ $(document).ready(function () {
     $('.popup-content').click(function () {
         event.stopPropagation();
     });
-    $('.popup, .popup-content-header-close').click(function () {
+    $('.popup, .popup-content-header-close-icon').click(function () {
         ClosePopup();
     });
     
@@ -115,6 +116,7 @@ $(document).ready(function () {
             } else {
                 $('.popup-content-header').removeClass('white');
             }
+            UpdateSocialLinks(id);
         }, 'text').fail(function () {
             alert('Sorry! Could not load the webpage properly. Make sure you are connected to the Internet and then try refreshing the page.');
         });
@@ -132,6 +134,14 @@ $(document).ready(function () {
         if (play) {
             ToggleAudio();
         }
+    }
+    function UpdateSocialLinks (id) {
+        $('.popup-content-header-toolbar-share-icon_facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + current_url + '%3Fid%3D' + id + '&t=' + item_data[id].name);
+        $('.popup-content-header-toolbar-share-icon_google').attr('href', 'https://plus.google.com/share?url=' + current_url + '%3Fid%3D');
+        $('.popup-content-header-toolbar-share-icon_pinterest').attr('href', 'https://www.pinterest.com/pin/create/button/?url=' + current_url + '%3Fid%3D' + id + '&media=' + current_url + '%2Fimg%2Fmusical-compositions%2F' + id + '%2Fimage.jpg&description=' + item_data[id].name);
+        $('.popup-content-header-toolbar-share-icon_linkedin').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url=' + current_url + '%3Fid%3D' + id + '&title=' + item_data[id].name);
+        $('.popup-content-header-toolbar-share-icon_tumblr').attr('href', 'https://www.tumblr.com/share/link?url=' + current_url + '%3Fid%3D' + id + '&name=' + item_data[id].name);
+        $('.popup-content-header-toolbar-share-icon_twitter').attr('href', 'https://twitter.com/share?url=' + current_url + '%3Fid%3D' + id + '&text=' + item_data[id].name);
     }
     function UpdateQueries () {
         var queryString = '';
