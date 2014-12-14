@@ -168,4 +168,7 @@ $(document).ready(function () {
             }
         });
     }
+    if (query.id) {
+        OpenPopup(query.id);
+    }
 });

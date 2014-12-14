@@ -9,23 +9,52 @@
         <meta name="keywords" content="composer,visual,media" />
         <meta name="author" content="Isaac Mailach" />
         <meta name="language" content="english" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-		
-        <link rel="apple-touch-icon-precomposed" href="img/logo-3x.png" />
         <link rel=”author” href=”https://plus.google.com/+IsaacMailach-profile”/>
-        <link rel="icon" type="image/icon" href="favicon.ico" />
+        
+        <link rel="icon" href="img/logo/logo16.png" sizes="16x16">
+        <link rel="icon" href="img/logo/logo32.png" sizes="32x32">
+        <link rel="icon" href="img/logo/logo48.png" sizes="48x48">
+        <link rel="icon" href="img/logo/logo64.png" sizes="64x64">
+        <link rel="icon" href="img/logo/logo128.png" sizes="128x128">
+        
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name='og:title' content='Isaac Mailach'>
+        <meta name='og:description' content='Composer for Visual Media'>
+        <meta name='og:site_name' content='Isaac Mailach'>
+        <meta name='og:image' content='img/logo-3x.png'>
+        <link rel="apple-touch-icon-precomposed" href="img/logo/logo57.png" sizes="57x57">
+        <link rel="apple-touch-icon-precomposed" href="img/logo/logo57.png" sizes="58x58">
+        <link rel="apple-touch-icon-precomposed" href="img/logo/logo72.png" sizes="72x72">
+        <link rel="apple-touch-icon-precomposed" href="img/logo/logo76.png" sizes="76x76">
+        <link rel="apple-touch-icon-precomposed" href="img/logo/logo114.png" sizes="114x114">
+        <link rel="apple-touch-icon-precomposed" href="img/logo/logo120.png" sizes="120x120">
+        <link rel="apple-touch-icon-precomposed" href="img/logo/logo144.png" sizes="144x144">
+        <link rel="apple-touch-icon-precomposed" href="img/logo/logo152.png" sizes="152x152">
+        <link rel="apple-touch-icon-precomposed" href="img/logo/logo180.png" sizes="180x180">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="msapplication-TileImage" content="img/logo/logo144.png">
+        <meta name="msapplication-TileColor" content="#FFF"/>
+        <meta name="application-name" content="Isaac Mailach" />
+        <meta name="msapplication-square70x70logo" content="img/logo/logo70.png"/>
+        <meta name="msapplication-square150x150logo" content="img/logo/logo150.png"/>
+        <meta name="msapplication-wide310x150logo" content="img/logo/logo310x150.png"/>
+        <meta name="msapplication-square310x310logo" content="img/logo/logo310.png"/>
+        <link rel="manifest" href="webapp.json">
+
         <link rel="stylesheet" type="text/css" href="css/global.css" />
 
         <script src="js/library/jquery-1.11.1.min.js"></script>
         <script src="js/library/marked.min.js"></script>
         <script src="js/library/picturefill.min.js"></script>
+        <script src="js/blog.js"></script>
     </head>
     <body>
         <div class="page">
             <div id="spacer1">
             <header class="page-header">
                 <div class="page-header-titlebox">
-                    <a class="page-header-titlebox-logo_link" href="index.html"><picture><source srcset="img/logo.png, img/logo-3x.png 2x" /><img class="page-header-titlebox-logo" src="img/logo.png" alt="logo" /></picture></a>
+                    <a class="page-header-titlebox-logo_link" href="index.html"><picture><source srcset="img/logo/logo.png, img/logo/logo-3x.png 2x" /><img class="page-header-titlebox-logo" src="img/logo/logo.png" alt="logo" /></picture></a>
                     <div class="page-header-titlebox-title">
                         <h1 class="page-header-titlebox-title-heading">ISAAC MAILACH</h1>
                         <h2 class="page-header-titlebox-title-subheading">COMPOSER FOR VISUAL MEDIA</h2>
@@ -38,7 +67,13 @@
                 </nav>
             </header>
             <main class="page-content">
-                
+                <aside class="page-content-aside">
+                    <div class="page-content-aside-search hide">
+                        <div class="page-content-aside-search-icon icon">&#xf002;</div>
+                        <div class="page-content-aside-search-inputbox"><input class="page-content-aside-search-inputbox-input" type="text" /></div>
+                    </div>
+                </aside>
+                <section class="page-content-articlebox"></section>
             </main>
             </div>
             <footer class="page-footer">
