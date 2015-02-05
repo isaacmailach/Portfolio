@@ -13,7 +13,7 @@ a {
     text-decoration: none;
 }
 
-.page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .popup-content {
+.page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .popup-content, .nspopup-content {
     border-radius: 3px;
 }
 
@@ -282,10 +282,7 @@ a {
 }
 .popup-content-body p {
     font-family: Roboto;
-    margin: 0 0 10px 0;
-}
-.popup-content-body small {
-    margin: 0;
+    margin: 15px 0 0 0;
 }
 .popup-content-header {
     line-height: 0;
