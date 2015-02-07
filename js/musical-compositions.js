@@ -4,7 +4,7 @@ $(document).ready(function () {
     var query = {};
     var subString = window.location.search.substring(1).split('&');
     var item_data = {};
-    var current_url = 'http%3A%2F%2Fisaacmailach.github.io%2FPortfolio';
+    var current_url = 'http%3A%2F%2Fisaacmailach.im';
     
     for (var i = 0; i < subString.length; i++) {
         var vars = subString[i].split('=');
