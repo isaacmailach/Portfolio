@@ -27,6 +27,40 @@ a {
     padding: 100px 100px 200px 100px;
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.page-content-search-icon {
+    cursor: pointer;
+    display: inline-block;
+    opacity: 0.3;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content-search-input {
+    margin: 0 10px;
+}
+.page-content-search-input {
+    border: 1px solid black;
+    box-shadow: none;
+    box-sizing: border-box;
+    font-family: Roboto;
+    height: 25px;
+    opacity: 0.3;
+    outline: 0;
+    padding: 5px;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content-search-input {
+    border: 1px solid black;
+    box-shadow: none;
+    box-sizing: border-box;
+    font-family: Roboto;
+    height: 25px;
+    opacity: 0.3;
+    outline: 0;
+    padding: 5px;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content-search-input:focus, .page-content-search-input:focus + .page-content-search-icon {
+    opacity: 1;
+}
 .page-content-grid {
     clear: both;
     display: flex;
