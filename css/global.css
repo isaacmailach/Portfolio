@@ -27,6 +27,12 @@ a {
     padding: 100px 100px 200px 100px;
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.page-content-heading {
+    font-size: 1.5rem;
+}
+.page-content-text {
+    font-size: 1.2rem;
+}
 .page-content-search-icon {
     cursor: pointer;
     display: inline-block;
@@ -132,6 +138,7 @@ a {
 }
 .page-footer-nav-link {
     margin: 12px;
+    text-transform: uppercase;
 }
 .page-footer-nav-logo {
     font-size: 2.5rem;
@@ -163,6 +170,7 @@ a {
     font-weight: 700;
     margin: 0 20px;
     opacity: 0.6;
+    text-transform: uppercase;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-header-nav-link_current {
