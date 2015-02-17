@@ -407,9 +407,14 @@ a {
     transition: margin 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) { 
+@media (min-width: 700px) and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) { 
     body {
         background-image: url('../img/background/background-3x.png');
+    }
+}
+@media (max-width: 700px) and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    body {
+        background-image: url('../img/background/background-small-3x.png');
     }
 }
 @media (max-width: 400px) {
@@ -454,6 +459,11 @@ a {
     }
 }
 @media (max-width: 700px) {
+    body {
+        background-image: url('../img/background/background-small.png');
+        background-size: 100%;
+    }
+    
     .popup {
         padding: 0;
     }
