@@ -130,6 +130,7 @@ $(document).ready(function () {
         query.id = '';
         UpdateQueries();
         $('.popup').removeClass('open');
+        $('.popup').animate({scrollTop: 0}, 1000);
         setTimeout(function () {
             $('.popup').css('display', 'none');
             $('.popup-content-header-toolbar-icon_play').html('&#xf04b;');
