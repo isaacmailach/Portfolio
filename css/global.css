@@ -27,11 +27,26 @@ a {
     padding: 100px 100px 200px 100px;
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content-heading {
+.page-content-about {
+    width: 100%;
+}
+.page-content-about-heading {
     font-size: 1.5rem;
 }
-.page-content-text {
+.page-content-about-text {
     font-size: 1.2rem;
+}
+.page-content-aside {
+    float: right;
+    width: 300px;
+}
+.page-content-aside-contact {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.page-content-aside-contact-detail_encrypt {
+    unicode-bidi:bidi-override;
+    direction:rtl;
 }
 .page-content-search-icon {
     cursor: pointer;
