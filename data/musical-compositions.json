@@ -27,6 +27,6 @@
         "id": "0001",
         "name": "When it Rains",
         "date": "2014-10-15",
-        "dark": false
+        "dark": true
     }
 ]}
