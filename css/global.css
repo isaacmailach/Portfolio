@@ -27,6 +27,36 @@ a {
     padding: 100px 100px 200px 100px;
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.page-content-about {
+    padding: 30px;
+    width: 100%;
+}
+.page-content-about-heading {
+    font-size: 1.5rem;
+}
+.page-content-about-text {
+    font-size: 1.2rem;
+}
+.page-content-aside {
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    float: right;
+    margin: 0 0 30px 30px;
+    padding: 30px;
+    width: 300px;
+}
+.page-content-aside-contact {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 30px;
+    margin: 15px 0;
+}
+.page-content-aside-contact-detail_encrypt {
+    unicode-bidi:bidi-override;
+    direction:rtl;
+}
+.page-content-aside-portrait {
+    width: 100%;
+}
 .page-content-search-icon {
     cursor: pointer;
     display: inline-block;
@@ -132,6 +162,7 @@ a {
 }
 .page-footer-nav-link {
     margin: 12px;
+    text-transform: uppercase;
 }
 .page-footer-nav-logo {
     font-size: 2.5rem;
@@ -163,6 +194,7 @@ a {
     font-weight: 700;
     margin: 0 20px;
     opacity: 0.6;
+    text-transform: uppercase;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-header-nav-link_current {
@@ -200,6 +232,7 @@ a {
     height: 100%;
     margin: 0 0 0 30px;
     position: relative;
+    text-transform: uppercase;
 }
 .page-header-titlebox-title-heading {
     font-size: 3.75rem;
