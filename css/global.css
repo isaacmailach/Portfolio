@@ -4,7 +4,7 @@ html, body {
     margin: 0;
 }
 body {
-    background-image: url('../img/background/background.png');
+    background-image: url('../img/background/background.jpg');
     background-repeat: no-repeat;
     background-size: 1250px;
 }
@@ -455,12 +455,12 @@ a {
 
 @media (min-width: 700px) and ((-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)) { 
     body {
-        background-image: url('../img/background/background-3x.png');
+        background-image: url('../img/background/background-3x.jpg');
     }
 }
 @media (max-width: 700px) and ((-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)) {
     body {
-        background-image: url('../img/background/background-small-3x.png');
+        background-image: url('../img/background/background-small-3x.jpg');
     }
 }
 @media (max-width: 400px) {
@@ -506,7 +506,7 @@ a {
 }
 @media (max-width: 700px) {
     body {
-        background-image: url('../img/background/background-small.png');
+        background-image: url('../img/background/background-small.jpg');
         background-size: 100%;
     }
     
