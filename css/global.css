@@ -29,6 +29,7 @@ a {
 }
 .page-content-about {
     padding: 30px;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-about-heading {
     font-size: 1.5rem;
@@ -41,6 +42,7 @@ a {
     float: right;
     margin: 0 0 100px 30px;
     padding: 30px 30px 15px 30px;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     width: 300px;
 }
 .page-content-aside-contact {
@@ -48,6 +50,7 @@ a {
     font-weight: 700;
     line-height: 30px;
     margin: 15px 0;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-aside-contact-detail {
     opacity: 1;
@@ -58,6 +61,10 @@ a {
 }
 .page-content-aside-portrait {
     width: 100%;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content-aside-social {
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-aside-social-link {
     font-size: 1.5rem;

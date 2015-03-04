@@ -5,6 +5,7 @@ $(document).ready(function () {
     var subString = window.location.search.substring(1).split('&');
     var item_data = {};
     var current_url = 'http%3A%2F%2Fisaacmailach.im';
+    var fade_in_delay = 75;
     
     for (var i = 0; i < subString.length; i++) {
         var vars = subString[i].split('=');
@@ -30,7 +31,7 @@ $(document).ready(function () {
                 $('.page-content-grid-item:nth-of-type(' + (counter + 1) + ')').removeClass('hide');
                 counter++;
                 FadeIn();
-            }, 75);
+            }, fade_in_delay);
         })();
         $('.page-content-search').removeClass('hide');
         if (query.q) {
