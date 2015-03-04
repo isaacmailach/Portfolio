@@ -49,15 +49,24 @@ a {
     line-height: 30px;
     margin: 15px 0;
 }
-.page-content-aside-contact-detail_encrypt {
-    unicode-bidi: bidi-override;
-    direction:rtl;
+.page-content-aside-contact-detail {
+    opacity: 1;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content-aside-contact-detail_encrypt-unicode {
-    direction:rtl;
+.page-content-aside-contact-detail:hover {
+    opacity: 0.6;
 }
 .page-content-aside-portrait {
     width: 100%;
+}
+.page-content-aside-social-link {
+    font-size: 1.5rem;
+    margin: 0 5px;
+    opacity: 1;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content-aside-social-link:hover{
+    opacity: 0.6;
 }
 .page-content-search-icon {
     cursor: pointer;
