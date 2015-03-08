@@ -30,11 +30,28 @@ a {
 .page-content-articlebox {
     overflow: hidden;
 }
+.page-content-articlebox-article {
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content-articlebox-article h3 {
+    margin-top: 0;
+}
 .page-content-aside {
     float: right;
     width: 200px;
 }
 .page-content-aside-item {
+    cursor: pointer;
+    display: block;
+    padding: 3px 5px;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content-aside-item:hover {
+    opacity: 0.6
+}
+.page-content-aside-item-date {
+    display: block;
+    font-size: 0.8rem;
     opacity: 0.6;
 }
 .page-content-aside-search {
