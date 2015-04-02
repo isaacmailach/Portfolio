@@ -123,8 +123,8 @@ $(document).ready(function () {
             $('.popup-content-header').removeClass('white');
         }
         UpdateSocialLinks(id);
-        $.get('text/musical-compositions/' + id + '.txt', function (text) {
-            $('.popup-content-body').append(marked(text));
+        $.get('text/musical-compositions/' + id + '.html', function (text) {
+            $('.popup-content-body').append(text);
         });
     }
     function ClosePopup () {

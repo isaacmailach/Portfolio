@@ -325,6 +325,9 @@ a {
     padding: 50px;
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.popup-content-body a {
+    font-weight: 700;
+}
 .popup-content-body h3 {
     font-size: 2.5rem;
     font-weight: 700;
