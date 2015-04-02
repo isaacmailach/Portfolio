@@ -1,5 +1,11 @@
 { "item": [
     {
+        "id": "0007",
+        "name": "Kung Fu Pizza Bears",
+        "date": "2015-03-28",
+        "dark": true
+    },
+    {
         "id": "0006",
         "name": "When Woods Fail",
         "date": "2015-03-22",
