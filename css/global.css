@@ -16,6 +16,14 @@ a {
 .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .popup-content, .nspopup-content {
     border-radius: 3px;
 }
+.page-content-about a, .nspopup a {
+    font-weight: 700;
+    opacity: 0.75;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content-about a:hover, .nspopup a:hover {
+    opacity: 1;
+}
 
 .page {
     width: 100%;
@@ -24,20 +32,13 @@ a {
     clear: both;
     margin: auto;
     max-width: 1250px;
+    overflow: hidden;
     padding: 100px 100px 100px 100px; /*Change 3rd to 200px*/
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-about {
     padding: 30px;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.page-content-about a {
-    font-weight: 700;
-    opacity: 0.75;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.page-content-about a:hover {
-    opacity: 1;
 }
 .page-content-about h3 {
     font-size: 1.5rem;
@@ -48,7 +49,7 @@ a {
 .page-content-aside {
     border-left: 1px solid rgba(0, 0, 0, 0.3);
     float: right;
-    margin: 0 0 100px 30px;
+    margin: 0 0 30px 30px;
     padding: 30px 30px 15px 30px;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     width: 300px;
@@ -291,6 +292,9 @@ a {
     right: 0;
     top: 0;
 }
+.nspopup {
+    background-color: rgba(0, 0, 0, 0.3);
+}
 .nspopup-content {
     bottom: 0;
     left: 50px;
@@ -320,7 +324,10 @@ a {
 .popup {
     display: none;
     overflow: auto;
-    transition: padding 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color,padding 1s,0.27s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.popup.open {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 .popup-content {
     max-width: 700px;
@@ -540,16 +547,8 @@ a {
     .popup {
         padding: 0;
     }
-    .open .popup-content {
+    .popup-content {
         min-height: 100%;
-    }
-}
-@media (max-width: 725px) {
-    .page-content {
-        padding: 50px 5px 100px 5px;
-    }
-    .page-content-grid-item {
-        flex-shrink: 1 !important;
     }
 }
 @media (max-width: 850px) {
@@ -565,6 +564,12 @@ a {
     }
 }
 @media (max-width: 900px) {
+    .page-content {
+        padding: 50px 5px 100px 5px;
+    }
+    .page-content-grid-item {
+        flex-shrink: 1 !important;
+    }
     .page-header {
         padding: 0;
     }
