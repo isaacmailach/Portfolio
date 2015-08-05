@@ -16,12 +16,12 @@ a {
 .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .popup-content, .nspopup-content {
     border-radius: 3px;
 }
-.page-content-about a, .nspopup a {
+.page-content a, .nspopup a, .popup-content-body a {
     font-weight: 700;
     opacity: 0.75;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content-about a:hover, .nspopup a:hover {
+.page-content a:hover, .nspopup a:hover, .popup-content-body a:hover {
     opacity: 1;
 }
 
@@ -77,9 +77,8 @@ a {
 }
 .page-content-aside-social-link {
     font-size: 1.5rem;
+    font-weight: 400;
     margin: 0 5px;
-    opacity: 0.75;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-aside-social-link:hover{
     opacity: 1;
@@ -257,10 +256,11 @@ a {
 .page-header-titlebox-logo {
     float: left;
     height: 100%;
+    opacity: 0.75;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-header-titlebox-logo:hover {
-    opacity: 0.5;
+    opacity: 1;
 }
 .page-header-titlebox-logobox-logo {
     height: 100%;
@@ -339,9 +339,6 @@ a {
 .popup-content-body {
     padding: 50px;
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.popup-content-body a {
-    font-weight: 700;
 }
 .popup-content-body h3 {
     font-size: 2.5rem;
