@@ -16,6 +16,14 @@ a {
 .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .popup-content, .nspopup-content {
     border-radius: 3px;
 }
+.page-content a, .nspopup a, .popup-content-body a {
+    font-weight: 700;
+    opacity: 0.75;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content a:hover, .nspopup a:hover, .popup-content-body a:hover {
+    opacity: 1;
+}
 
 .page {
     width: 100%;
@@ -24,6 +32,7 @@ a {
     clear: both;
     margin: auto;
     max-width: 1250px;
+    overflow: hidden;
     padding: 100px 100px 100px 100px; /*Change 3rd to 200px*/
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -31,16 +40,16 @@ a {
     padding: 30px;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content-about-heading {
+.page-content-about h3 {
     font-size: 1.5rem;
 }
-.page-content-about-text {
+.page-content-about p {
     font-size: 1.2rem;
 }
 .page-content-aside {
     border-left: 1px solid rgba(0, 0, 0, 0.3);
     float: right;
-    margin: 0 0 100px 30px;
+    margin: 0 0 30px 30px;
     padding: 30px 30px 15px 30px;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     width: 300px;
@@ -53,11 +62,11 @@ a {
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-aside-contact-detail {
-    opacity: 1;
+    opacity: 0.75;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-aside-contact-detail:hover {
-    opacity: 0.6;
+    opacity: 1;
 }
 .page-content-aside-portrait {
     width: 100%;
@@ -68,12 +77,11 @@ a {
 }
 .page-content-aside-social-link {
     font-size: 1.5rem;
+    font-weight: 400;
     margin: 0 5px;
-    opacity: 1;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-aside-social-link:hover{
-    opacity: 0.6;
+    opacity: 1;
 }
 .page-content-search-icon {
     cursor: pointer;
@@ -115,7 +123,7 @@ a {
     flex-wrap: wrap;
 }
 .page-content-grid-item {
-    background-color: gray;
+    background-color: rgba(191, 191, 191, 0.5);
     cursor: pointer;
     flex: 1 0 250px;
     height: 250px;
@@ -222,7 +230,7 @@ a {
     font-size: 1.2rem;
     font-weight: 700;
     margin: 0 20px;
-    opacity: 0.6;
+    opacity: 0.75;
     text-transform: uppercase;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -248,10 +256,11 @@ a {
 .page-header-titlebox-logo {
     float: left;
     height: 100%;
+    opacity: 0.75;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-header-titlebox-logo:hover {
-    opacity: 0.5;
+    opacity: 1;
 }
 .page-header-titlebox-logobox-logo {
     height: 100%;
@@ -283,6 +292,9 @@ a {
     right: 0;
     top: 0;
 }
+.nspopup {
+    background-color: rgba(0, 0, 0, 0.3);
+}
 .nspopup-content {
     bottom: 0;
     left: 50px;
@@ -312,7 +324,10 @@ a {
 .popup {
     display: none;
     overflow: auto;
-    transition: padding 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color,padding 1s,0.27s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.popup.open {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 .popup-content {
     max-width: 700px;
@@ -324,9 +339,6 @@ a {
 .popup-content-body {
     padding: 50px;
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.popup-content-body a {
-    font-weight: 700;
 }
 .popup-content-body h3 {
     font-size: 2.5rem;
@@ -532,16 +544,8 @@ a {
     .popup {
         padding: 0;
     }
-    .open .popup-content {
+    .popup-content {
         min-height: 100%;
-    }
-}
-@media (max-width: 725px) {
-    .page-content {
-        padding: 50px 5px 100px 5px;
-    }
-    .page-content-grid-item {
-        flex-shrink: 1 !important;
     }
 }
 @media (max-width: 850px) {
@@ -557,6 +561,12 @@ a {
     }
 }
 @media (max-width: 900px) {
+    .page-content {
+        padding: 50px 5px 100px 5px;
+    }
+    .page-content-grid-item {
+        flex-shrink: 1 !important;
+    }
     .page-header {
         padding: 0;
     }
