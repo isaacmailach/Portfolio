@@ -33,7 +33,7 @@ a {
     margin: auto;
     max-width: 1250px;
     overflow: hidden;
-    padding: 100px 100px 100px 100px; /*Change 3rd to 200px*/
+    padding: 100px 100px 100px 100px;
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-about {
@@ -232,7 +232,8 @@ a {
     margin: 0 20px;
     opacity: 0.75;
     text-transform: uppercase;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: opacity, font-size;
 }
 .page-header-nav-link_current {
     opacity: 1;
@@ -251,7 +252,8 @@ a {
     height: 120px;
     margin: 100px 0;
     padding: 15px;
-    transition: margin 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: height, margin;
 }
 .page-header-titlebox-logo {
     float: left;
@@ -266,22 +268,21 @@ a {
     height: 100%;
 }
 .page-header-titlebox-title {
-    float: left;
     height: 100%;
-    margin: 0 0 0 30px;
-    position: relative;
+    overflow: hidden;
+    padding: 0 0 0 30px;
     text-transform: uppercase;
 }
 .page-header-titlebox-title-heading {
     font-size: 3.75rem;
     font-weight: 400;
-    margin: 10px 0;
+    margin: 5px 0 0 0;
+    transition: font-size 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-header-titlebox-title-subheading {
-    bottom: 0;
     font-weight: 400;
-    margin: 10px 0;
-    position: absolute;
+    margin: 0;
+    transition: font-size 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .popup, .nspopup {
@@ -479,9 +480,7 @@ a {
     font-style: normal;
 }
 #spacer1 {
-    /*margin: 0 0 -100px 0;*/
     min-height: 100vh;
-    /*transition: margin 0.27s cubic-bezier(0.4, 0, 0.2, 1);*/
 }
 
 @media (min-width: 700px) and ((-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)) { 
@@ -492,6 +491,18 @@ a {
 @media (max-width: 700px) and ((-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)) {
     body {
         background-image: url('../img/background/background-small-3x.jpg');
+    }
+}
+@media (max-width: 350px) {
+    body .page .page-header .page-header-titlebox {
+        height: 40px;
+    }
+    body .page .page-header .page-header-titlebox-title-heading {
+        font-size: 26px;
+        margin: 4px 0 0 0;
+    }
+    body .page .page-header .page-header-titlebox-title-subheading {
+        display: none;
     }
 }
 @media (max-width: 400px) {
@@ -505,7 +516,18 @@ a {
         right: 0;
     }
 }
-@media (max-width: 460px) {
+@media (max-width: 450px) {
+    .page .page-header .page-header-titlebox {
+        height: 50px;
+    }
+    .page .page-header .page-header-titlebox-title-heading {
+        font-size: 28px;
+    }
+    .page .page-header .page-header-titlebox-title-subheading {
+        font-size: 15px;
+        margin: -6px 0 0 0;
+    }
+
     .popup-content-body {
         padding: 15px;
     }
@@ -514,6 +536,18 @@ a {
     }
 }
 @media (max-width: 500px) {
+    .page .page-header-titlebox {
+        height: 60px;
+    }
+    .page .page-header-titlebox-title-heading {
+        font-size: 32px;
+        margin: 0;
+    }
+    .page .page-header-titlebox-title-subheading {
+        font-size: 18px;
+        margin: -6px 0 0 0;
+    }
+
     .popup-content-header-toolbar-progress {
          text-align: center;
     }
@@ -525,6 +559,9 @@ a {
     }
 }
 @media (max-width: 550px) {
+    .page-header-nav {
+        padding: 0;
+    }
     .page-header-nav-link {
         font-size: 1rem;
         margin: 10px;
@@ -535,20 +572,7 @@ a {
         padding: 15px;
     }
 }
-@media (max-width: 700px) {
-    body {
-        background-image: url('../img/background/background-small.jpg');
-        background-size: 100%;
-    }
-    
-    .popup {
-        padding: 0;
-    }
-    .popup-content {
-        min-height: 100%;
-    }
-}
-@media (max-width: 850px) {
+@media (max-width: 650px) {
     .page-content-aside {
         border: none;
         float: none;
@@ -560,33 +584,60 @@ a {
         padding: 15px;
     }
 }
-@media (max-width: 900px) {
-    .page-content {
-        padding: 50px 5px 100px 5px;
+@media (max-width: 700px) {
+    body {
+        background-image: url('../img/background/background-small.jpg');
     }
-    .page-content-grid-item {
-        flex-shrink: 1 !important;
-    }
-    .page-header {
-        padding: 0;
-    }
+
     .page-header-titlebox {
-        height: auto;
-        margin: 0;
-        text-align: center;
-    }
-    .page-header-titlebox-logo, .page-header-titlebox-title {
-        float: none;
+        height: 80px;
     }
     .page-header-titlebox-title {
-        margin: 0;
+        padding: 0 0 0 15px;
+    }
+    .page-header-titlebox-title-heading {
+        font-size: 40px;
+        margin: 3px 0 0 0;
     }
     .page-header-titlebox-title-subheading {
-        position: static;
+        font-size: 20px;
+        margin: -5px 0 0 0;
     }
     
-    #spacer1 {
+    .popup {
+        padding: 0;
+    }
+    .popup-content {
+        min-height: 100%;
+    }
+}
+@media (max-width: 1000px) {
+    .page .page-content {
+        padding: 50px 5px 100px 5px;
+    }
+    .page .page-content-grid-item {
+        flex-shrink: 1 !important;
+    }
+    .page .page-header {
+        padding: 0;
+    }
+    .page .page-header-titlebox {
         margin: 0;
+    }
+}
+@media (max-width: 1250px) {
+    body {
+        background-size: 100%;
+    }
+
+    .page-content {
+        padding: 50px 50px 100px 50px;
+    }
+    .page-header {
+        padding: 50px 50px 0 50px;
+    }
+    .page-header-titlebox {
+        margin: 0 0 50px 0;
     }
 }
 
