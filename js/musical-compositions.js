@@ -14,7 +14,7 @@ $(document).ready(function () {
     $.getJSON('data/musical-compositions.json', function (database) {
         for (var i = 0; i < database.item.length; i++) {
             item_data[database.item[i].id] = database.item[i];
-            $('.page-content-grid').append('<div class="page-content-grid-item hide" data-id="' + database.item[i].id + '" style="flex: ' + Math.random() + ' 0 ' + (250 + (Math.random() * 250)) + 'px;"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
+            $('.page-content-grid').append('<div class="page-content-grid-item hide" data-id="' + database.item[i].id + '" style="flex-grow: ' + Math.random() + ';"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
             if (i === database.item.length - 1) {
                 $('.page-content-grid-item').click(function () {
                     OpenPopup($(this).data('id'));
