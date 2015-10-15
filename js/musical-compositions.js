@@ -112,6 +112,9 @@ $(document).ready(function () {
         $('.popup-content-header-image').attr('src', 'img/musical-compositions/' + id + '/cover.jpg');
         $('.popup-content-audio').html('<source src="audio/musical-compositions/' +id + '.mp3" type="audio/mp3" /><source src="audio/musical-compositions/' +id + '.ogg type="audio/ogg" />');
         $('.popup-content-body').append('<h3>' + item_data[id].name + '</h3><small>' + item_data[id].date + '</small>');
+        if (item_data[id].credit) {
+            $('.popup-content-credit').text('Image by ' + item_data[id].credit + '.');
+        }
         query.id = id;
         UpdateQueries();
         $('.popup').css('display', 'block');
@@ -138,6 +141,7 @@ $(document).ready(function () {
             $('.popup-content-header-toolbar-progress-bar-played').css('width', 0);
             $('.popup-content-header-toolbar-progress-bar-loaded').css('width', 0);
             $('.popup-content-body').empty();
+            $('.popup-content-credit').empty();
         }, 1001);
         if (play) {
             ToggleAudio();

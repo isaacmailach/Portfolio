@@ -1,5 +1,12 @@
 { "item": [
     {
+        "id": "0009",
+        "name": "Pluto",
+        "date": "2015-10-07",
+        "dark": true,
+        "credit": "NASA/JHUAPL/SwRI"
+    },
+    {
         "id": "0008",
         "name": "Kung Fu Pizza Bears",
         "date": "2015-03-28",
@@ -9,19 +16,22 @@
         "id": "0007",
         "name": "When Woods Fail",
         "date": "2015-03-22",
-        "dark": true
+        "dark": true,
+        "credit": "Ivan Shishkin"
     },
     {
         "id": "0006",
         "name": "Man, Woman, and the Sparrow",
         "date": "2015-02-22",
-        "dark": false
+        "dark": false,
+        "credit": "Katsushika Hokusai"
     },
     {
         "id": "0005",
         "name": "Starlight",
         "date": "2015-01-25",
-        "dark": true
+        "dark": true,
+        "credit": "the European Southern Observatory"
     },
     {
         "id": "0004",
@@ -33,12 +43,14 @@
         "id": "0003",
         "name": "The Woods of Winter",
         "date": "2014-02-16",
-        "dark": true
+        "dark": true,
+        "credit": "Carl Curman"
     },
     {
         "id": "0002",
         "name": "When it Rains",
         "date": "2014-01-14",
-        "dark": true
+        "dark": true,
+        "credit": "Thamizhpparithi Maari"
     }
 ]}
