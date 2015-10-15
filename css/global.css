@@ -12,6 +12,9 @@ a {
     color: inherit;
     text-decoration: none;
 }
+.mobile * {
+    transition: none !important; 
+}
 
 .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .popup-content, .nspopup-content {
     border-radius: 3px;
@@ -132,8 +135,8 @@ a {
     overflow: hidden;
     position: relative;
     top: 0;
-    transition-duration: 0.28s, 1s, 0.28s;
-    transition-property: box-shadow, opacity, top;
+    transition-duration: 0.28s, 0.28s, 0.28s, 1s, 0.28s;
+    transition-property: box-shadow, flex-basis, height, opacity, top;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-grid-item:hover {
@@ -517,6 +520,14 @@ a {
     }
 }
 @media (max-width: 450px) {
+    .page .page-content .page-content-grid-item {
+        flex-basis: 100%;
+        flex-shrink: 1;
+        height: 125px;
+    }
+    .page .page-content .page-content-grid-item-overlay-heading {
+        font-size: 1.5rem;
+    }
     .page .page-header .page-header-titlebox {
         height: 50px;
     }
@@ -589,6 +600,16 @@ a {
         background-image: url('../img/background/background-small.jpg');
     }
 
+    .page .page-content-grid-item {
+        flex-basis: 200px;
+        height: 200px;
+    }
+    .page .page-content-grid-item-overlay {
+        padding: 10px;
+    }
+    .page .page-content-grid-item-overlay-heading {
+        font-size: 2rem
+    }
     .page-header-titlebox {
         height: 80px;
     }
@@ -615,8 +636,15 @@ a {
     .page .page-content {
         padding: 50px 5px 100px 5px;
     }
-    .page .page-content-grid-item {
-        flex-shrink: 1 !important;
+    .page-content-grid-item {
+        flex-basis: 225px;
+        height: 225px;
+    }
+    .page-content-grid-item-overlay {
+        padding: 15px;
+    }
+    .page-content-grid-item-overlay-heading {
+        font-size: 2.25rem
     }
     .page .page-header {
         padding: 0;
@@ -624,6 +652,7 @@ a {
     .page .page-header-titlebox {
         margin: 0;
     }
+    
 }
 @media (max-width: 1250px) {
     body {
