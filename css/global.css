@@ -344,14 +344,23 @@ a {
     padding: 50px;
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.popup-content-body h3 {
-    font-size: 2.5rem;
-    font-weight: 500;
-    margin: 0;
-}
-.popup-content-body p {
+.popup-content-body * {
     font-family: Roboto;
     margin: 15px 0 0 0;
+}
+.popup-content-body blockquote {
+    font-style: italic;
+    margin: 2rem;
+}
+.popup-content-body h3 {
+    font-family: Quicksand;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin: 0;
+}
+.popup-content-body small {
+    font-family: Quicksand;
+    font-weight: 700;
 }
 .popup-content-header {
     line-height: 0;
