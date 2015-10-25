@@ -1,5 +1,5 @@
 html, body {
-    font-family: Quicksand, Arial, sans-serif;
+    font-family: Roboto, Arial, sans-serif;
     height: 100%;
     margin: 0;
 }
@@ -16,7 +16,7 @@ a {
     transition: none !important; 
 }
 
-.page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .popup-content, .nspopup-content {
+.page-content-about, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .popup-content, .nspopup-content {
     border-radius: 3px;
 }
 .page-content a, .nspopup a, .popup-content-body a {
@@ -40,26 +40,35 @@ a {
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-about {
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 30px;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: opacity, padding;
 }
 .page-content-about h3 {
-    font-size: 1.5rem;
+    font-family: Quicksand;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin: 0;
+    transition: font-size 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-about p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: font-size, line-height;
 }
 .page-content-aside {
     border-left: 1px solid rgba(0, 0, 0, 0.3);
     float: right;
     margin: 0 0 30px 30px;
     padding: 30px 30px 15px 30px;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: opacity, padding;
     width: 300px;
 }
 .page-content-aside-contact {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1.1rem;
     line-height: 30px;
     margin: 15px 0;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
@@ -72,8 +81,8 @@ a {
     opacity: 1;
 }
 .page-content-aside-portrait {
-    width: 100%;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
 }
 .page-content-aside-social {
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
@@ -93,25 +102,11 @@ a {
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-search-input {
+    border: 1px solid black;
+    box-shadow: none;
+    box-sizing: border-box;
+    height: 25px;
     margin: 0 10px;
-}
-.page-content-search-input {
-    border: 1px solid black;
-    box-shadow: none;
-    box-sizing: border-box;
-    font-family: Roboto;
-    height: 25px;
-    opacity: 0.3;
-    outline: 0;
-    padding: 5px;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.page-content-search-input {
-    border: 1px solid black;
-    box-shadow: none;
-    box-sizing: border-box;
-    font-family: Roboto;
-    height: 25px;
     opacity: 0.3;
     outline: 0;
     padding: 5px;
@@ -152,6 +147,7 @@ a {
     background-color: rgba(0, 0, 0, 0.5);
     bottom: 0;
     color: white;
+    font-family: Quicksand;
     left: 0;
     opacity: 0;
     padding: 20px;
@@ -187,6 +183,7 @@ a {
 }
 .page-footer-logo {
     bottom: 50px;
+    font-family: Quicksand;
     font-size: 2.5rem;
     font-weight: 400;
     left: 0;
@@ -195,6 +192,7 @@ a {
     right: 0;
 }
 .page-footer-nav {
+    font-family: Quicksand;
     font-size: 1.05rem;
     line-height: 25px;
     left: 0;
@@ -230,6 +228,7 @@ a {
     width: 100%;
 }
 .page-header-nav-link {
+    font-family: Quicksand;
     font-size: 1.2rem;
     font-weight: 700;
     margin: 0 20px;
@@ -271,6 +270,7 @@ a {
     height: 100%;
 }
 .page-header-titlebox-title {
+    font-family: Quicksand;
     height: 100%;
     overflow: hidden;
     padding: 0 0 0 30px;
@@ -345,7 +345,6 @@ a {
     transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .popup-content-body * {
-    font-family: Roboto;
     margin: 15px 0 0 0;
 }
 .popup-content-body blockquote {
@@ -368,7 +367,6 @@ a {
 }
 .popup-content-credit {
     float: right;
-    font-family: Roboto;
     font-size: 0.8rem;
     opacity: 0.75;
     margin: 15px;
@@ -383,6 +381,7 @@ a {
 }
 .popup-content-header-close-icon {
     cursor: pointer;
+    font-family: Quicksand;
     font-size: 2rem;
     line-height: 30px;
     text-align: center;
@@ -599,16 +598,13 @@ a {
         padding: 15px;
     }
 }
-@media (max-width: 650px) {
+@media (max-width: 600px) {
     .page-content-aside {
         border: none;
         float: none;
-        margin: 0;
-        padding: 15px;
+        margin: auto;
+        max-width: 300px;
         width: auto;
-    }
-    .page-content-about {
-        padding: 15px;
     }
 }
 @media (max-width: 700px) {
@@ -616,6 +612,19 @@ a {
         background-image: url('../img/background/background-small.jpg');
     }
 
+    .page-content-about {
+        padding: 15px;
+    }
+    .page-content-about h3 {
+        font-size: 2rem;
+    }
+    .page-content-about p {
+        font-size: 1rem;
+        line-height: 1.4rem;
+    }
+    .page-content-aside {
+        padding: 15px;
+    }
     .page .page-content-grid-item {
         flex-basis: 200px;
         height: 200px;
@@ -719,4 +728,22 @@ a {
     font-style: normal;
     font-weight: 400;
     src: url('../font/Roboto-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 400;
+    src: url('../font/Roboto-Italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 700;
+    src: url('../font/Roboto-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 700;
+    src: url('../font/Roboto-BoldItalic.ttf') format('truetype');
 }
