@@ -309,8 +309,7 @@ a {
     position: absolute;
     right: 50px;
     top: 0;
-    transition-duration: 1s, 0.27s, 0.27s, 1s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.27s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: left, max-height, padding, right;
 }
 .nspopup-content, .popup-content {
@@ -320,9 +319,12 @@ a {
 }
 .nspopup-content-body {
     font-size: 1.1rem;
+    line-height: 1.5rem;
 }
 .nspopup-content-heading {
+    font-family: Quicksand;
     font-size: 2.5rem;
+    font-weight: 400;
     margin: 0;
 }
 .popup {
