@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var audio = $('.popup-content-audio')[0];
+    var audio = $('.modal-content-audio')[0];
     var play = false;
     var query = {};
     var subString = window.location.search.substring(1).split('&');
@@ -50,10 +50,10 @@ $(document).ready(function () {
             e.preventDefault(); 
         }
     });
-    $('.popup-content').click(function () {
+    $('.modal-content').click(function () {
         event.stopPropagation();
     });
-    $('.popup, .popup-content-header-close-icon').click(function () {
+    $('.modal, .modal-content-header-close-icon').click(function () {
         ClosePopup();
     });
     
@@ -70,29 +70,29 @@ $(document).ready(function () {
         UpdateQueries();
     });
     
-    $('.popup-content-header-toolbar-icon_play').click(function () {
+    $('.modal-content-header-toolbar-icon_play').click(function () {
         ToggleAudio();
     });
     audio.ontimeupdate = function () {
-        $('.popup-content-header-toolbar-progress-time').text(ConvertTime(audio.currentTime) + ' / ' + ConvertTime(audio.duration));
-        $('.popup-content-header-toolbar-progress-bar-played').css('width', audio.currentTime / audio.duration * 100 + '%');
-        $('.popup-content-header-toolbar-progress-bar-loaded').css('width', audio.buffered.end(audio.buffered.length - 1) / audio.duration * 100 + '%');
+        $('.modal-content-header-toolbar-progress-time').text(ConvertTime(audio.currentTime) + ' / ' + ConvertTime(audio.duration));
+        $('.modal-content-header-toolbar-progress-bar-played').css('width', audio.currentTime / audio.duration * 100 + '%');
+        $('.modal-content-header-toolbar-progress-bar-loaded').css('width', audio.buffered.end(audio.buffered.length - 1) / audio.duration * 100 + '%');
     }
     audio.onended = function () {
         ToggleAudio();
     }
-    $('.popup-content-header-toolbar-progress-bar').click(function (e) {
+    $('.modal-content-header-toolbar-progress-bar').click(function (e) {
         audio.currentTime = ((e.pageX - $(this).offset().left) / $(this).innerWidth()) * audio.duration;
     });
     
     function ToggleAudio () {
         if (play) {
             play = false;
-            $('.popup-content-header-toolbar-icon_play').html('&#xf04b;');
+            $('.modal-content-header-toolbar-icon_play').html('&#xf04b;');
             audio.pause();
         } else {
             play = true;
-            $('.popup-content-header-toolbar-icon_play').html('&#xf04c;');
+            $('.modal-content-header-toolbar-icon_play').html('&#xf04c;');
             audio.play();
         }
     }
@@ -109,51 +109,51 @@ $(document).ready(function () {
         }
     }
     function OpenPopup (id) {
-        $('.popup-content-header-image').attr('src', 'img/musical-compositions/' + id + '/cover.jpg');
-        $('.popup-content-audio').html('<source src="audio/musical-compositions/' +id + '.mp3" type="audio/mp3" /><source src="audio/musical-compositions/' +id + '.ogg type="audio/ogg" />');
-        $('.popup-content-body').append('<h3>' + item_data[id].name + '</h3><small>' + item_data[id].date + '</small>');
+        $('.modal-content-header-image').attr('src', 'img/musical-compositions/' + id + '/cover.jpg');
+        $('.modal-content-audio').html('<source src="audio/musical-compositions/' +id + '.mp3" type="audio/mp3" /><source src="audio/musical-compositions/' +id + '.ogg type="audio/ogg" />');
+        $('.modal-content-body').append('<h3>' + item_data[id].name + '</h3><small>' + item_data[id].date + '</small>');
         if (item_data[id].credit) {
-            $('.popup-content-credit').text('Image by ' + item_data[id].credit + '.');
+            $('.modal-content-credit').text('Image by ' + item_data[id].credit + '.');
         }
         query.id = id;
         UpdateQueries();
-        $('.popup').css('display', 'block');
-        setTimeout(function () {$('.popup').addClass('open');}, 50);
+        $('.modal').css('display', 'block');
+        setTimeout(function () {$('.modal').addClass('open');}, 50);
         audio.load();
         if (item_data[id].dark) {
-            $('.popup-content-header').addClass('white');
+            $('.modal-content-header').addClass('white');
         } else {
-            $('.popup-content-header').removeClass('white');
+            $('.modal-content-header').removeClass('white');
         }
         UpdateSocialLinks(id);
         $.get('text/musical-compositions/' + id + '.html', function (text) {
-            $('.popup-content-body').append(text);
+            $('.modal-content-body').append(text);
         });
     }
     function ClosePopup () {
         query.id = '';
         UpdateQueries();
-        $('.popup').removeClass('open');
-        $('.popup').animate({scrollTop: 0}, 1000);
+        $('.modal').removeClass('open');
+        $('.modal').animate({scrollTop: 0}, 270);
         setTimeout(function () {
-            $('.popup').css('display', 'none');
-            $('.popup-content-header-toolbar-icon_play').html('&#xf04b;');
-            $('.popup-content-header-toolbar-progress-bar-played').css('width', 0);
-            $('.popup-content-header-toolbar-progress-bar-loaded').css('width', 0);
-            $('.popup-content-body').empty();
-            $('.popup-content-credit').empty();
-        }, 1001);
+            $('.modal').css('display', 'none');
+            $('.modal-content-header-toolbar-icon_play').html('&#xf04b;');
+            $('.modal-content-header-toolbar-progress-bar-played').css('width', 0);
+            $('.modal-content-header-toolbar-progress-bar-loaded').css('width', 0);
+            $('.modal-content-body').empty();
+            $('.modal-content-credit').empty();
+        }, 500);
         if (play) {
             ToggleAudio();
         }
     }
     function UpdateSocialLinks (id) {
-        $('.popup-content-header-toolbar-share-icon_facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + current_url + '%3Fid%3D' + id + '&t=' + item_data[id].name);
-        $('.popup-content-header-toolbar-share-icon_google').attr('href', 'https://plus.google.com/share?url=' + current_url + '%3Fid%3D');
-        $('.popup-content-header-toolbar-share-icon_pinterest').attr('href', 'https://www.pinterest.com/pin/create/button/?url=' + current_url + '%3Fid%3D' + id + '&media=' + current_url + '%2Fimg%2Fmusical-compositions%2F' + id + '%2Fimage.jpg&description=' + item_data[id].name);
-        $('.popup-content-header-toolbar-share-icon_linkedin').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url=' + current_url + '%3Fid%3D' + id + '&title=' + item_data[id].name);
-        $('.popup-content-header-toolbar-share-icon_tumblr').attr('href', 'https://www.tumblr.com/share/link?url=' + current_url + '%3Fid%3D' + id + '&name=' + item_data[id].name);
-        $('.popup-content-header-toolbar-share-icon_twitter').attr('href', 'https://twitter.com/share?url=' + current_url + '%3Fid%3D' + id + '&text=' + item_data[id].name);
+        $('.modal-content-header-toolbar-share-icon_facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + current_url + '%3Fid%3D' + id + '&t=' + item_data[id].name);
+        $('.modal-content-header-toolbar-share-icon_google').attr('href', 'https://plus.google.com/share?url=' + current_url + '%3Fid%3D');
+        $('.modal-content-header-toolbar-share-icon_pinterest').attr('href', 'https://www.pinterest.com/pin/create/button/?url=' + current_url + '%3Fid%3D' + id + '&media=' + current_url + '%2Fimg%2Fmusical-compositions%2F' + id + '%2Fimage.jpg&description=' + item_data[id].name);
+        $('.modal-content-header-toolbar-share-icon_linkedin').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url=' + current_url + '%3Fid%3D' + id + '&title=' + item_data[id].name);
+        $('.modal-content-header-toolbar-share-icon_tumblr').attr('href', 'https://www.tumblr.com/share/link?url=' + current_url + '%3Fid%3D' + id + '&name=' + item_data[id].name);
+        $('.modal-content-header-toolbar-share-icon_twitter').attr('href', 'https://twitter.com/share?url=' + current_url + '%3Fid%3D' + id + '&text=' + item_data[id].name);
     }
     function UpdateQueries () {
         var queryString = '';

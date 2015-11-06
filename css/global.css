@@ -16,15 +16,15 @@ a {
     transition: none !important; 
 }
 
-.page-content-about, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .popup-content, .nspopup-content {
+.page-content-about, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .nsmodal-content {
     border-radius: 3px;
 }
-.page-content a, .nspopup a, .popup-content-body a {
+.page-content a, .nsmodal a, .modal-content-body a {
     font-weight: 700;
     opacity: 0.75;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content a:hover, .nspopup a:hover, .popup-content-body a:hover {
+.page-content a:hover, .nsmodal a:hover, .modal-content-body a:hover {
     opacity: 1;
 }
 
@@ -288,7 +288,7 @@ a {
     transition: font-size 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.popup, .nspopup {
+.modal, .nsmodal {
     bottom: 0;
     left: 0;
     padding: 50px;
@@ -296,10 +296,10 @@ a {
     right: 0;
     top: 0;
 }
-.nspopup {
+.nsmodal {
     background-color: rgba(0, 0, 0, 0.3);
 }
-.nspopup-content {
+.nsmodal-content {
     bottom: 0;
     left: 50px;
     max-width: 400px;
@@ -312,68 +312,71 @@ a {
     transition: 0.27s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: left, max-height, padding, right;
 }
-.nspopup-content, .popup-content {
+.nsmodal-content, .modal-content {
     background-color: white;
     box-shadow: 0px 40px 120px 0px rgba(0,0,0,0.5);
     margin: auto;
 }
-.nspopup-content-body {
+.nsmodal-content-body {
     font-size: 1.1rem;
     line-height: 1.5rem;
 }
-.nspopup-content-heading {
+.nsmodal-content-heading {
     font-family: Quicksand;
     font-size: 2.5rem;
     font-weight: 400;
     margin: 0;
 }
-.popup {
-    display: none;
-    overflow: auto;
-    transition: background-color,padding 1s,0.27s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.popup.open {
+.modal {
     background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    opacity: 0;
+    overflow: auto;
+    transition: 0.5s,0.27s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: opacity, padding;
 }
-.popup-content {
+.modal.open {
+    opacity: 1;
+}
+.modal-content {
     max-width: 700px;
     overflow: hidden;
     position: relative;
-    top: 100vh;
-    transition: top 1s cubic-bezier(0.4, 0, 0.2, 1);
+    top: 100px;
+    transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.popup-content-body {
+.modal-content-body {
     padding: 50px;
-    transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: padding 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.popup-content-body * {
+.modal-content-body * {
     margin: 15px 0 0 0;
 }
-.popup-content-body blockquote {
+.modal-content-body blockquote {
     font-style: italic;
     margin: 2rem;
 }
-.popup-content-body h3 {
+.modal-content-body h3 {
     font-family: Quicksand;
     font-size: 2.5rem;
     font-weight: 400;
     margin: 0;
 }
-.popup-content-body small {
+.modal-content-body small {
     font-family: Quicksand;
     font-weight: 700;
 }
-.popup-content-header {
+.modal-content-header {
     line-height: 0;
     position: relative;
 }
-.popup-content-credit {
+.modal-content-credit {
     float: right;
     font-size: 0.8rem;
     opacity: 0.75;
     margin: 15px;
 }
-.popup-content-header-close {
+.modal-content-header-close {
     background-color: rgba(0, 0, 0, 0.2);
     height: 30px;
     position: absolute;
@@ -381,7 +384,7 @@ a {
     top: 0;
     width: 30px;
 }
-.popup-content-header-close-icon {
+.modal-content-header-close-icon {
     cursor: pointer;
     font-family: Quicksand;
     font-size: 2rem;
@@ -389,13 +392,13 @@ a {
     text-align: center;
     transition: background-color 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.popup-content-header-close-icon:hover {
+.modal-content-header-close-icon:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
-.popup-content-header-image {
+.modal-content-header-image {
     width: 100%;
 }
-.popup-content-header-toolbar {
+.modal-content-header-toolbar {
     background-color: rgba(0, 0, 0, 0.2);
     bottom: 0;
     height: 40px;
@@ -403,52 +406,52 @@ a {
     position: absolute;
     right: 0;
 }
-.popup-content-header-toolbar > * {
+.modal-content-header-toolbar > * {
     height: 100%;
     line-height: 40px;
 }
-.popup-content-header-toolbar-icon {
+.modal-content-header-toolbar-icon {
     float: left;
     font-size: 1.4rem;
     text-align: center;
     width: 20px;
 }
-.popup-content-header-toolbar-icon, .popup-content-header-toolbar-share-icon {
+.modal-content-header-toolbar-icon, .modal-content-header-toolbar-share-icon {
     cursor: pointer;
     padding: 0 12px;
     transition: background-color 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.popup-content-header-toolbar-icon:hover, .popup-content-header-toolbar-share-icon:hover {
+.modal-content-header-toolbar-icon:hover, .modal-content-header-toolbar-share-icon:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
-.popup-content-header-toolbar-progress {
+.modal-content-header-toolbar-progress {
     border-right: 1px solid rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
     overflow: hidden;
     padding: 12px 12px;
 }
-.popup-content-header-toolbar-progress-bar {
+.modal-content-header-toolbar-progress-bar {
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
     height: 100%;
     overflow: hidden;
     position: relative;
 }
-.popup-content-header-toolbar-progress-bar-loaded {
+.modal-content-header-toolbar-progress-bar-loaded {
     background-color: rgba(0, 0, 0, 0.2);
     height: 100%;
     position: absolute;
     top: 0;
     width: 0;
 }
-.popup-content-header-toolbar-progress-bar-played {
+.modal-content-header-toolbar-progress-bar-played {
     background-color: black;
     height: 100%;
     position: absolute;
     top: 0;
     width: 0;
 }
-.popup-content-header-toolbar-progress-time {
+.modal-content-header-toolbar-progress-time {
     height: 100%;
     float: right;
     line-height: 100%;
@@ -456,10 +459,10 @@ a {
     min-width: 90px;
     text-align: center;
 }
-.popup-content-header-toolbar-share {
+.modal-content-header-toolbar-share {
     float: right;
 }
-.popup-content-header-toolbar-share-icon {
+.modal-content-header-toolbar-share-icon {
     float: left;
     font-size: 1.2rem;
 }
@@ -467,31 +470,31 @@ a {
 .hide {
     opacity: 0;
 }
-.open .popup-content {
+.open .modal-content {
     top: 0;
 }
 .white {
     color: white
 }
-.white .popup-content-header-close {
+.white .modal-content-header-close {
     background-color: rgba(0, 0, 0, 0.4);
 }
-.white .popup-content-header-close-icon:hover {
+.white .modal-content-header-close-icon:hover {
     background-color: rgba(0, 0, 0, 0.4);
 }
-.white .popup-content-header-toolbar {
+.white .modal-content-header-toolbar {
     background-color: rgba(0, 0, 0, 0.4);
 }
-.white .popup-content-header-toolbar-icon:hover, .white .popup-content-header-toolbar-share-icon:hover {
+.white .modal-content-header-toolbar-icon:hover, .white .modal-content-header-toolbar-share-icon:hover {
     background-color: rgba(0, 0, 0, 0.4);
 }
-.white .popup-content-header-toolbar-progress {
+.white .modal-content-header-toolbar-progress {
     border-right: 1px solid rgba(255, 255, 255, 0.6);
 }
-.white .popup-content-header-toolbar-progress-bar, .white .popup-content-header-toolbar-progress-bar-loaded {
+.white .modal-content-header-toolbar-progress-bar, .white .modal-content-header-toolbar-progress-bar-loaded {
     background-color: rgba(255, 255, 255, 0.2)
 }
-.white .popup-content-header-toolbar-progress-bar-played {
+.white .modal-content-header-toolbar-progress-bar-played {
     background-color: white;
 }
 
@@ -531,7 +534,7 @@ a {
         float: none;
     }
     
-    .nspopup-content {
+    .nsmodal-content {
         left: 0;
         right: 0;
     }
@@ -556,10 +559,10 @@ a {
         margin: -6px 0 0 0;
     }
 
-    .popup-content-body {
+    .modal-content-body {
         padding: 15px;
     }
-    .popup-content-header-toolbar-progress-time {
+    .modal-content-header-toolbar-progress-time {
         display: none;
     }
 }
@@ -576,13 +579,13 @@ a {
         margin: -6px 0 0 0;
     }
 
-    .popup-content-header-toolbar-progress {
+    .modal-content-header-toolbar-progress {
          text-align: center;
     }
-    .popup-content-header-toolbar-progress-bar {
+    .modal-content-header-toolbar-progress-bar {
         display: none;
     }
-    .popup-content-header-toolbar-progress-time {
+    .modal-content-header-toolbar-progress-time {
         float: none;
     }
 }
@@ -595,7 +598,7 @@ a {
         margin: 10px;
     }
     
-    .nspopup-content {
+    .nsmodal-content {
         max-height: 270px;
         padding: 15px;
     }
@@ -652,10 +655,10 @@ a {
         margin: -5px 0 0 0;
     }
     
-    .popup {
+    .modal {
         padding: 0;
     }
-    .popup-content {
+    .modal-content {
         min-height: 100%;
     }
 }
