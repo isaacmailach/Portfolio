@@ -118,7 +118,7 @@ $(document).ready(function () {
         query.id = id;
         UpdateQueries();
         $('.modal').css('display', 'block');
-        setTimeout(function () {$('.modal').addClass('open');}, 50);
+        setTimeout(function () {$('.modal').addClass('open');}, 100);
         audio.load();
         if (item_data[id].dark) {
             $('.modal-content-header').addClass('white');
@@ -142,7 +142,7 @@ $(document).ready(function () {
             $('.modal-content-header-toolbar-progress-bar-loaded').css('width', 0);
             $('.modal-content-body').empty();
             $('.modal-content-credit').empty();
-        }, 500);
+        }, 501);
         if (play) {
             ToggleAudio();
         }
