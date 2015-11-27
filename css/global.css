@@ -342,8 +342,6 @@ a {
     max-width: 700px;
     overflow: hidden;
     position: relative;
-    top: 100px;
-    transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-content-body {
     padding: 50px;
@@ -469,9 +467,6 @@ a {
 
 .hide {
     opacity: 0;
-}
-.open .modal-content {
-    top: 0;
 }
 .white {
     color: white
