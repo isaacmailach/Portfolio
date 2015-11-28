@@ -540,6 +540,9 @@ a {
         flex-shrink: 1;
         height: 125px;
     }
+    .page-content-grid-item-overlay {
+        opacity: 1;
+    }
     .page .page-content .page-content-grid-item-overlay-heading {
         font-size: 1.5rem;
     }
