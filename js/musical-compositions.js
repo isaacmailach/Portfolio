@@ -6,6 +6,7 @@ $(document).ready(function () {
     var item_data = {};
     var current_url = 'http%3A%2F%2Fisaacmailach.im';
     var fade_in_delay = 75;
+    var popup_open = false;
     
     for (var i = 0; i < subString.length; i++) {
         var vars = subString[i].split('=');
@@ -14,10 +15,15 @@ $(document).ready(function () {
     $.getJSON('data/musical-compositions.json', function (database) {
         for (var i = 0; i < database.item.length; i++) {
             item_data[database.item[i].id] = database.item[i];
-            $('.page-content-grid').append('<div class="page-content-grid-item hide" data-id="' + database.item[i].id + '" style="flex-grow: ' + Math.random() + ';"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
+            $('.page-content-grid').append('<div class="page-content-grid-item hide" tabindex="0" data-id="' + database.item[i].id + '" style="flex-grow: ' + Math.random() + ';"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
             if (i === database.item.length - 1) {
                 $('.page-content-grid-item').click(function () {
                     OpenPopup($(this).data('id'));
+                });
+                $('.page-content-grid-item').bind('keyup', function(e) {
+                    if (e.keyCode === 13 && !popup_open     ) {
+                        OpenPopup($(this).data('id'));
+                    }
                 });
                 if (query.id) {
                     OpenPopup(query.id);
@@ -56,6 +62,11 @@ $(document).ready(function () {
     $('.modal, .modal-content-header-close-icon').click(function () {
         ClosePopup();
     });
+    $('.modal-content-header-close').bind('keyup', function(e) {
+        if (e.keyCode === 13) {
+            ClosePopup();
+        }
+    });
     
     $('.page-content-search-icon').click(function () {
         $('.page-content-search-input').focus();
@@ -72,6 +83,11 @@ $(document).ready(function () {
     
     $('.modal-content-header-toolbar-icon_play').click(function () {
         ToggleAudio();
+    });
+    $('.modal-content-header-toolbar-icon_play').bind('keyup', function(e) {
+        if (e.keyCode === 13) {
+            ToggleAudio();
+        }
     });
     audio.ontimeupdate = function () {
         $('.modal-content-header-toolbar-progress-time').text(ConvertTime(audio.currentTime) + ' / ' + ConvertTime(audio.duration));
@@ -129,6 +145,7 @@ $(document).ready(function () {
         $.get('text/musical-compositions/' + id + '.html', function (text) {
             $('.modal-content-body').append(text);
         });
+        popup_open = true;
     }
     function ClosePopup () {
         query.id = '';
@@ -146,6 +163,7 @@ $(document).ready(function () {
         if (play) {
             ToggleAudio();
         }
+        popup_open = false;
     }
     function UpdateSocialLinks (id) {
         $('.modal-content-header-toolbar-share-icon_facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + current_url + '%3Fid%3D' + id + '&t=' + item_data[id].name);

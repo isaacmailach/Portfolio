@@ -1,7 +1,7 @@
 html, body {
     font-family: Roboto, Arial, sans-serif;
-    height: 100%;
     margin: 0;
+    min-height: 100%;
 }
 body {
     background-image: url('../img/background/background.jpg');
@@ -16,7 +16,7 @@ a {
     transition: none !important; 
 }
 
-.page-content-about, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .nsmodal-content {
+.page-content, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .nsmodal-content {
     border-radius: 3px;
 }
 .page-content a, .nsmodal a, .modal-content-body a {
@@ -24,23 +24,25 @@ a {
     opacity: 0.75;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content a:hover, .nsmodal a:hover, .modal-content-body a:hover {
+.page-content a:focus, .page-content a:hover, .nsmodal a:focus, .nsmodal a:hover, .modal-content-body a:focus, .modal-content-body a:hover {
     opacity: 1;
 }
 
 .page {
-    width: 100%;
+    padding: 100px 100px 0 100px;
+    transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content {
     clear: both;
-    margin: auto;
     max-width: 1250px;
     overflow: hidden;
-    padding: 100px 100px 100px 100px;
-    transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0 0 100px 0;
+    transition: margin 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page_about .page-content {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 .page-content-about {
-    background-color: rgba(255, 255, 255, 0.5);
     padding: 30px;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: opacity, padding;
@@ -77,9 +79,6 @@ a {
     opacity: 0.75;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content-aside-contact-detail:hover {
-    opacity: 1;
-}
 .page-content-aside-portrait {
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
@@ -92,33 +91,11 @@ a {
     font-weight: 400;
     margin: 0 5px;
 }
-.page-content-aside-social-link:hover{
-    opacity: 1;
-}
-.page-content-search-icon {
-    cursor: pointer;
-    display: inline-block;
-    opacity: 0.3;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.page-content-search-input {
-    border: 1px solid black;
-    box-shadow: none;
-    box-sizing: border-box;
-    height: 25px;
-    margin: 0 10px;
-    opacity: 0.3;
-    outline: 0;
-    padding: 5px;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.page-content-search-input:focus, .page-content-search-input:focus + .page-content-search-icon {
-    opacity: 1;
-}
 .page-content-grid {
     clear: both;
     display: flex;
     flex-wrap: wrap;
+    padding: 5px;
 }
 .page-content-grid-item {
     background-color: rgba(191, 191, 191, 0.5);
@@ -134,7 +111,7 @@ a {
     transition-property: box-shadow, flex-basis, height, opacity, top;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content-grid-item:hover {
+.page-content-grid-item:focus, .page-content-grid-item:hover {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.3);
     top: -3px;
 }
@@ -156,7 +133,7 @@ a {
     top: 0;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content-grid-item-overlay:hover {
+.page-content-grid-item:focus .page-content-grid-item-overlay, .page-content-grid-item-overlay:hover {
     opacity: 1;
 }
 .page-content-grid-item-overlay-heading {
@@ -169,16 +146,38 @@ a {
 }
 .page-content-search {
     float: right;
-    margin: 0 10px 30px 0;
+    margin: 0 10px 25px 0;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content-search-icon {
+    cursor: pointer;
+    display: inline-block;
+    opacity: 0.3;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content-search-input {
+    border: 1px solid black;
+    box-shadow: none;
+    box-sizing: border-box;
+    height: 25px;
+    margin: 0 10px;
+    opacity: 0.3;
+    outline: 0;
+    padding: 5px;
+    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content-search-input:focus, .page-content-search-input:focus + .page-content-search-icon {
+    opacity: 1;
 }
 .page-footer {
     background-color: #262626;
     clear: both;
     color: white;
     height: 150px;
+    left: 0;
     padding: 50px;
-    position: relative;
+    position: absolute;
+    right: 0;
     text-align: center;
 }
 .page-footer-logo {
@@ -215,17 +214,19 @@ a {
     right: 0;
 }
 .page-header {
-    margin: auto;
     max-width: 1250px;
-    padding: 0 100px;
-    transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-header-nav {
     background-color: rgba(255, 255, 255, 0.5);
     clear: both;
+    margin: 0 0 100px 0;
     overflow: auto;
     padding: 15px 0;
+    transition: margin 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
+}
+.page_musical-compositions .page-header-nav {
+    margin: 0 0 50px 0;
 }
 .page-header-nav-link {
     font-family: Quicksand;
@@ -240,7 +241,7 @@ a {
 .page-header-nav-link_current {
     opacity: 1;
 }
-.page-header-nav-link:not(.page-header-nav-link_current):hover {
+.page-header-nav-link:not(.page-header-nav-link_current):focus, .page-header-nav-link:not(.page-header-nav-link_current):hover {
     opacity: 1;
 }
 .page-header-nav-link_left {
@@ -252,7 +253,7 @@ a {
 .page-header-titlebox {
     background-color: rgba(255, 255, 255, 0.5);
     height: 120px;
-    margin: 100px 0;
+    margin: 0 0 100px 0;
     padding: 15px;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: height, margin;
@@ -263,7 +264,7 @@ a {
     opacity: 0.75;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-header-titlebox-logo:hover {
+.page-header-titlebox-logo_link:focus .page-header-titlebox-logo, .page-header-titlebox-logo:hover {
     opacity: 1;
 }
 .page-header-titlebox-logobox-logo {
@@ -377,6 +378,7 @@ a {
 .modal-content-header-close {
     background-color: rgba(0, 0, 0, 0.2);
     height: 30px;
+    overflow: hidden;
     position: absolute;
     right: 0;
     top: 0;
@@ -390,7 +392,7 @@ a {
     text-align: center;
     transition: background-color 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.modal-content-header-close-icon:hover {
+.modal-content-header-close:focus .modal-content-header-close-icon, .modal-content-header-close:hover .modal-content-header-close-icon {
     background-color: rgba(0, 0, 0, 0.2);
 }
 .modal-content-header-image {
@@ -419,7 +421,7 @@ a {
     padding: 0 12px;
     transition: background-color 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.modal-content-header-toolbar-icon:hover, .modal-content-header-toolbar-share-icon:hover {
+.modal-content-header-toolbar-icon:focus, .modal-content-header-toolbar-icon:hover, a:focus > .modal-content-header-toolbar-share-icon, .modal-content-header-toolbar-share-icon:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
 .modal-content-header-toolbar-progress {
@@ -496,9 +498,6 @@ a {
 .icon {
     font-family: icon;
     font-style: normal;
-}
-#spacer1 {
-    min-height: 100vh;
 }
 
 @media (min-width: 700px) and ((-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)) { 
@@ -613,6 +612,7 @@ a {
 @media (max-width: 700px) {
     body {
         background-image: url('../img/background/background-small.jpg');
+        background-size: 700px !important;
     }
 
     .page-content-about {
@@ -661,8 +661,8 @@ a {
     }
 }
 @media (max-width: 1000px) {
-    .page .page-content {
-        padding: 50px 5px 100px 5px;
+    body .page {
+        padding: 0;
     }
     .page-content-grid-item {
         flex-basis: 225px;
@@ -674,24 +674,26 @@ a {
     .page-content-grid-item-overlay-heading {
         font-size: 2.25rem
     }
-    .page .page-header {
-        padding: 0;
+    .page .page-header-nav {
+        margin: 0 0 25px 0;
     }
     .page .page-header-titlebox {
         margin: 0;
     }
-    
 }
 @media (max-width: 1250px) {
     body {
         background-size: 100%;
     }
 
-    .page-content {
-        padding: 50px 50px 100px 50px;
+    .page {
+        padding: 50px;
     }
-    .page-header {
-        padding: 50px 50px 0 50px;
+    .page-header-nav {
+        margin: 0 0 50px 0;
+    }
+    .page_musical-compositions .page-header-nav {
+        margin: 0 0 25px 0;
     }
     .page-header-titlebox {
         margin: 0 0 50px 0;
