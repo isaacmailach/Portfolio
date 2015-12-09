@@ -500,16 +500,16 @@ a {
     font-style: normal;
 }
 
-@media (min-width: 700px) and ((-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)) { 
+/*@media (min-width: 700px) and (-webkit-min-device-pixel-ratio: 2) {
     body {
-        background-image: url('../img/background/background-3x.jpg');
+        background-image: url('../img/background/background-3x.jpg') !important;
     }
 }
-@media (max-width: 700px) and ((-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)) {
+@media (max-width: 700px) and (-webkit-min-device-pixel-ratio: 2) {
     body {
-        background-image: url('../img/background/background-small-3x.jpg');
+        background-image: url('../img/background/background-small-3x.jpg') !important;
     }
-}
+}*/
 @media (max-width: 350px) {
     body .page .page-header .page-header-titlebox {
         height: 40px;
@@ -615,6 +615,11 @@ a {
         background-image: url('../img/background/background-small.jpg');
         background-size: 700px !important;
     }
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        body {
+            background-image: url('../img/background/background-small-3x.jpg') !important;
+        }
+    }
 
     .page-content-about {
         padding: 15px;
@@ -659,6 +664,13 @@ a {
     }
     .modal-content {
         min-height: 100%;
+    }
+}
+@media (min-width: 700px) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        body {
+            background-image: url('../img/background/background-3x.jpg') !important;
+        }
     }
 }
 @media (max-width: 1000px) {
