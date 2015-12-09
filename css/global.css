@@ -373,7 +373,7 @@ a {
     float: right;
     font-size: 0.8rem;
     opacity: 0.75;
-    margin: 15px;
+    margin: 10px;
 }
 .modal-content-header-close {
     background-color: rgba(0, 0, 0, 0.2);
@@ -557,7 +557,8 @@ a {
     }
 
     .modal-content-body {
-        padding: 15px;
+        clear: both;
+        padding: 0 15px 15px 15px;
     }
     .modal-content-header-toolbar-progress-time {
         display: none;
