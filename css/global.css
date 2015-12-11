@@ -343,6 +343,7 @@ a {
     max-width: 700px;
     overflow: hidden;
     position: relative;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-content-body {
     padding: 50px;
@@ -500,16 +501,6 @@ a {
     font-style: normal;
 }
 
-/*@media (min-width: 700px) and (-webkit-min-device-pixel-ratio: 2) {
-    body {
-        background-image: url('../img/background/background-3x.jpg') !important;
-    }
-}
-@media (max-width: 700px) and (-webkit-min-device-pixel-ratio: 2) {
-    body {
-        background-image: url('../img/background/background-small-3x.jpg') !important;
-    }
-}*/
 @media (max-width: 350px) {
     body .page .page-header .page-header-titlebox {
         height: 40px;
