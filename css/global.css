@@ -339,6 +339,27 @@ a {
 .modal.open {
     opacity: 1;
 }
+.modal-arrow {
+    color: white;
+    cursor: pointer;
+    font-family: Quicksand;
+    font-size: 6rem;
+    font-weight: normal;
+    opacity: 0.75;
+    position: absolute;
+    top: 45%;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    vertical-align: middle;
+}
+.modal-arrow:hover {
+    opacity: 1;
+}
+.modal-arrow_left {
+    left: 10px;
+}
+.modal-arrow_right {
+    right: 10px;
+}
 .modal-content {
     max-width: 700px;
     overflow: hidden;
@@ -404,6 +425,7 @@ a {
     bottom: 0;
     height: 40px;
     left: 0;
+    overflow: hidden;
     position: absolute;
     right: 0;
 }
@@ -652,6 +674,9 @@ a {
     
     .modal {
         padding: 0;
+    }
+    .modal-arrow {
+        opacity: 0;
     }
     .modal-content {
         min-height: 100%;
