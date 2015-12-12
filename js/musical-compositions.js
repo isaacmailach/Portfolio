@@ -96,6 +96,28 @@ $(document).ready(function () {
             ToggleAudio();
         }
     });
+    $('.modal-arrow_left').click(function () {
+        if (popup_open && next_item) {
+            NextItem();
+        }
+        event.stopPropagation();
+    });
+    $('.modal-arrow_right').click(function () {
+        if (popup_open && previous_item) {
+            PreviousItem();
+        }
+        event.stopPropagation();
+    });
+    $('.modal-content').on("swiperight", function () {
+        if (popup_open && next_item) {
+            NextItem();
+        }
+    });
+    $('.modal').on("swipeleft", function () {
+        if (popup_open && previous_item) {
+            PreviousItem();
+        }
+    });
     audio.ontimeupdate = function () {
         $('.modal-content-header-toolbar-progress-time').text(ConvertTime(audio.currentTime) + ' / ' + ConvertTime(audio.duration));
         $('.modal-content-header-toolbar-progress-bar-played').css('width', audio.currentTime / audio.duration * 100 + '%');
@@ -212,6 +234,8 @@ $(document).ready(function () {
         popup_open = false;
         current_id = null;
         current_id_int = null;
+        next_item = false;
+        previous_item = false;
     }
     function NextItem () {
         current_id = ConvertToId(current_id_int + 1);
