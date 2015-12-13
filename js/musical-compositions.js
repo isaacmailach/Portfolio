@@ -118,10 +118,15 @@ $(document).ready(function () {
             PreviousItem();
         }
     });
+    audio.addEventListener('loadedmetadata', function () {
+        $('.modal-content-header-toolbar-progress-time').text(ConvertTime(audio.currentTime) + ' / ' + ConvertTime(audio.duration));
+    }, false);
+        audio.onprogress = function () {
+        $('.modal-content-header-toolbar-progress-bar-loaded').css('width', audio.buffered.end(audio.buffered.length - 1) / audio.duration * 100 + '%');
+    }
     audio.ontimeupdate = function () {
         $('.modal-content-header-toolbar-progress-time').text(ConvertTime(audio.currentTime) + ' / ' + ConvertTime(audio.duration));
         $('.modal-content-header-toolbar-progress-bar-played').css('width', audio.currentTime / audio.duration * 100 + '%');
-        $('.modal-content-header-toolbar-progress-bar-loaded').css('width', audio.buffered.end(audio.buffered.length - 1) / audio.duration * 100 + '%');
     }
     audio.onended = function () {
         ToggleAudio();
@@ -179,24 +184,15 @@ $(document).ready(function () {
         }
         $('.modal-content-header-toolbar-icon_play').html('&#xf04b;');
         setTimeout(function () {
-            $('.modal-content-header-toolbar-progress-bar-played').css('width', 0);
-            $('.modal-content-header-toolbar-progress-bar-loaded').css('width', 0);
+            $('.modal-content-header-toolbar-progress-bar-played, .modal-content-header-toolbar-progress-bar-loaded').css('width', 0);
+
         }, 1);
         $('.modal-content-body').empty();
         $('.modal-content-credit').empty();
     }
     function ResetPopup () {
         $('.modal-content').addClass('hide');
-        if (current_id_int == Object.keys(item_data).length + 1) { // Temporary fix
-            next_item = false;
-        } else {
-            next_item = true;
-        }
-        if (current_id_int == 2) {
-            previous_item = false;
-        } else {
-            previous_item = true;
-        }
+        CheckFirstLast();
         setTimeout(function () {
             ClearPopup();
             UpdatePopup();
@@ -205,19 +201,26 @@ $(document).ready(function () {
             $('.modal-content').removeClass('hide');
         }, 601);
     }
+    function CheckFirstLast () {
+        if (current_id_int == Object.keys(item_data).length + 1) { // Temporary fix
+            next_item = false;
+            $('.modal-arrow_left').addClass('modal-arrow_disabled');
+        } else {
+            next_item = true;
+            $('.modal-arrow_left').removeClass('modal-arrow_disabled');
+        }
+        if (current_id_int == 2) { // Temporary fix
+            previous_item = false;
+            $('.modal-arrow_right').addClass('modal-arrow_disabled');
+        } else {
+            previous_item = true;
+            $('.modal-arrow_right').removeClass('modal-arrow_disabled');
+        }
+    }
     function OpenPopup (id) {
         current_id = id;
         current_id_int = parseInt(id);
-        if (current_id_int == Object.keys(item_data).length + 1) { // Temporary fix
-            next_item = false;
-        } else {
-            next_item = true;
-        }
-        if (current_id_int == 2) {
-            previous_item = false;
-        } else {
-            previous_item = true;
-        }
+        CheckFirstLast();
         UpdatePopup();
         popup_open = true;
         $('.modal').css('display', 'block');
