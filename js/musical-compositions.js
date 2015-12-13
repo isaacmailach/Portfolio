@@ -202,14 +202,14 @@ $(document).ready(function () {
         }, 601);
     }
     function CheckFirstLast () {
-        if (current_id_int == Object.keys(item_data).length + 1) { // Temporary fix
+        if (current_id_int == Object.keys(item_data).length) {
             next_item = false;
             $('.modal-arrow_left').addClass('modal-arrow_disabled');
         } else {
             next_item = true;
             $('.modal-arrow_left').removeClass('modal-arrow_disabled');
         }
-        if (current_id_int == 2) { // Temporary fix
+        if (current_id_int == 1) {
             previous_item = false;
             $('.modal-arrow_right').addClass('modal-arrow_disabled');
         } else {
