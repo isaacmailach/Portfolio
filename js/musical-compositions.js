@@ -22,15 +22,31 @@ $(document).ready(function () {
             $('.page-content-grid').append('<div class="page-content-grid-item hide" tabindex="0" data-id="' + database.item[i].id + '" style="flex-grow: ' + 100 * Math.random() + ';"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
             if (i === database.item.length - 1) {
                 $('.page-content-grid-item').click(function () {
-                    OpenPopup($(this).data('id'));
+                    current_id = $(this).data('id');
+                    OpenPopup();
                 });
                 $('.page-content-grid-item').bind('keyup', function(e) {
-                    if (e.keyCode === 13 && !popup_open     ) {
-                        OpenPopup($(this).data('id'));
+                    if (e.keyCode === 13) {
+                        current_id = $(this).data('id');
+                        if (popup_open) {
+                            ResetPopup();
+                        } else {
+                            OpenPopup();
+                        }
+                    }
+                });
+                $('.page-content-grid-item').keydown(function (e) {
+                    if (!popup_open) {
+                        if (e.keyCode === 37) {
+                            $(this).prev('.page-content-grid-item').focus();
+                        } else if (e.keyCode === 39) {
+                            $(this).next('.page-content-grid-item').focus();
+                        }
                     }
                 });
                 if (query.id) {
-                    OpenPopup(query.id);
+                    current_id = query.id;
+                    OpenPopup();
                 }
             }
         }
@@ -165,6 +181,8 @@ $(document).ready(function () {
         if (item_data[current_id].credit) {
             $('.modal-content-credit').text('Image by ' + item_data[current_id].credit + '.');
         }
+        $('.page-content-grid-item[data-id=' + current_id + ']').addClass('page-content-grid-item_focus');
+        $('.modal-content-header-close').focus();
         query.id = current_id;
         UpdateQueries();
         audio.load();
@@ -189,10 +207,11 @@ $(document).ready(function () {
         }, 1);
         $('.modal-content-body').empty();
         $('.modal-content-credit').empty();
+        $('.page-content-grid-item[data-id!=' + current_id + ']').removeClass('page-content-grid-item_focus');
     }
     function ResetPopup () {
-        $('.modal-content').addClass('hide');
         CheckFirstLast();
+        $('.modal-content').addClass('hide');
         setTimeout(function () {
             ClearPopup();
             UpdatePopup();
@@ -202,6 +221,7 @@ $(document).ready(function () {
         }, 601);
     }
     function CheckFirstLast () {
+        current_id_int = parseInt(current_id);
         if (current_id_int == Object.keys(item_data).length) {
             next_item = false;
             $('.modal-arrow_left').addClass('modal-arrow_disabled');
@@ -217,18 +237,17 @@ $(document).ready(function () {
             $('.modal-arrow_right').removeClass('modal-arrow_disabled');
         }
     }
-    function OpenPopup (id) {
-        current_id = id;
-        current_id_int = parseInt(id);
+    function OpenPopup () {
+        $('.modal').css('display', 'block');
         CheckFirstLast();
         UpdatePopup();
         popup_open = true;
-        $('.modal').css('display', 'block');
         setTimeout(function () {$('.modal').addClass('open');}, 100);
     }
     function ClosePopup () {
         query.id = '';
         UpdateQueries();
+        $('.page-content-grid-item[data-id=' + current_id + ']').focus();
         $('.modal').removeClass('open');
         setTimeout(function () {
             $('.modal').css('display', 'none');
