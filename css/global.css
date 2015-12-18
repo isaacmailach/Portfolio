@@ -110,7 +110,7 @@ a {
     transition-property: box-shadow, flex-basis, height, opacity, top;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content-grid-item:focus, .page-content-grid-item:hover {
+.page-content-grid-item:focus, .page-content-grid-item:hover, .page-content-grid-item_focus {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.3);
     top: -3px;
 }
@@ -132,7 +132,7 @@ a {
     top: 0;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content-grid-item:focus .page-content-grid-item-overlay, .page-content-grid-item-overlay:hover {
+.page-content-grid-item:focus .page-content-grid-item-overlay, .page-content-grid-item-overlay:hover, .page-content-grid-item_focus .page-content-grid-item-overlay {
     opacity: 1;
 }
 .page-content-grid-item-overlay-heading {
@@ -473,6 +473,7 @@ a {
     height: 100%;
     position: absolute;
     top: 0;
+    transition: width 0.27s cubic-bezier(0.4, 0, 0.2, 1);
     width: 0;
 }
 .modal-content-header-toolbar-progress-bar-played {
@@ -480,6 +481,7 @@ a {
     height: 100%;
     position: absolute;
     top: 0;
+    transition: width 0.27s cubic-bezier(0.4, 0, 0.2, 1);
     width: 0;
 }
 .modal-content-header-toolbar-progress-time {
