@@ -119,6 +119,9 @@ a {
     position: absolute;
     width: 100%;
 }
+.align-top .page-content-grid-item-image {
+    top: 0;
+}
 .page-content-grid-item-overlay {
     background-color: rgba(0, 0, 0, 0.5);
     bottom: 0;
@@ -389,6 +392,12 @@ a {
     font-size: 2.5rem;
     font-weight: 400;
     margin: 0;
+}
+.modal-content-body h2 {
+    font-size: 0.9rem;
+    font-style: italic;
+    font-weight: normal;
+    margin: 5px 0 0 0;
 }
 .modal-content-body small {
     font-family: Quicksand;

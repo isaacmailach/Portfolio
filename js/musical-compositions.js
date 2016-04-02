@@ -19,7 +19,7 @@ $(document).ready(function () {
     $.getJSON('data/musical-compositions.json', function (database) {
         for (var i = 0; i < database.item.length; i++) {
             item_data[database.item[i].id] = database.item[i];
-            $('.page-content-grid').append('<div class="page-content-grid-item hide" tabindex="0" data-id="' + database.item[i].id + '" style="flex-grow: ' + 100 * Math.random() + ';"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
+            $('.page-content-grid').append('<div class="page-content-grid-item' + (database.item[i].align_top ? ' align-top' : '') + ' hide" tabindex="0" data-id="' + database.item[i].id + '" style="flex-grow: ' + 100 * Math.random() + ';"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
             if (i === database.item.length - 1) {
                 $('.page-content-grid-item').click(function () {
                     current_id = $(this).data('id');
@@ -70,7 +70,7 @@ $(document).ready(function () {
     $(document).keydown(function (e) {
         if (e.keyCode === 27) {
             ClosePopup();
-        } else if (e.keyCode === 32) {
+        } else if (e.keyCode === 32 && popup_open) {
             ToggleAudio();
             e.preventDefault(); 
         } else if (e.keyCode === 37 && popup_open && next_item) {
@@ -176,8 +176,9 @@ $(document).ready(function () {
     }
     function UpdatePopup () {
         $('.modal-content-header-image').attr('src', 'img/musical-compositions/' + current_id + '/cover.jpg');
+        $('.modal-content-header-image').prev('source').attr('srcset', 'img/musical-compositions/' + current_id + '/image.jpg');
         $('.modal-content-audio').html('<source src="audio/musical-compositions/' + current_id + '.mp3" type="audio/mp3" /><source src="audio/musical-compositions/' + current_id + '.ogg type="audio/ogg" />');
-        $('.modal-content-body').append('<h3>' + item_data[current_id].name + '</h3><small>' + item_data[current_id].date + '</small>');
+        $('.modal-content-body').append('<h3>' + item_data[current_id].name + '</h3><small>' + item_data[current_id].date + '</small>' + '<h2>For ' + item_data[current_id].instrumentation + '</h2>');
         if (item_data[current_id].credit) {
             $('.modal-content-credit').text('Image by ' + item_data[current_id].credit + '.');
         }
