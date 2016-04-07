@@ -176,35 +176,37 @@ a {
     clear: both;
     color: white;
     height: 150px;
-    left: 0;
     padding: 50px;
+    text-align: center;
+}
+.page-footer, .page-footer-logo, .page-footer-nav {
+    left: 0;
     position: absolute;
     right: 0;
-    text-align: center;
 }
 .page-footer-logo {
     bottom: 50px;
     font-family: Quicksand;
     font-size: 2.5rem;
     font-weight: 400;
-    left: 0;
     margin: 0;
-    position: absolute;
-    right: 0;
 }
 .page-footer-nav {
     font-family: Quicksand;
     font-size: 1.05rem;
     line-height: 25px;
-    left: 0;
     margin: 0;
-    position: absolute;
-    right: 0;
     top: 50px;
 }
 .page-footer-nav-link {
     margin: 12px;
     text-transform: uppercase;
+}
+.page-footer-nav-social {
+    margin: 15px 0 0 0;
+}
+.page-footer-nav-social * {
+    vertical-align: middle;
 }
 .page-footer-text {
     bottom: 20px;
