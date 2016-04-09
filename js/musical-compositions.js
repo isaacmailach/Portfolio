@@ -4,30 +4,32 @@ $(document).ready(function () {
     var query = {};
     var subString = window.location.search.substring(1).split('&');
     var item_data = {};
+    var item_num = {};
     var current_url = 'http%3A%2F%2Fisaacmailach.im';
     var fade_in_delay = 75;
     var popup_open = false;
     var next_item = false;
     var previous_item = false;
     var current_id = null;
-    var current_id_int = null;
+    var current_num = null;
     
     for (var i = 0; i < subString.length; i++) {
         var vars = subString[i].split('=');
         query[vars[0]] = vars[1];
     }
     $.getJSON('data/musical-compositions.json', function (database) {
+        item_data = database.item;
         for (var i = 0; i < database.item.length; i++) {
-            item_data[database.item[i].id] = database.item[i];
-            $('.page-content-grid').append('<div class="page-content-grid-item' + (database.item[i].align_top ? ' align-top' : '') + ' hide" tabindex="0" data-id="' + database.item[i].id + '" style="flex-grow: ' + 100 * Math.random() + ';"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
+            item_num[item_data[i].id] = i;
+            $('.page-content-grid').append('<div class="page-content-grid-item' + (database.item[i].align_top ? ' align-top' : '') + ' hide" tabindex="0" data-num="' + i + '" style="flex-grow: ' + (item_data[i].id == '0010' ? '100' : 100 * Math.random()) + ';"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
             if (i === database.item.length - 1) {
                 $('.page-content-grid-item').click(function () {
-                    current_id = $(this).data('id');
+                    current_num = $(this).data('num');
                     OpenPopup();
                 });
                 $('.page-content-grid-item').bind('keyup', function(e) {
                     if (e.keyCode === 13) {
-                        current_id = $(this).data('id');
+                        current_num = $(this).data('num');
                         if (popup_open) {
                             ResetPopup();
                         } else {
@@ -45,7 +47,7 @@ $(document).ready(function () {
                     }
                 });
                 if (query.id) {
-                    current_id = query.id;
+                    current_num = item_num[query.id];
                     OpenPopup();
                 }
             }
@@ -99,9 +101,8 @@ $(document).ready(function () {
     });
     
     $('.page-content-search-input').keyup(function () {
-        SearchItems($(this).val());
         query.q = $(this).val();
-        UpdateQueries();
+        SearchItems_debounce($(this).val());
     });
     
     $('.modal-content-header-toolbar-icon_play').click(function () {
@@ -175,19 +176,20 @@ $(document).ready(function () {
         }
     }
     function UpdatePopup () {
+        current_id = item_data[current_num].id;
         $('.modal-content-header-image').attr('src', 'img/musical-compositions/' + current_id + '/cover.jpg');
         $('.modal-content-header-image').prev('source').attr('srcset', 'img/musical-compositions/' + current_id + '/image.jpg');
         $('.modal-content-audio').html('<source src="audio/musical-compositions/' + current_id + '.mp3" type="audio/mp3" /><source src="audio/musical-compositions/' + current_id + '.ogg type="audio/ogg" />');
-        $('.modal-content-body').append('<h3>' + item_data[current_id].name + '</h3><small>' + item_data[current_id].date + '</small>' + '<h2>For ' + item_data[current_id].instrumentation + '</h2>');
-        if (item_data[current_id].credit) {
-            $('.modal-content-credit').text('Image by ' + item_data[current_id].credit + '.');
+        $('.modal-content-body').append('<h3>' + item_data[current_num].name + '</h3><small>' + item_data[current_num].date + '</small>' + '<h2>For ' + item_data[current_num].instrumentation + '</h2>');
+        if (item_data[current_num].credit) {
+            $('.modal-content-credit').text('Image by ' + item_data[current_num].credit + '.');
         }
-        $('.page-content-grid-item[data-id=' + current_id + ']').addClass('page-content-grid-item_focus');
+        $('.page-content-grid-item[data-num=' + current_num + ']').addClass('page-content-grid-item_focus');
         $('.modal-content-header-close').focus();
         query.id = current_id;
         UpdateQueries();
         audio.load();
-        if (item_data[current_id].dark) {
+        if (item_data[current_num].dark) {
             $('.modal-content-header').addClass('white');
         } else {
             $('.modal-content-header').removeClass('white');
@@ -208,7 +210,7 @@ $(document).ready(function () {
         }, 1);
         $('.modal-content-body').empty();
         $('.modal-content-credit').empty();
-        $('.page-content-grid-item[data-id!=' + current_id + ']').removeClass('page-content-grid-item_focus');
+        $('.page-content-grid-item[data-num!=' + current_num + ']').removeClass('page-content-grid-item_focus');
     }
     function ResetPopup () {
         CheckFirstLast();
@@ -222,15 +224,14 @@ $(document).ready(function () {
         }, 601);
     }
     function CheckFirstLast () {
-        current_id_int = parseInt(current_id);
-        if (current_id_int == Object.keys(item_data).length) {
+        if (current_num == 0) {
             next_item = false;
             $('.modal-arrow_left').addClass('modal-arrow_disabled');
         } else {
             next_item = true;
             $('.modal-arrow_left').removeClass('modal-arrow_disabled');
         }
-        if (current_id_int == 1) {
+        if (current_num == item_data.length - 1) {
             previous_item = false;
             $('.modal-arrow_right').addClass('modal-arrow_disabled');
         } else {
@@ -248,35 +249,33 @@ $(document).ready(function () {
     function ClosePopup () {
         query.id = '';
         UpdateQueries();
-        $('.page-content-grid-item[data-id=' + current_id + ']').focus();
+        $('.page-content-grid-item[data-num=' + current_num + ']').focus();
         $('.modal').removeClass('open');
         setTimeout(function () {
             $('.modal').css('display', 'none');
             ClearPopup();
         }, 501);
         popup_open = false;
+        current_num = null;
         current_id = null;
-        current_id_int = null;
         next_item = false;
         previous_item = false;
     }
     function NextItem () {
-        current_id = ConvertToId(current_id_int + 1);
-        current_id_int = current_id_int + 1;
+        current_num -= 1;
         ResetPopup();
     }
     function PreviousItem () {
-        current_id = ConvertToId(current_id_int - 1);
-        current_id_int = current_id_int - 1;
+        current_num += 1;
         ResetPopup();
     }
     function UpdateSocialLinks () {
-        $('.modal-content-header-toolbar-share-icon_facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + current_url + '%3Fid%3D' + current_id + '&t=' + item_data[current_id].name);
+        $('.modal-content-header-toolbar-share-icon_facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + current_url + '%3Fid%3D' + current_id + '&t=' + item_data[current_num].name);
         $('.modal-content-header-toolbar-share-icon_google').attr('href', 'https://plus.google.com/share?url=' + current_url + '%3Fid%3D' + current_id);
-        $('.modal-content-header-toolbar-share-icon_pinterest').attr('href', 'https://www.pinterest.com/pin/create/button/?url=' + current_url + '%3Fid%3D' + current_id + '&media=' + current_url + '%2Fimg%2Fmusical-compositions%2F' + current_id + '%2Fimage.jpg&description=' + item_data[current_id].name);
-        $('.modal-content-header-toolbar-share-icon_linkedin').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url=' + current_url + '%3Fid%3D' + current_id + '&title=' + item_data[current_id].name);
-        $('.modal-content-header-toolbar-share-icon_tumblr').attr('href', 'https://www.tumblr.com/share/link?url=' + current_url + '%3Fid%3D' + current_id + '&name=' + item_data[current_id].name);
-        $('.modal-content-header-toolbar-share-icon_twitter').attr('href', 'https://twitter.com/share?url=' + current_url + '%3Fid%3D' + current_id + '&text=' + item_data[current_id].name);
+        $('.modal-content-header-toolbar-share-icon_pinterest').attr('href', 'https://www.pinterest.com/pin/create/button/?url=' + current_url + '%3Fid%3D' + current_id + '&media=' + current_url + '%2Fimg%2Fmusical-compositions%2F' + current_id + '%2Fimage.jpg&description=' + item_data[current_num].name);
+        $('.modal-content-header-toolbar-share-icon_linkedin').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url=' + current_url + '%3Fid%3D' + current_id + '&title=' + item_data[current_num].name);
+        $('.modal-content-header-toolbar-share-icon_tumblr').attr('href', 'https://www.tumblr.com/share/link?url=' + current_url + '%3Fid%3D' + current_id + '&name=' + item_data[current_num].name);
+        $('.modal-content-header-toolbar-share-icon_twitter').attr('href', 'https://twitter.com/share?url=' + current_url + '%3Fid%3D' + current_id + '&text=' + item_data[current_num].name);
     }
     function UpdateQueries () {
         var queryString = '';
@@ -298,19 +297,7 @@ $(document).ready(function () {
                 setTimeout(function () {$(item).removeClass('hide');}, 1);
             }
         });
+        UpdateQueries();
     }
-    function ConvertToId (num) {
-        if (num < 10) {
-            return "000" + num;
-        } else if (num >= 10 && num < 100) {
-            return "00" + num;
-        } else if (num >= 100 && num < 1000) {
-            return "0" + num;
-        } else {
-            return num;
-        }
-    }
-    if (query.id) {
-        OpenPopup(query.id);
-    }
+    var SearchItems_debounce = _.debounce(SearchItems, 300);
 });
