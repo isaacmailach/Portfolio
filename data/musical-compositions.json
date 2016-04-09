@@ -1,8 +1,18 @@
 { "item": [
     {
+        "id": "0011",
+        "name": "Antarctica",
+        "date": "2016-03-27",
+        "instrumentation": "mezzo-soprano, harp, thin bass drum, and contrabass",
+        "dark": true,
+        "align_top": true,
+        "credit": "Marie Byrd Land and Stephen Hudson"
+    },
+    {
         "id": "0009",
         "name": "Pluto",
         "date": "2015-10-07",
+        "instrumentation": "solo cello",
         "dark": true,
         "credit": "NASA/JHUAPL/SwRI"
     },
@@ -10,12 +20,14 @@
         "id": "0008",
         "name": "Kung Fu Pizza Bears",
         "date": "2015-03-28",
+        "instrumentation": "synthesizer",
         "dark": true
     },
     {
         "id": "0007",
         "name": "When Woods Fail",
         "date": "2015-03-22",
+        "instrumentation": "string quartet",
         "dark": true,
         "credit": "Ivan Shishkin"
     },
@@ -23,13 +35,14 @@
         "id": "0006",
         "name": "Man, Woman, and the Sparrow",
         "date": "2015-02-22",
-        "dark": false,
+        "instrumentation": "shakuhachi",
         "credit": "Katsushika Hokusai"
     },
     {
         "id": "0005",
         "name": "Starlight",
         "date": "2015-01-25",
+        "instrumentation": "piano, cello, and viola",
         "dark": true,
         "credit": "the European Southern Observatory"
     },
@@ -37,12 +50,13 @@
         "id": "0004",
         "name": "Time",
         "date": "2014-06-14",
-        "dark": false
+        "instrumentation": "cello"
     },
     {
         "id": "0003",
         "name": "The Woods of Winter",
         "date": "2014-02-16",
+        "instrumentation": "cello, 2 violins, harp, piano",
         "dark": true,
         "credit": "Carl Curman"
     },
@@ -50,6 +64,7 @@
         "id": "0002",
         "name": "When it Rains",
         "date": "2014-01-14",
+        "instrumentation": "piano",
         "dark": true,
         "credit": "Thamizhpparithi Maari"
     },
@@ -57,6 +72,7 @@
         "id": "0001",
         "name": "Blockade",
         "date": "2013-12-17",
+        "instrumentation": "piano, cello",
         "dark": true
     }
 ]}
