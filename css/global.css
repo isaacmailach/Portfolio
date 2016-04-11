@@ -95,6 +95,8 @@ a {
     clear: both;
     display: flex;
     flex-wrap: wrap;
+    margin: auto;
+    max-width: 1250px;
     padding: 5px;
 }
 .page-content-grid-item {

@@ -2,7 +2,6 @@ $(document).ready(function () {
     var audio = $('.modal-content-audio')[0];
     var play = false;
     var query = {};
-    var subString = window.location.search.substring(1).split('&');
     var item_data = {};
     var item_num = {};
     var current_url = 'http%3A%2F%2Fisaacmailach.im';
@@ -12,45 +11,40 @@ $(document).ready(function () {
     var previous_item = false;
     var current_id = null;
     var current_num = null;
+    var old_id = undefined;
     
-    for (var i = 0; i < subString.length; i++) {
-        var vars = subString[i].split('=');
-        query[vars[0]] = vars[1];
-    }
     $.getJSON('data/musical-compositions.json', function (database) {
         item_data = database.item;
         for (var i = 0; i < database.item.length; i++) {
             item_num[item_data[i].id] = i;
             $('.page-content-grid').append('<div class="page-content-grid-item' + (database.item[i].align_top ? ' align-top' : '') + ' hide" tabindex="0" data-num="' + i + '" style="flex-grow: ' + (item_data[i].id == '0010' ? '150' : 100 * Math.random()) + ';"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
-            if (i === database.item.length - 1) {
-                $('.page-content-grid-item').click(function () {
-                    current_num = $(this).data('num');
-                    OpenPopup();
-                });
-                $('.page-content-grid-item').bind('keyup', function(e) {
-                    if (e.keyCode === 13) {
-                        current_num = $(this).data('num');
-                        if (popup_open) {
-                            ResetPopup();
-                        } else {
-                            OpenPopup();
-                        }
-                    }
-                });
-                $('.page-content-grid-item').keydown(function (e) {
-                    if (!popup_open) {
-                        if (e.keyCode === 37) {
-                            $(this).prev('.page-content-grid-item').focus();
-                        } else if (e.keyCode === 39) {
-                            $(this).next('.page-content-grid-item').focus();
-                        }
-                    }
-                });
-                if (query.id) {
-                    current_num = item_num[query.id];
+        }
+        $('.page-content-grid-item').click(function () {
+            current_num = $(this).data('num');
+            OpenPopup();
+        });
+        $('.page-content-grid-item').bind('keyup', function(e) {
+            if (e.keyCode === 13) {
+                current_num = $(this).data('num');
+                if (popup_open) {
+                    ResetPopup();
+                } else {
                     OpenPopup();
                 }
             }
+        });
+        $('.page-content-grid-item').keydown(function (e) {
+            if (!popup_open) {
+                if (e.keyCode === 37) {
+                    $(this).prev('.page-content-grid-item').focus();
+                } else if (e.keyCode === 39) {
+                    $(this).next('.page-content-grid-item').focus();
+                }
+            }
+        });
+        
+        window.onpopstate = function (event) {
+            CheckQueries();
         }
         var counter = 0;
         (function FadeIn () {
@@ -62,10 +56,7 @@ $(document).ready(function () {
             }, fade_in_delay);
         })();
         $('.page-content-search').removeClass('hide');
-        if (query.q) {
-            SearchItems(query.q);
-            $('.page-content-search-input').val(query.q).focus();
-        }
+        CheckQueries();
     }).fail(function () {
         alert('Sorry! Could not load the webpage properly. Make sure you are connected to the Internet and then try refreshing the page.');
     });
@@ -279,12 +270,28 @@ $(document).ready(function () {
     }
     function UpdateQueries () {
         var queryString = '';
+        var queryLength = 0;
         for (var prop in query) {
             if (query[prop]) {
-                queryString += prop + '=' + query[prop] + '&';
+                queryLength++;
+                if (queryLength > 1) {
+                    queryString += '&';
+                }
+                queryString += prop + '=' + query[prop];
             }
         }
-        window.history.replaceState('', 'Isaac Mailach - Musical Compositions', window.location.pathname + '?' + queryString);
+        if (old_id !== query.id && queryString) {
+            window.history.pushState('', 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : ''), '?' + queryString);
+            document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : '');
+            old_id = query.id;
+        } else if (queryString) {
+            window.history.replaceState('', 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : ''), '?' + queryString);
+            document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : '');
+        } else {
+            window.history.replaceState('', 'Isaac Mailach - Musical Compositions', '');
+            document.title = 'Isaac Mailach - Musical Compositions';
+            old_id = '';
+        }
     }
     function SearchItems (phrase) {
         $('.page-content-grid-item').each(function () {
@@ -300,4 +307,30 @@ $(document).ready(function () {
         UpdateQueries();
     }
     var SearchItems_debounce = _.debounce(SearchItems, 300);
+    function CheckQueries () {
+        var subString = window.location.search.substring(1).split('&');
+        query = {};
+        for (var i = 0; i < subString.length; i++) {
+            var vars = subString[i].split('=');
+            query[vars[0]] = vars[1];
+        }
+        if (query.id) {
+            current_num = item_num[query.id];
+            old_id = query.id;
+            if (!popup_open) {
+                OpenPopup();
+            } else if (popup_open) {
+                ResetPopup();
+            }
+        } else {
+            ClosePopup();
+        }
+        if (query.q) {
+            SearchItems(query.q);
+            $('.page-content-search-input').val(query.q).focus();
+        } else {
+            SearchItems('');
+            $('.page-content-search-input').val('');
+        }
+    }
 });
