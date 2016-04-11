@@ -9,6 +9,14 @@
         "credit": "Marie Byrd Land and Stephen Hudson"
     },
     {
+        "id": "0010",
+        "name": "Entering Timirith",
+        "date": "2016-03-20",
+        "instrumentation": "orchestra",
+        "dark": true,
+        "credit": "guitfiddle"
+    },
+    {
         "id": "0009",
         "name": "Pluto",
         "date": "2015-10-07",
