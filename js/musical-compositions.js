@@ -179,7 +179,7 @@ $(document).ready(function () {
         current_id = item_data[current_num].id;
         $('.modal-content-header-image').attr('src', 'img/musical-compositions/' + current_id + '/cover.jpg');
         $('.modal-content-header-image').prev('source').attr('srcset', 'img/musical-compositions/' + current_id + '/image.jpg');
-        $('.modal-content-audio').html('<source src="audio/musical-compositions/' + current_id + '.mp3" type="audio/mp3" /><source src="audio/musical-compositions/' + current_id + '.ogg type="audio/ogg" />');
+        $('.modal-content-audio').html('<source src="audio/musical-compositions/' + current_id + '.mp3" type="audio/mp3" /><source src="audio/musical-compositions/' + current_id + '.ogg" type="audio/ogg" />');
         $('.modal-content-body').append('<h3>' + item_data[current_num].name + '</h3><small>' + item_data[current_num].date + '</small>' + '<h2>For ' + item_data[current_num].instrumentation + '</h2>');
         if (item_data[current_num].credit) {
             $('.modal-content-credit').text('Image by ' + item_data[current_num].credit + '.');
