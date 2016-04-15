@@ -3,7 +3,7 @@
         "id": "0011",
         "name": "Antarctica",
         "date": "2016-03-27",
-        "instrumentation": "mezzo-soprano, harp, thin bass drum, and contrabass",
+        "instrumentation": "mezzo-soprano (Isabelle Zoulalian), harp (Nicole Lancaster), thin bass drum (David Sirega), and contrabass (Shawn Murphy)",
         "dark": true,
         "align_top": true,
         "credit": "Marie Byrd Land and Stephen Hudson"
@@ -12,7 +12,7 @@
         "id": "0010",
         "name": "Entering Timirith",
         "date": "2016-03-20",
-        "instrumentation": "orchestra",
+        "instrumentation": "orchestra (WLU Symphony Orchestra, conducted by Paul Pulford)",
         "dark": true,
         "credit": "guitfiddle"
     },
@@ -20,7 +20,7 @@
         "id": "0009",
         "name": "Pluto",
         "date": "2015-10-07",
-        "instrumentation": "solo cello",
+        "instrumentation": "solo cello (Isaac Mailach)",
         "dark": true,
         "credit": "NASA/JHUAPL/SwRI"
     },
@@ -43,14 +43,14 @@
         "id": "0006",
         "name": "Man, Woman, and the Sparrow",
         "date": "2015-02-22",
-        "instrumentation": "shakuhachi",
+        "instrumentation": "shakuhachi (Rebecca Chapeskie)",
         "credit": "Katsushika Hokusai"
     },
     {
         "id": "0005",
         "name": "Starlight",
         "date": "2015-01-25",
-        "instrumentation": "piano, cello, and viola",
+        "instrumentation": "piano (Nauroz Tanya), cello (Isaac Mailach), and viola (Isaac Page)",
         "dark": true,
         "credit": "the European Southern Observatory"
     },
@@ -58,7 +58,7 @@
         "id": "0004",
         "name": "Time",
         "date": "2014-06-14",
-        "instrumentation": "cello"
+        "instrumentation": "cello (Isaac Mailach)"
     },
     {
         "id": "0003",

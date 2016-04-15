@@ -11,7 +11,8 @@ $(document).ready(function () {
     var previous_item = false;
     var current_id = null;
     var current_num = null;
-    var old_id = undefined;
+    var old_id = '';
+    var nav = false;
     
     $.getJSON('data/musical-compositions.json', function (database) {
         item_data = database.item;
@@ -44,6 +45,7 @@ $(document).ready(function () {
         });
         
         window.onpopstate = function (event) {
+            nav = true;
             CheckQueries();
         }
         var counter = 0;
@@ -95,11 +97,15 @@ $(document).ready(function () {
         query.q = $(this).val();
         SearchItems_debounce($(this).val());
     });
+    $('.page-content-search-input').change(function () {
+        query.q = $(this).val();
+        SearchItems_debounce($(this).val());
+    });
     
     $('.modal-content-header-toolbar-icon_play').click(function () {
         ToggleAudio();
     });
-    $('.modal-content-header-toolbar-icon_play').bind('keyup', function(e) {
+    $('.modal-content-header-toolbar-icon_play').keyup(function(e) {
         if (e.keyCode === 13) {
             ToggleAudio();
         }
@@ -269,29 +275,30 @@ $(document).ready(function () {
         $('.modal-content-header-toolbar-share-icon_twitter').attr('href', 'https://twitter.com/share?url=' + current_url + '%3Fid%3D' + current_id + '&text=' + item_data[current_num].name);
     }
     function UpdateQueries () {
-        var queryString = '';
-        var queryLength = 0;
-        for (var prop in query) {
-            if (query[prop]) {
-                queryLength++;
-                if (queryLength > 1) {
-                    queryString += '&';
+        if (!nav) {
+            var queryString = '';
+            var queryLength = 0;
+            for (var prop in query) {
+                if (query[prop]) {
+                    queryLength++;
+                    if (queryLength == 1) {
+                        queryString += '?';
+                    } else if (queryLength > 1) {
+                        queryString += '&';
+                    }
+                    queryString += prop + '=' + query[prop];
                 }
-                queryString += prop + '=' + query[prop];
+            }
+            if (old_id !== query.id) {
+                window.history.pushState('', 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : ''), window.location.pathname + queryString);
+                document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : '');
+                old_id = query.id;
+            } else {
+                window.history.replaceState('', 'Isaac Mailach - Musical Compositions', window.location.pathname + queryString);
+                document.title = 'Isaac Mailach - Musical Compositions';
             }
         }
-        if (old_id !== query.id && queryString) {
-            window.history.pushState('', 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : ''), '?' + queryString);
-            document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : '');
-            old_id = query.id;
-        } else if (queryString) {
-            window.history.replaceState('', 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : ''), '?' + queryString);
-            document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : '');
-        } else {
-            window.history.replaceState('', 'Isaac Mailach - Musical Compositions', '');
-            document.title = 'Isaac Mailach - Musical Compositions';
-            old_id = '';
-        }
+        nav = false;
     }
     function SearchItems (phrase) {
         $('.page-content-grid-item').each(function () {
@@ -316,13 +323,12 @@ $(document).ready(function () {
         }
         if (query.id) {
             current_num = item_num[query.id];
-            old_id = query.id;
             if (!popup_open) {
                 OpenPopup();
             } else if (popup_open) {
                 ResetPopup();
             }
-        } else {
+        } else if (popup_open) {
             ClosePopup();
         }
         if (query.q) {
