@@ -2,55 +2,54 @@ $(document).ready(function () {
     var audio = $('.modal-content-audio')[0];
     var play = false;
     var query = {};
-    var subString = window.location.search.substring(1).split('&');
     var item_data = {};
     var item_num = {};
-    var current_url = 'http%3A%2F%2Fisaacmailach.im';
+    var current_url = 'https%3A%2F%2Fisaacmailach.im';
     var fade_in_delay = 75;
     var popup_open = false;
     var next_item = false;
     var previous_item = false;
     var current_id = null;
     var current_num = null;
+    var old_id = '';
+    var old_q = '';
     
-    for (var i = 0; i < subString.length; i++) {
-        var vars = subString[i].split('=');
-        query[vars[0]] = vars[1];
-    }
     $.getJSON('data/musical-compositions.json', function (database) {
         item_data = database.item;
         for (var i = 0; i < database.item.length; i++) {
             item_num[item_data[i].id] = i;
             $('.page-content-grid').append('<div class="page-content-grid-item' + (database.item[i].align_top ? ' align-top' : '') + ' hide" tabindex="0" data-num="' + i + '" style="flex-grow: ' + (item_data[i].id == '0010' ? '150' : 100 * Math.random()) + ';"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
-            if (i === database.item.length - 1) {
-                $('.page-content-grid-item').click(function () {
-                    current_num = $(this).data('num');
-                    OpenPopup();
-                });
-                $('.page-content-grid-item').bind('keyup', function(e) {
-                    if (e.keyCode === 13) {
-                        current_num = $(this).data('num');
-                        if (popup_open) {
-                            ResetPopup();
-                        } else {
-                            OpenPopup();
-                        }
-                    }
-                });
-                $('.page-content-grid-item').keydown(function (e) {
-                    if (!popup_open) {
-                        if (e.keyCode === 37) {
-                            $(this).prev('.page-content-grid-item').focus();
-                        } else if (e.keyCode === 39) {
-                            $(this).next('.page-content-grid-item').focus();
-                        }
-                    }
-                });
-                if (query.id) {
-                    current_num = item_num[query.id];
+        }
+        $('.page-content-grid-item').click(function () {
+            current_num = $(this).data('num');
+            query.id = item_data[current_num].id;
+            UpdateQueries();
+            OpenPopup();
+        });
+        $('.page-content-grid-item').bind('keyup', function(e) {
+            if (e.keyCode === 13) {
+                current_num = $(this).data('num');
+                query.id = item_data[current_num].id;
+                UpdateQueries();
+                if (popup_open) {
+                    ResetPopup();
+                } else {
                     OpenPopup();
                 }
             }
+        });
+        $('.page-content-grid-item').keydown(function (e) {
+            if (!popup_open) {
+                if (e.keyCode === 37) {
+                    $(this).prev('.page-content-grid-item').focus();
+                } else if (e.keyCode === 39) {
+                    $(this).next('.page-content-grid-item').focus();
+                }
+            }
+        });
+        
+        window.onpopstate = function (event) {
+            CheckQueries();
         }
         var counter = 0;
         (function FadeIn () {
@@ -62,15 +61,14 @@ $(document).ready(function () {
             }, fade_in_delay);
         })();
         $('.page-content-search').removeClass('hide');
-        if (query.q) {
-            SearchItems(query.q);
-            $('.page-content-search-input').val(query.q).focus();
-        }
+        CheckQueries();
     }).fail(function () {
         alert('Sorry! Could not load the webpage properly. Make sure you are connected to the Internet and then try refreshing the page.');
     });
     $(document).keydown(function (e) {
         if (e.keyCode === 27) {
+            query.id = '';
+            UpdateQueries();
             ClosePopup();
         } else if (e.keyCode === 32 && popup_open) {
             ToggleAudio();
@@ -85,10 +83,14 @@ $(document).ready(function () {
         event.stopPropagation();
     });
     $('.modal, .modal-content-header-close-icon').click(function () {
+        query.id = '';
+        UpdateQueries();
         ClosePopup();
     });
     $('.modal-content-header-close').bind('keyup', function(e) {
         if (e.keyCode === 13) {
+            query.id = '';
+            UpdateQueries();
             ClosePopup();
         }
     });
@@ -99,16 +101,21 @@ $(document).ready(function () {
     $(document).scroll(function (e) {
         e.preventDefault();
     });
-    
+
     $('.page-content-search-input').keyup(function () {
         query.q = $(this).val();
         SearchItems_debounce($(this).val());
+    });
+    $('.page-content-search-input').on('search', function () {
+        query.q = $(this).val();
+        UpdateQueries();
+        SearchItems($(this).val());
     });
     
     $('.modal-content-header-toolbar-icon_play').click(function () {
         ToggleAudio();
     });
-    $('.modal-content-header-toolbar-icon_play').bind('keyup', function(e) {
+    $('.modal-content-header-toolbar-icon_play').keyup(function(e) {
         if (e.keyCode === 13) {
             ToggleAudio();
         }
@@ -186,8 +193,6 @@ $(document).ready(function () {
         }
         $('.page-content-grid-item[data-num=' + current_num + ']').addClass('page-content-grid-item_focus');
         $('.modal-content-header-close').focus();
-        query.id = current_id;
-        UpdateQueries();
         audio.load();
         if (item_data[current_num].dark) {
             $('.modal-content-header').addClass('white');
@@ -247,8 +252,6 @@ $(document).ready(function () {
         setTimeout(function () {$('.modal').addClass('open');}, 100);
     }
     function ClosePopup () {
-        query.id = '';
-        UpdateQueries();
         $('.page-content-grid-item[data-num=' + current_num + ']').focus();
         $('.modal').removeClass('open');
         setTimeout(function () {
@@ -263,28 +266,48 @@ $(document).ready(function () {
     }
     function NextItem () {
         current_num -= 1;
+        query.id = item_data[current_num].id;
+        UpdateQueries();
         ResetPopup();
     }
     function PreviousItem () {
         current_num += 1;
+        query.id = item_data[current_num].id;
+        UpdateQueries();
         ResetPopup();
     }
     function UpdateSocialLinks () {
-        $('.modal-content-header-toolbar-share-icon_facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + current_url + '%3Fid%3D' + current_id + '&t=' + item_data[current_num].name);
+        var current_name = encodeURI(item_data[current_num].name);
+        $('.modal-content-header-toolbar-share-icon_email').attr('href', 'mailto:?body=' + current_url + '%3Fid%3D' + current_id + '&subject=' + current_name);
+        $('.modal-content-header-toolbar-share-icon_facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + current_url + '%3Fid%3D' + current_id + '&t=' + current_name);
         $('.modal-content-header-toolbar-share-icon_google').attr('href', 'https://plus.google.com/share?url=' + current_url + '%3Fid%3D' + current_id);
-        $('.modal-content-header-toolbar-share-icon_pinterest').attr('href', 'https://www.pinterest.com/pin/create/button/?url=' + current_url + '%3Fid%3D' + current_id + '&media=' + current_url + '%2Fimg%2Fmusical-compositions%2F' + current_id + '%2Fimage.jpg&description=' + item_data[current_num].name);
-        $('.modal-content-header-toolbar-share-icon_linkedin').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url=' + current_url + '%3Fid%3D' + current_id + '&title=' + item_data[current_num].name);
-        $('.modal-content-header-toolbar-share-icon_tumblr').attr('href', 'https://www.tumblr.com/share/link?url=' + current_url + '%3Fid%3D' + current_id + '&name=' + item_data[current_num].name);
-        $('.modal-content-header-toolbar-share-icon_twitter').attr('href', 'https://twitter.com/share?url=' + current_url + '%3Fid%3D' + current_id + '&text=' + item_data[current_num].name);
+        $('.modal-content-header-toolbar-share-icon_pinterest').attr('href', 'https://www.pinterest.com/pin/create/button/?url=' + current_url + '%3Fid%3D' + current_id + '&media=' + current_url + '%2Fimg%2Fmusical-compositions%2F' + current_id + '%2Fimage.jpg&description=' + current_name);
+        $('.modal-content-header-toolbar-share-icon_linkedin').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url=' + current_url + '%3Fid%3D' + current_id + '&title=' + current_name);
+        $('.modal-content-header-toolbar-share-icon_tumblr').attr('href', 'https://www.tumblr.com/share/link?url=' + current_url + '%3Fid%3D' + current_id + '&name=' + current_name);
+        $('.modal-content-header-toolbar-share-icon_twitter').attr('href', 'https://twitter.com/share?url=' + current_url + '%3Fid%3D' + current_id + '&text=' + current_name);
     }
     function UpdateQueries () {
         var queryString = '';
+        var queryLength = 0;
         for (var prop in query) {
             if (query[prop]) {
-                queryString += prop + '=' + query[prop] + '&';
+                queryLength++;
+                if (queryLength == 1) {
+                    queryString += '?';
+                } else if (queryLength > 1) {
+                    queryString += '&';
+                }
+                queryString += prop + '=' + query[prop];
             }
         }
-        window.history.replaceState('', 'Isaac Mailach - Musical Compositions', window.location.pathname + '?' + queryString);
+        if (old_id !== query.id) {
+            window.history.pushState('', 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : ''), window.location.pathname + queryString);
+            document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : '');
+            old_id = query.id;
+        } else {
+            window.history.replaceState('', 'Isaac Mailach - Musical Compositions', window.location.pathname + queryString);
+            document.title = 'Isaac Mailach - Musical Compositions';
+        }
     }
     function SearchItems (phrase) {
         $('.page-content-grid-item').each(function () {
@@ -297,7 +320,33 @@ $(document).ready(function () {
                 setTimeout(function () {$(item).removeClass('hide');}, 1);
             }
         });
-        UpdateQueries();
+        old_q = encodeURI(phrase);
     }
-    var SearchItems_debounce = _.debounce(SearchItems, 300);
+    var SearchItems_debounce = _.debounce(function (query) {
+        UpdateQueries();
+        SearchItems(query);
+    }, 300);
+    function CheckQueries () {
+        var subString = window.location.search.substring(1).split('&');
+        query = {id: '', q: ''};
+        for (var i = 0; i < subString.length; i++) {
+            var vars = subString[i].split('=');
+            query[vars[0]] = vars[1];
+        }
+        if (old_id !== query.id) {
+            old_id = query.id;
+            current_num = item_num[query.id];
+            if (!query.id) {
+                ClosePopup();
+            } else if (!popup_open) {
+                OpenPopup();
+            } else if (popup_open) {
+                ResetPopup();
+            }
+        }
+        if (old_q !== query.q) {
+            SearchItems(decodeURI(query.q));
+            $('.page-content-search-input').val(decodeURI(query.q));
+        }
+    }
 });
