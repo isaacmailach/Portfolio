@@ -364,10 +364,6 @@ a {
 .modal-arrow:not(.modal-arrow_disabled):hover {
     opacity: 1;
 }
-/*.modal-arrow_disabled {
-    cursor: default;
-    opacity: 0.25;
-}*/
 .modal-arrow_left {
     left: 10px;
 }
@@ -375,7 +371,7 @@ a {
     right: 10px;
 }
 .modal-content {
-    max-width: 700px;
+    max-width: 750px;
     overflow: hidden;
     position: relative;
     transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -803,4 +799,9 @@ a {
     font-style: italic;
     font-weight: 700;
     src: url('../font/Roboto-BoldItalic.ttf') format('truetype');
+}
+
+.page-content-aside-contact-detail-icon {
+    display: inline-block;
+    width: 25px;
 }
