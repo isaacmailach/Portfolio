@@ -79,6 +79,10 @@ a {
     opacity: 0.75;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.page-content-aside-contact-detail-icon {
+    display: inline-block;
+    width: 25px;
+}
 .page-content-aside-portrait {
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
@@ -799,9 +803,4 @@ a {
     font-style: italic;
     font-weight: 700;
     src: url('../font/Roboto-BoldItalic.ttf') format('truetype');
-}
-
-.page-content-aside-contact-detail-icon {
-    display: inline-block;
-    width: 25px;
 }
