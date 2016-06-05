@@ -245,19 +245,19 @@ $(document).ready(function () {
         }
     }
     function OpenPopup () {
-        $('.modal').css('display', 'block');
+        $('.modal').css('pointer-events', 'auto');
         CheckFirstLast();
         UpdatePopup();
         popup_open = true;
-        setTimeout(function () {$('.modal').addClass('open');}, 100);
+        setTimeout(function () {$('.modal').addClass('open')}, 80);
     }
     function ClosePopup () {
         $('.page-content-grid-item[data-num=' + current_num + ']').focus();
         $('.modal').removeClass('open');
         setTimeout(function () {
-            $('.modal').css('display', 'none');
             ClearPopup();
-        }, 501);
+            $('.modal').css('pointer-events', 'none');
+        }, 500);
         popup_open = false;
         current_num = null;
         current_id = null;
