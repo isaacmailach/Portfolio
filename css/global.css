@@ -79,6 +79,10 @@ a {
     opacity: 0.75;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.page-content-aside-contact-detail-icon {
+    display: inline-block;
+    width: 25px;
+}
 .page-content-aside-portrait {
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
@@ -109,12 +113,12 @@ a {
     position: relative;
     top: 0;
     transition-duration: 0.28s, 0.28s, 0.28s, 1s, 0.28s;
-    transition-property: box-shadow, flex-basis, height, opacity, top;
+    transition-property: box-shadow, flex-basis, height, opacity, transform;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-grid-item:focus, .page-content-grid-item:hover, .page-content-grid-item_focus {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.3);
-    top: -3px;
+    transform: translateY(-3px);
 }
 .page-content-grid-item-image {
     bottom: 0;
@@ -336,9 +340,9 @@ a {
 }
 .modal {
     background-color: rgba(0, 0, 0, 0.5);
-    display: none;
     opacity: 0;
     overflow: auto;
+    pointer-events: none;
     transition: 0.5s,0.27s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: opacity, padding;
 }
@@ -799,9 +803,4 @@ a {
     font-style: italic;
     font-weight: 700;
     src: url('../font/Roboto-BoldItalic.ttf') format('truetype');
-}
-
-.page-content-aside-contact-detail-icon {
-    display: inline-block;
-    width: 25px;
 }
