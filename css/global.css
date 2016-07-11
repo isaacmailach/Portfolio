@@ -66,7 +66,7 @@ a {
     margin: 0 0 30px 30px;
     padding: 30px 30px 15px 30px;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: opacity, padding;
+    transition-property: opacity, padding, width;
     width: 300px;
 }
 .page-content-aside-contact {
@@ -628,6 +628,13 @@ a {
     }
 }
 @media (max-width: 550px) {
+    .page-content-aside {
+        border: none;
+        float: none;
+        margin: auto;
+        max-width: 300px;
+        width: auto;
+    }
     .page-header-nav {
         padding: 0;
     }
@@ -639,15 +646,6 @@ a {
     .nsmodal-content {
         max-height: 270px;
         padding: 15px;
-    }
-}
-@media (max-width: 600px) {
-    .page-content-aside {
-        border: none;
-        float: none;
-        margin: auto;
-        max-width: 300px;
-        width: auto;
     }
 }
 @media (max-width: 700px) {
@@ -671,8 +669,9 @@ a {
         font-size: 1rem;
         line-height: 1.4rem;
     }
-    .page-content-aside {
+    .page .page-content-aside {
         padding: 15px;
+        width: 230px;
     }
     .page .page-content-grid-item {
         flex-basis: 200px;
@@ -744,6 +743,9 @@ a {
 
     .page {
         padding: 50px;
+    }
+    .page-content-aside {
+        width: 250px;
     }
     .page-header-nav {
         margin: 0 0 50px 0;
