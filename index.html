@@ -64,6 +64,7 @@
 
         <link rel="stylesheet" type="text/css" href="css/global.css" />
 
+        <script src="js/library/webcomponents.min.js"></script>
         <script src="js/library/jquery-1.11.1.min.js"></script>
         <script src="js/library/jquery.mobile.touch-1.4.5.min.js"></script>
         <script src="js/library/picturefill.min.js"></script>
@@ -112,6 +113,13 @@
                     <div class="page-content-search-icon icon">&#xf002;</div>
                 </div>
                 <div class="page-content-grid">
+                    <template class="page-content-grid-item_template">
+                        <img class="page-content-grid-item-image" src="" />
+                        <div class="page-content-grid-item-overlay">
+                            <h3 class="page-content-grid-item-overlay-heading"></h3>
+                            <small class="page-content-grid-item-overlay-meta"></small>
+                        </div>
+                    </template>
                 </div>
             </main>
             <footer class="page-footer">

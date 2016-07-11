@@ -16,9 +16,29 @@ $(document).ready(function () {
     
     $.getJSON('data/musical-compositions.json', function (database) {
         item_data = database.item;
+        var item_template = document.querySelector('.page-content-grid-item_template');
+        var item_element_proto = Object.create(HTMLElement.prototype);
+        item_element_proto.createdCallback = function () {
+            this.className = 'page-content-grid-item hide';
+            if (item_data[i].align_top) {this.className += ' align-top';}
+            this.setAttribute('tabindex', 0);
+            this.setAttribute('data-num', i);
+            if (item_data[i].id == '0010') {
+                this.setAttribute('style', 'flex-grow: 150;');
+            } else {
+                this.setAttribute('style', 'flex-grow: ' + parseInt(100 * Math.random()));
+            }
+            var template = document.importNode(item_template.content, true);
+            template.querySelector('.page-content-grid-item-image').src = 'img/musical-compositions/' + item_data[i].id + '/image.jpg';
+            template.querySelector('.page-content-grid-item-overlay-heading').innerText = item_data[i].name;
+            template.querySelector('.page-content-grid-item-overlay-meta').innerText = item_data[i].date;
+            this.appendChild(template);
+        }
+        var item_element = document.registerElement('page-content-grid-item', {prototype: item_element_proto});
         for (var i = 0; i < database.item.length; i++) {
             item_num[item_data[i].id] = i;
-            $('.page-content-grid').append('<div class="page-content-grid-item' + (database.item[i].align_top ? ' align-top' : '') + ' hide" tabindex="0" data-num="' + i + '" style="flex-grow: ' + (item_data[i].id == '0010' ? '150' : 100 * Math.random()) + ';"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
+            var item = document.createElement('page-content-grid-item');
+            $('.page-content-grid').append(item);
         }
         $('.page-content-grid-item').click(function () {
             current_num = $(this).data('num');
