@@ -29,7 +29,8 @@
         "name": "Kung Fu Pizza Bears",
         "date": "2015-03-28",
         "instrumentation": "synthesizer",
-        "dark": true
+        "dark": true,
+        "align_top": true
     },
     {
         "id": "0007",
