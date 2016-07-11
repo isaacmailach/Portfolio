@@ -16,37 +16,53 @@ $(document).ready(function () {
     
     $.getJSON('data/musical-compositions.json', function (database) {
         item_data = database.item;
+        var item_template = document.querySelector('.page-content-grid-item_template');
         for (var i = 0; i < database.item.length; i++) {
             item_num[item_data[i].id] = i;
-            $('.page-content-grid').append('<div class="page-content-grid-item' + (database.item[i].align_top ? ' align-top' : '') + ' hide" tabindex="0" data-num="' + i + '" style="flex-grow: ' + (item_data[i].id == '0010' ? '150' : 100 * Math.random()) + ';"><img class="page-content-grid-item-image" src="img/musical-compositions/' + database.item[i].id + '/image.jpg" /><div class="page-content-grid-item-overlay"><h3 class="page-content-grid-item-overlay-heading">' + database.item[i].name + '</h1><small class="page-content-grid-item-overlay-meta">' + database.item[i].date + '</small></div></div>');
-        }
-        $('.page-content-grid-item').click(function () {
-            current_num = $(this).data('num');
-            query.id = item_data[current_num].id;
-            UpdateQueries();
-            OpenPopup();
-        });
-        $('.page-content-grid-item').bind('keyup', function(e) {
-            if (e.keyCode === 13) {
+            var item = document.createElement('div');
+            item.className = 'page-content-grid-item hide';
+            if (item_data[i].align_top) {item.className += ' align-top';}
+            item.setAttribute('tabindex', 0);
+            item.setAttribute('data-num', i);
+            if (item_data[i].id == '0010') {
+                item.setAttribute('style', 'flex-grow: 150;');
+            } else {
+                item.setAttribute('style', 'flex-grow: ' + parseInt(100 * Math.random()));
+            }
+            var template = document.importNode(item_template.content, true);
+            template.querySelector('.page-content-grid-item-image').src = 'img/musical-compositions/' + item_data[i].id + '/image.jpg';
+            template.querySelector('.page-content-grid-item-overlay-heading').innerText = item_data[i].name;
+            template.querySelector('.page-content-grid-item-overlay-meta').innerText = item_data[i].date;
+            item.appendChild(template);
+            item.addEventListener('keyup', function (e) {
+                if (e.keyCode === 13) {
+                    current_num = $(this).data('num');
+                    query.id = item_data[current_num].id;
+                    UpdateQueries();
+                    if (popup_open) {
+                        ResetPopup();
+                    } else {
+                        OpenPopup();
+                    }
+                }
+            });
+            item.addEventListener('keydown', function (e) {
+                if (!popup_open) {
+                    if (e.keyCode === 37) {
+                        $(this).prev('.page-content-grid-item').focus();
+                    } else if (e.keyCode === 39) {
+                        $(this).next('.page-content-grid-item').focus();
+                    }
+                }
+            });
+            item.addEventListener('click', function () {
                 current_num = $(this).data('num');
                 query.id = item_data[current_num].id;
                 UpdateQueries();
-                if (popup_open) {
-                    ResetPopup();
-                } else {
-                    OpenPopup();
-                }
-            }
-        });
-        $('.page-content-grid-item').keydown(function (e) {
-            if (!popup_open) {
-                if (e.keyCode === 37) {
-                    $(this).prev('.page-content-grid-item').focus();
-                } else if (e.keyCode === 39) {
-                    $(this).next('.page-content-grid-item').focus();
-                }
-            }
-        });
+                OpenPopup();
+            });
+            $('.page-content-grid').append(item);
+        }
         
         window.onpopstate = function (event) {
             CheckQueries();
@@ -65,8 +81,8 @@ $(document).ready(function () {
     }).fail(function () {
         alert('Sorry! Could not load the webpage properly. Make sure you are connected to the Internet and then try refreshing the page.');
     });
-    $(document).keydown(function (e) {
-        if (e.keyCode === 27) {
+    document.addEventListener('keydown', function (e) {
+        if (e.keyCode === 27 && popup_open) {
             query.id = '';
             UpdateQueries();
             ClosePopup();
@@ -102,7 +118,7 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    $('.page-content-search-input').keyup(function () {
+    document.querySelector('.page-content-search-input').addEventListener('keyup', function () {
         query.q = $(this).val();
         SearchItems_debounce($(this).val());
     });
@@ -112,21 +128,20 @@ $(document).ready(function () {
         SearchItems($(this).val());
     });
     
-    $('.modal-content-header-toolbar-player-play').click(function () {
-        ToggleAudio();
-    });
-    $('.modal-content-header-toolbar-player-play').keyup(function(e) {
+    var play_button = document.querySelector('.modal-content-header-toolbar-player-play');
+    play_button.addEventListener('click', function () {ToggleAudio();});
+    play_button.addEventListener('keyup', function(e) {
         if (e.keyCode === 13) {
             ToggleAudio();
         }
     });
-    $('.modal-arrow_left').click(function () {
+    document.querySelector('.modal-arrow_left').addEventListener('click', function () {
         if (popup_open && next_item) {
             NextItem();
         }
         event.stopPropagation();
     });
-    $('.modal-arrow_right').click(function () {
+    document.querySelector('.modal-arrow_right').addEventListener('click', function () {
         if (popup_open && previous_item) {
             PreviousItem();
         }
@@ -155,7 +170,7 @@ $(document).ready(function () {
     audio.onended = function () {
         ToggleAudio();
     }
-    $('.modal-content-header-toolbar-player-progress').click(function (e) {
+    document.querySelector('.modal-content-header-toolbar-player-progress').addEventListener('click', function (e) {
         audio.currentTime = ((e.pageX - $(this).offset().left) / $(this).innerWidth()) * audio.duration;
     });
     
