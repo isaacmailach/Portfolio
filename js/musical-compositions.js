@@ -33,41 +33,40 @@ $(document).ready(function () {
             template.querySelector('.page-content-grid-item-overlay-heading').innerText = item_data[i].name;
             template.querySelector('.page-content-grid-item-overlay-meta').innerText = item_data[i].date;
             this.appendChild(template);
-        }
+            this.addEventListener('keyup', function (e) {
+                if (e.keyCode === 13) {
+                    current_num = $(this).data('num');
+                    query.id = item_data[current_num].id;
+                    UpdateQueries();
+                    if (popup_open) {
+                        ResetPopup();
+                    } else {
+                        OpenPopup();
+                    }
+                }
+            });
+            this.addEventListener('keydown', function (e) {
+                if (!popup_open) {
+                    if (e.keyCode === 37) {
+                        $(this).prev('.page-content-grid-item').focus();
+                    } else if (e.keyCode === 39) {
+                        $(this).next('.page-content-grid-item').focus();
+                    }
+                }
+            });
+            this.addEventListener('click', function () {
+                current_num = $(this).data('num');
+                query.id = item_data[current_num].id;
+                UpdateQueries();
+                OpenPopup();
+            });
+        };
         var item_element = document.registerElement('page-content-grid-item', {prototype: item_element_proto});
         for (var i = 0; i < database.item.length; i++) {
             item_num[item_data[i].id] = i;
             var item = document.createElement('page-content-grid-item');
             $('.page-content-grid').append(item);
         }
-        $('.page-content-grid-item').click(function () {
-            current_num = $(this).data('num');
-            query.id = item_data[current_num].id;
-            UpdateQueries();
-            OpenPopup();
-        });
-        $('.page-content-grid-item').bind('keyup', function(e) {
-            if (e.keyCode === 13) {
-                current_num = $(this).data('num');
-                query.id = item_data[current_num].id;
-                UpdateQueries();
-                if (popup_open) {
-                    ResetPopup();
-                } else {
-                    OpenPopup();
-                }
-            }
-        });
-        $('.page-content-grid-item').keydown(function (e) {
-            if (!popup_open) {
-                if (e.keyCode === 37) {
-                    $(this).prev('.page-content-grid-item').focus();
-                } else if (e.keyCode === 39) {
-                    $(this).next('.page-content-grid-item').focus();
-                }
-            }
-        });
-        
         window.onpopstate = function (event) {
             CheckQueries();
         }
