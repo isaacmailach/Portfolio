@@ -317,31 +317,46 @@ $(document).ready(function () {
         document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : '');
     }
     function SearchItems (phrase) {
-        var old_pos = {};
-        var new_pos = {};
-        var hidden = {};
         for (var i = 0; i < item_data.length; i++) {
             var search_item = $('[data-num="' + i + '"]');
-            old_pos[i] = search_item.position();
-            if (search_item.text().search(new RegExp(phrase, "i")) < 0) {
-                hidden[i] = true;
-                search_item.addClass('hide');
+            item_data[i].old_pos = search_item.position();
+            item_data[i].width = search_item.width();
+            if (!item_data[i].hidden) {
+                item_data[i].animate = true;
             } else {
-                hidden[i] = false;
-                search_item.css('display', 'block');
+                item_data[i].animate = false;
+            }
+        }
+        for (var i = 0; i < item_data.length; i++) {
+            var search_item = $('[data-num="' + i + '"]');
+            if (search_item.text().search(new RegExp(phrase, "i")) < 0) {
+                item_data[i].hidden = true;
+                search_item.css({'position': 'absolute', top: item_data[i].old_pos.top + 'px', left: item_data[i].old_pos.left + 'px', width: item_data[i].width + 'px'});
+                search_item.addClass('hide_search');
+            } else {
+                item_data[i].hidden = false;
+                search_item.css({'position': '', top: '', left: '', width: ''});
+                search_item.removeClass('hide_search');
+            }
+            if (!item_data[i].hidden && item_data[i].animate) {
+                item_data[i].new_pos = search_item.position();
+                search_item.css({transform: 'translate(' + (item_data[i].old_pos.left - item_data[i].new_pos.left) + 'px, ' + (item_data[i].old_pos.top - item_data[i].new_pos.top) + 'px)', transition: 'transform 0s'});
+                //alert('old_left: ' + item_data[i].old_pos.left + ', ' + 'new_left: ' + item_data[i].new_pos.left + ', ' + 'old_top: ' + item_data[i].old_pos.top + ', ' + 'new_top: ' + item_data[i].new_pos.top + '.')
             }
         }
         setTimeout(function () {
-            for (var i = 0; i < item_data.length; i++) {
-                if (!hidden[i]) {
-                    $('[data-num="' + i + '"]').removeClass('hide');
-                }
+        for (var i = 0; i < item_data.length; i++) {
+            var search_item = $('[data-num="' + i + '"]');
+            if (!item_data[i].hidden && item_data[i].animate) {
+                search_item.css({'transform': '', transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'});
             }
+        }
         }, 1);
         setTimeout(function () {
             for (var i = 0; i < item_data.length; i++) {
-                if (hidden[i]) {
-                    $('[data-num="' + i + '"]').css('display', 'none');
+                var search_item = $('[data-num="' + i + '"]');
+                if (!item_data[i].hidden) {
+                    search_item.css({transition: ''});
                 }
             }
         }, 501);

@@ -35,6 +35,7 @@ a {
 .page-content {
     clear: both;
     max-width: 1250px;
+    min-height: 500px;
     overflow: hidden;
     margin: 0 auto 100px auto;
     transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -106,9 +107,9 @@ a {
     flex: 1 0 250px;
     height: 250px;
     margin: 5px;
+    max-width: 500px;
     overflow: hidden;
     position: relative;
-    top: 0;
     transition-duration: 0.28s, 0.28s, 0.28s, 1s, 0.28s;
     transition-property: box-shadow, flex-basis, height, opacity, transform;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -512,8 +513,14 @@ a {
     font-size: 1.2rem;
 }
 
+.hide_search {
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
 .hide {
     opacity: 0;
+    pointer-events: none;
 }
 .white {
     color: white
