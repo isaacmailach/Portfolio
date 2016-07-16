@@ -37,15 +37,14 @@ a {
     max-width: 1250px;
     overflow: hidden;
     margin: 0 auto 100px auto;
-    transition: margin 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page_about .page-content {
     background-color: rgba(255, 255, 255, 0.5);
 }
 .page-content-about {
     padding: 30px;
-    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: opacity, padding;
+    transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-about h3 {
     font-family: Quicksand;
@@ -66,18 +65,16 @@ a {
     margin: 0 0 30px 30px;
     padding: 30px 30px 15px 30px;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: opacity, padding, width;
+    transition-property: padding, width;
     width: 300px;
 }
 .page-content-aside-contact {
     font-size: 1.1rem;
     line-height: 30px;
     margin: 15px 0;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-aside-contact-detail {
     opacity: 0.75;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-aside-contact-detail-icon {
     display: inline-block;

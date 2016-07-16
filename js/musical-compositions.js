@@ -11,8 +11,6 @@ $(document).ready(function () {
     var previous_item = false;
     var current_id = null;
     var current_num = null;
-    var old_id = '';
-    var old_q = '';
     
     $.getJSON('data/musical-compositions.json', function (database) {
         item_data = database.item;
@@ -148,12 +146,12 @@ $(document).ready(function () {
         event.stopPropagation();
     });
     $('.modal-content').on("swiperight", function () {
-        if (popup_open && next_item) {
+        if (popup_open && next_item && document.documentElement.clientWidth <= 700) {
             NextItem();
         }
     });
     $('.modal').on("swipeleft", function () {
-        if (popup_open && previous_item) {
+        if (popup_open && previous_item && document.documentElement.clientWidth <= 700) {
             PreviousItem();
         }
     });
@@ -315,27 +313,38 @@ $(document).ready(function () {
                 queryString += prop + '=' + query[prop];
             }
         }
-        if (old_id !== query.id) {
-            window.history.pushState('', 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : ''), window.location.pathname + queryString);
-            document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : '');
-            old_id = query.id;
-        } else {
-            window.history.replaceState('', 'Isaac Mailach - Musical Compositions', window.location.pathname + queryString);
-            document.title = 'Isaac Mailach - Musical Compositions';
-        }
+        window.history.replaceState('', 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : ''), window.location.pathname + queryString);
+        document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : '');
     }
     function SearchItems (phrase) {
-        $('.page-content-grid-item').each(function () {
-            var item = this;
-            if ($(this).text().search(new RegExp(phrase, "i")) < 0) {
-                $(this).addClass('hide');
-                setTimeout(function () {$(item).css('display', 'none');}, 501);
+        var old_pos = {};
+        var new_pos = {};
+        var hidden = {};
+        for (var i = 0; i < item_data.length; i++) {
+            var search_item = $('[data-num="' + i + '"]');
+            old_pos[i] = search_item.position();
+            if (search_item.text().search(new RegExp(phrase, "i")) < 0) {
+                hidden[i] = true;
+                search_item.addClass('hide');
             } else {
-                $(this).css('display', 'block');
-                setTimeout(function () {$(item).removeClass('hide');}, 1);
+                hidden[i] = false;
+                search_item.css('display', 'block');
             }
-        });
-        old_q = encodeURI(phrase);
+        }
+        setTimeout(function () {
+            for (var i = 0; i < item_data.length; i++) {
+                if (!hidden[i]) {
+                    $('[data-num="' + i + '"]').removeClass('hide');
+                }
+            }
+        }, 1);
+        setTimeout(function () {
+            for (var i = 0; i < item_data.length; i++) {
+                if (hidden[i]) {
+                    $('[data-num="' + i + '"]').css('display', 'none');
+                }
+            }
+        }, 501);
     }
     var SearchItems_debounce = _.debounce(function (query) {
         UpdateQueries();
@@ -348,18 +357,11 @@ $(document).ready(function () {
             var vars = subString[i].split('=');
             query[vars[0]] = vars[1];
         }
-        if (old_id !== query.id) {
-            old_id = query.id;
+        if (query.id) {
             current_num = item_num[query.id];
-            if (!query.id) {
-                ClosePopup();
-            } else if (!popup_open) {
-                OpenPopup();
-            } else if (popup_open) {
-                ResetPopup();
-            }
+            OpenPopup();
         }
-        if (old_q !== query.q) {
+        if (query.q) {
             SearchItems(decodeURI(query.q));
             $('.page-content-search-input').val(decodeURI(query.q));
         }
