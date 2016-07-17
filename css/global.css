@@ -35,17 +35,17 @@ a {
 .page-content {
     clear: both;
     max-width: 1250px;
+    min-height: 500px;
     overflow: hidden;
     margin: 0 auto 100px auto;
-    transition: margin 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page_about .page-content {
     background-color: rgba(255, 255, 255, 0.5);
 }
 .page-content-about {
     padding: 30px;
-    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: opacity, padding;
+    transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-about h3 {
     font-family: Quicksand;
@@ -66,18 +66,16 @@ a {
     margin: 0 0 30px 30px;
     padding: 30px 30px 15px 30px;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: opacity, padding, width;
+    transition-property: padding, width;
     width: 300px;
 }
 .page-content-aside-contact {
     font-size: 1.1rem;
     line-height: 30px;
     margin: 15px 0;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-aside-contact-detail {
     opacity: 0.75;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-aside-contact-detail-icon {
     display: inline-block;
@@ -109,9 +107,9 @@ a {
     flex: 1 0 250px;
     height: 250px;
     margin: 5px;
+    max-width: 500px;
     overflow: hidden;
     position: relative;
-    top: 0;
     transition-duration: 0.28s, 0.28s, 0.28s, 1s, 0.28s;
     transition-property: box-shadow, flex-basis, height, opacity, transform;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -515,8 +513,14 @@ a {
     font-size: 1.2rem;
 }
 
+.hide_search {
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
 .hide {
     opacity: 0;
+    pointer-events: none;
 }
 .white {
     color: white

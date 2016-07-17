@@ -11,8 +11,6 @@ $(document).ready(function () {
     var previous_item = false;
     var current_id = null;
     var current_num = null;
-    var old_id = '';
-    var old_q = '';
     
     $.getJSON('data/musical-compositions.json', function (database) {
         item_data = database.item;
@@ -148,12 +146,12 @@ $(document).ready(function () {
         event.stopPropagation();
     });
     $('.modal-content').on("swiperight", function () {
-        if (popup_open && next_item) {
+        if (popup_open && next_item && document.documentElement.clientWidth <= 700) {
             NextItem();
         }
     });
     $('.modal').on("swipeleft", function () {
-        if (popup_open && previous_item) {
+        if (popup_open && previous_item && document.documentElement.clientWidth <= 700) {
             PreviousItem();
         }
     });
@@ -315,27 +313,53 @@ $(document).ready(function () {
                 queryString += prop + '=' + query[prop];
             }
         }
-        if (old_id !== query.id) {
-            window.history.pushState('', 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : ''), window.location.pathname + queryString);
-            document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : '');
-            old_id = query.id;
-        } else {
-            window.history.replaceState('', 'Isaac Mailach - Musical Compositions', window.location.pathname + queryString);
-            document.title = 'Isaac Mailach - Musical Compositions';
-        }
+        window.history.replaceState('', 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : ''), window.location.pathname + queryString);
+        document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + item_data[item_num[query.id]].name : '');
     }
     function SearchItems (phrase) {
-        $('.page-content-grid-item').each(function () {
-            var item = this;
-            if ($(this).text().search(new RegExp(phrase, "i")) < 0) {
-                $(this).addClass('hide');
-                setTimeout(function () {$(item).css('display', 'none');}, 501);
+        for (var i = 0; i < item_data.length; i++) {
+            var search_item = $('[data-num="' + i + '"]');
+            item_data[i].old_pos = search_item.position();
+            item_data[i].width = search_item.width();
+            if (!item_data[i].hidden) {
+                item_data[i].animate = true;
             } else {
-                $(this).css('display', 'block');
-                setTimeout(function () {$(item).removeClass('hide');}, 1);
+                item_data[i].animate = false;
             }
-        });
-        old_q = encodeURI(phrase);
+        }
+        for (var i = 0; i < item_data.length; i++) {
+            var search_item = $('[data-num="' + i + '"]');
+            if (search_item.text().search(new RegExp(phrase, "i")) < 0) {
+                item_data[i].hidden = true;
+                search_item.css({'position': 'absolute', top: item_data[i].old_pos.top + 'px', left: item_data[i].old_pos.left + 'px', width: item_data[i].width + 'px'});
+                search_item.addClass('hide_search');
+            } else {
+                item_data[i].hidden = false;
+                search_item.css({'position': '', top: '', left: '', width: ''});
+                search_item.removeClass('hide_search');
+            }
+            if (!item_data[i].hidden && item_data[i].animate) {
+                item_data[i].new_pos = search_item.position();
+                search_item.css({transform: 'translate(' + (item_data[i].old_pos.left - item_data[i].new_pos.left) + 'px, ' + (item_data[i].old_pos.top - item_data[i].new_pos.top) + 'px)', transition: 'transform 0s'});
+                //alert('old_left: ' + item_data[i].old_pos.left + ', ' + 'new_left: ' + item_data[i].new_pos.left + ', ' + 'old_top: ' + item_data[i].old_pos.top + ', ' + 'new_top: ' + item_data[i].new_pos.top + '.')
+            }
+        }
+        setTimeout(function () {
+        for (var i = 0; i < item_data.length; i++) {
+            var search_item = $('[data-num="' + i + '"]');
+            if (!item_data[i].hidden && item_data[i].animate) {
+                search_item.css({'transform': '', transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'});
+            }
+        }
+        }, 1);
+        setTimeout(function () {
+            for (var i = 0; i < item_data.length; i++) {
+                var search_item = $('[data-num="' + i + '"]');
+                if (!item_data[i].hidden) {
+                    search_item.css({transition: ''});
+                }
+            }
+        }, 501);
     }
     var SearchItems_debounce = _.debounce(function (query) {
         UpdateQueries();
@@ -348,18 +372,11 @@ $(document).ready(function () {
             var vars = subString[i].split('=');
             query[vars[0]] = vars[1];
         }
-        if (old_id !== query.id) {
-            old_id = query.id;
+        if (query.id) {
             current_num = item_num[query.id];
-            if (!query.id) {
-                ClosePopup();
-            } else if (!popup_open) {
-                OpenPopup();
-            } else if (popup_open) {
-                ResetPopup();
-            }
+            OpenPopup();
         }
-        if (old_q !== query.q) {
+        if (query.q) {
             SearchItems(decodeURI(query.q));
             $('.page-content-search-input').val(decodeURI(query.q));
         }
