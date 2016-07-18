@@ -320,7 +320,10 @@ $(document).ready(function () {
         for (var i = 0; i < item_data.length; i++) {
             var search_item = $('[data-num="' + i + '"]');
             item_data[i].old_pos = search_item.position();
-            item_data[i].width = search_item.width();
+            item_data[i].old_width = search_item.width();
+            if (!item_data[i].hidden) {
+                search_item.css({animation: '', transform: '', transition: ''});
+            }
             if (!item_data[i].hidden) {
                 item_data[i].animate = true;
             } else {
@@ -331,24 +334,29 @@ $(document).ready(function () {
             var search_item = $('[data-num="' + i + '"]');
             if (search_item.text().search(new RegExp(phrase, "i")) < 0) {
                 item_data[i].hidden = true;
-                search_item.css({'position': 'absolute', top: item_data[i].old_pos.top + 'px', left: item_data[i].old_pos.left + 'px', width: item_data[i].width + 'px'});
+                search_item.css({'position': 'absolute', top: item_data[i].old_pos.top + 'px', left: item_data[i].old_pos.left + 'px', width: item_data[i].old_width + 'px'});
                 search_item.addClass('hide_search');
             } else {
                 item_data[i].hidden = false;
                 search_item.css({'position': '', top: '', left: '', width: ''});
+            }
+        }
+        for (var i = 0; i < item_data.length; i++) {
+            var search_item = $('[data-num="' + i + '"]');
+            if (!item_data[i].hidden) {
+                item_data[i].new_width = search_item.width();
                 search_item.removeClass('hide_search');
             }
             if (!item_data[i].hidden && item_data[i].animate) {
                 item_data[i].new_pos = search_item.position();
-                search_item.css({transform: 'translate(' + (item_data[i].old_pos.left - item_data[i].new_pos.left) + 'px, ' + (item_data[i].old_pos.top - item_data[i].new_pos.top) + 'px)', transition: 'transform 0s'});
-                //alert('old_left: ' + item_data[i].old_pos.left + ', ' + 'new_left: ' + item_data[i].new_pos.left + ', ' + 'old_top: ' + item_data[i].old_pos.top + ', ' + 'new_top: ' + item_data[i].new_pos.top + '.')
+                search_item.css({transform: 'translate(' + (item_data[i].old_pos.left - item_data[i].new_pos.left) + 'px, ' + (item_data[i].old_pos.top - item_data[i].new_pos.top) + 'px) scale(' + (item_data[i].old_width / item_data[i].new_width) + ', 1)', transition: 'none'});
             }
         }
         setTimeout(function () {
         for (var i = 0; i < item_data.length; i++) {
             var search_item = $('[data-num="' + i + '"]');
-            if (!item_data[i].hidden && item_data[i].animate) {
-                search_item.css({'transform': '', transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'});
+            if (!item_data[i].hidden) {
+                search_item.css({animation: 'search_animate 0.5s cubic-bezier(0.4, 0, 0.2, 1)'});
             }
         }
         }, 1);
@@ -356,7 +364,7 @@ $(document).ready(function () {
             for (var i = 0; i < item_data.length; i++) {
                 var search_item = $('[data-num="' + i + '"]');
                 if (!item_data[i].hidden) {
-                    search_item.css({transition: ''});
+                    search_item.css({animation: '', transform: '', transition: ''});
                 }
             }
         }, 501);
