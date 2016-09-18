@@ -104,12 +104,12 @@
                     </div>
                 </div>
                 <nav class="page-header-nav">
-                    <a class="page-header-nav-link_current page-header-nav-link_left page-header-nav-link">Musical Compositions</a>
-                    <a class="page-header-nav-link_right page-header-nav-link" href="about.html">About</a>
+                    <a class="page-header-nav-link_current page-header-nav-link_left page-header-nav-link" title="Musical Compositions">Musical Compositions</a>
+                    <a class="page-header-nav-link_right page-header-nav-link" href="about.html" title="About">About</a>
                 </nav>
             </header>
             <main class="page-content">
-                <div class="page-content-search hide">
+                <div class="page-content-search hide" title="Search">
                     <input class="page-content-search-input" type="search" />
                     <div class="page-content-search-icon icon">&#xf002;</div>
                 </div>
@@ -125,8 +125,8 @@
             </main>
             <footer class="page-footer">
                 <nav class="page-footer-nav">
-                    <a class="page-footer-nav-link" href="index.html">Musical Compositions</a>
-                    <a class="page-footer-nav-link" href="about.html">About</a>
+                    <a class="page-footer-nav-link" href="index.html" title="Musical Compositions">Musical Compositions</a>
+                    <a class="page-footer-nav-link" href="about.html" title="About">About</a>
                     <div class="page-footer-nav-social">
                         <div class="g-plusone" data-href="https://isaacmailach.im" data-annotation="none"></div>
                         <div class="fb-like" data-href="https://www.facebook.com/isaacmailach" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
@@ -138,8 +138,6 @@
         </div>
         <!-- Popups -->
         <div class="modal">
-            <div class="modal-arrow modal-arrow_left">&#x2039;</div>
-            <div class="modal-arrow modal-arrow_right">&#x203a;</div>
             <div class="modal-content">
                 <div class="modal-content-header">
                     <picture><source media="(max-width: 400px)" /><img class="modal-content-header-image" alt="Cover image" /></picture>
@@ -166,8 +164,13 @@
                 </div>
                 <div class="modal-content-credit"></div>
                 <div class="modal-content-body"></div>
-                <audio class="modal-content-audio" preload="auto"></audio>
+                <audio class="modal-content-audio" preload="auto">
+                    <source type="audio/mp3" />
+                    <source type="audio/ogg" />
+                </audio>
             </div>
+            <div class="modal-arrow modal-arrow_left" tabindex="0">&#x2039;</div>
+            <div class="modal-arrow modal-arrow_right" tabindex="0">&#x203a;</div>
         </div>
         <noscript class="nsmodal">
             <div class="nsmodal-content">
