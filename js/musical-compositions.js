@@ -97,10 +97,11 @@ $(document).ready(function () {
     document.querySelector('.page-content-search-icon').addEventListener('click', function () {
         search_input.focus();
     });
+    var TypedSearch = _.debounce(function (query) {
+        SearchItems(query);
+    }, 300);
     search_input.addEventListener('keyup', function () {
-        var TypedSearch = _.debounce(function (query) {
-            SearchItems(query);
-        }, 300);
+        
         TypedSearch(this.value);
     });
     search_input.addEventListener('search', function () {

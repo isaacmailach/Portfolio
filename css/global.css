@@ -36,12 +36,13 @@ a {
     clear: both;
     max-width: 1250px;
     min-height: 500px;
-    overflow: hidden;
+    overflow: visible;
     margin: 0 auto 100px auto;
     transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page_about .page-content {
     background-color: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
 }
 .page-content-about {
     padding: 30px;
@@ -99,6 +100,7 @@ a {
     flex-wrap: wrap;
     margin: auto;
     max-width: 1250px;
+        overflow: visible;
     padding: 5px;
 }
 .page-content-grid-item {
@@ -112,13 +114,15 @@ a {
     overflow: hidden;
     position: relative;
     transform-origin: left;
-    transition-duration: 0.28s, 0.28s, 0.28s, 1s, 0.28s;
-    transition-property: box-shadow, flex-basis, height, opacity, transform;
+    transition-duration: 0.28s, 0.28s, 0.28s, 1s;
+    transition-property: box-shadow, flex-basis, height, opacity;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-grid-item:focus, .page-content-grid-item:hover, .page-content-grid-item_focus {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.3);
-    transform: translateY(-3px);
+}
+.page-content-grid-item:active {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.5);
 }
 .page-content-grid-item-image {
     bottom: 0;
