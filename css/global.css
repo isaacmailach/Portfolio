@@ -35,17 +35,18 @@ a {
 .page-content {
     clear: both;
     max-width: 1250px;
-    overflow: hidden;
+    min-height: 500px;
+    overflow: visible;
     margin: 0 auto 100px auto;
-    transition: margin 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page_about .page-content {
     background-color: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
 }
 .page-content-about {
     padding: 30px;
-    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: opacity, padding;
+    transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-about h3 {
     font-family: Quicksand;
@@ -66,18 +67,16 @@ a {
     margin: 0 0 30px 30px;
     padding: 30px 30px 15px 30px;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: opacity, padding, width;
+    transition-property: padding, width;
     width: 300px;
 }
 .page-content-aside-contact {
     font-size: 1.1rem;
     line-height: 30px;
     margin: 15px 0;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-aside-contact-detail {
     opacity: 0.75;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-aside-contact-detail-icon {
     display: inline-block;
@@ -101,24 +100,29 @@ a {
     flex-wrap: wrap;
     margin: auto;
     max-width: 1250px;
+        overflow: visible;
     padding: 5px;
 }
 .page-content-grid-item {
+    animation-fill-mode: forwards !important;
     background-color: rgba(191, 191, 191, 0.5);
     cursor: pointer;
     flex: 1 0 250px;
     height: 250px;
     margin: 5px;
+    max-width: 500px;
     overflow: hidden;
     position: relative;
-    top: 0;
-    transition-duration: 0.28s, 0.28s, 0.28s, 1s, 0.28s;
-    transition-property: box-shadow, flex-basis, height, opacity, transform;
+    transform-origin: left;
+    transition-duration: 0.28s, 0.28s, 0.28s, 1s;
+    transition-property: box-shadow, flex-basis, height, opacity;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-grid-item:focus, .page-content-grid-item:hover, .page-content-grid-item_focus {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.3);
-    transform: translateY(-3px);
+}
+.page-content-grid-item:active {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.5);
 }
 .page-content-grid-item-image {
     bottom: 0;
@@ -408,6 +412,7 @@ a {
     font-weight: 700;
 }
 .modal-content-header {
+    color: white;
     line-height: 0;
     position: relative;
 }
@@ -418,7 +423,6 @@ a {
     margin: 10px;
 }
 .modal-content-header-close {
-    background-color: rgba(0, 0, 0, 0.2);
     border-bottom-left-radius: 3px;
     height: 30px;
     overflow: hidden;
@@ -435,14 +439,13 @@ a {
     text-align: center;
     transition: background-color 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.modal-content-header-close:focus .modal-content-header-close-icon, .modal-content-header-close:hover .modal-content-header-close-icon {
-    background-color: rgba(0, 0, 0, 0.2);
+.modal-content-header-close, .modal-content-header-close:focus .modal-content-header-close-icon, .modal-content-header-close:hover .modal-content-header-close-icon, .modal-content-header-toolbar {
+    background-color: rgba(0, 0, 0, 0.4);
 }
 .modal-content-header-image {
     width: 100%;
 }
 .modal-content-header-toolbar {
-    background-color: rgba(0, 0, 0, 0.2);
     bottom: 0;
     height: 40px;
     left: 0;
@@ -460,10 +463,10 @@ a {
     transition: background-color 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-content-header-toolbar-player-play:focus, .modal-content-header-toolbar-player-play:hover, a:focus > .modal-content-header-toolbar-share-icon, .modal-content-header-toolbar-share-icon:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 .modal-content-header-toolbar-player {
-    border-right: 1px solid rgba(0, 0, 0, 0.4);
+    border-right: 1px solid rgba(255, 255, 255, 0.6);
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -474,8 +477,10 @@ a {
     text-align: center;
     width: 20px;
 }
+.modal-content-header-toolbar-player-progress, .modal-content-header-toolbar-player-progress-loaded {
+    background-color: rgba(0255, 255, 255, 0.2);
+}
 .modal-content-header-toolbar-player-progress {
-    background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
     height: 20px;
     margin: 10px;
@@ -483,7 +488,6 @@ a {
     position: relative;
 }
 .modal-content-header-toolbar-player-progress-loaded {
-    background-color: rgba(0, 0, 0, 0.2);
     height: 100%;
     position: absolute;
     top: 0;
@@ -491,7 +495,7 @@ a {
     width: 0;
 }
 .modal-content-header-toolbar-player-progress-played {
-    background-color: black;
+    background-color: white;
     height: 100%;
     position: absolute;
     top: 0;
@@ -515,37 +519,37 @@ a {
     font-size: 1.2rem;
 }
 
+.hide_search {
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
 .hide {
     opacity: 0;
+    pointer-events: none;
 }
-.white {
-    color: white
+.light {
+    color: black
 }
-.white .modal-content-header-close {
-    background-color: rgba(0, 0, 0, 0.4);
+.light .modal-content-header-close, .light .modal-content-header-close:focus .modal-content-header-close-icon, .light .modal-content-header-close:hover .modal-content-header-close-icon, .light .modal-content-header-toolbar, .light .modal-content-header-toolbar-player-play:focus, .light .modal-content-header-toolbar-player-play:hover, .light a:focus > .modal-content-header-toolbar-share-icon, .light .modal-content-header-toolbar-share-icon:hover, .light .modal-content-header-toolbar-player-progress, .light .modal-content-header-toolbar-player-progress-loaded {
+    background-color: rgba(0, 0, 0, 0.2);
 }
-.white .modal-content-header-close-icon:hover {
-    background-color: rgba(0, 0, 0, 0.4);
+.light .modal-content-header-toolbar-player {
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
 }
-.white .modal-content-header-toolbar {
-    background-color: rgba(0, 0, 0, 0.4);
-}
-.white .modal-content-header-toolbar-player-play:hover, .white .modal-content-header-toolbar-share-icon:hover {
-    background-color: rgba(0, 0, 0, 0.4);
-}
-.white .modal-content-header-toolbar-player {
-    border-right: 1px solid rgba(255, 255, 255, 0.6);
-}
-.white .modal-content-header-toolbar-player-progress, .white .modal-content-header-toolbar-player-progress-loaded {
-    background-color: rgba(255, 255, 255, 0.2)
-}
-.white .modal-content-header-toolbar-player-progress-played {
-    background-color: white;
+.light .modal-content-header-toolbar-player-progress-played {
+    background-color: black;
 }
 
 .icon {
     font-family: icon;
     font-style: normal;
+}
+
+@keyframes search_animate {
+    to {
+        transform: translate(0, 0) scale(1, 1);
+    }
 }
 
 @media (max-width: 350px) {
@@ -702,7 +706,7 @@ a {
         padding: 0;
     }
     .modal-arrow {
-        opacity: 0;
+        display: none;
     }
     .modal-content {
         min-height: 100%;

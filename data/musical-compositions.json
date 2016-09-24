@@ -4,7 +4,6 @@
         "name": "Antarctica",
         "date": "2016-03-27",
         "instrumentation": "mezzo-soprano (Isabelle Zoulalian), harp (Nicole Lancaster), thin bass drum (David Sirega), and contrabass (Shawn Murphy)",
-        "dark": true,
         "align_top": true,
         "credit": "Marie Byrd Land and Stephen Hudson"
     },
@@ -13,7 +12,6 @@
         "name": "Entering Timirith",
         "date": "2016-03-20",
         "instrumentation": "orchestra (WLU Symphony Orchestra, conducted by Paul Pulford)",
-        "dark": true,
         "credit": "guitfiddle"
     },
     {
@@ -21,7 +19,6 @@
         "name": "Pluto",
         "date": "2015-10-07",
         "instrumentation": "solo cello (Isaac Mailach)",
-        "dark": true,
         "credit": "NASA/JHUAPL/SwRI"
     },
     {
@@ -29,14 +26,13 @@
         "name": "Kung Fu Pizza Bears",
         "date": "2015-03-28",
         "instrumentation": "synthesizer",
-        "dark": true
+        "align_top": true
     },
     {
         "id": "0007",
         "name": "When Woods Fail",
         "date": "2015-03-22",
         "instrumentation": "string quartet",
-        "dark": true,
         "credit": "Ivan Shishkin"
     },
     {
@@ -44,28 +40,28 @@
         "name": "Man, Woman, and the Sparrow",
         "date": "2015-02-22",
         "instrumentation": "shakuhachi (Rebecca Chapeskie)",
-        "credit": "Katsushika Hokusai"
+        "credit": "Katsushika Hokusai",
+        "light": true
     },
     {
         "id": "0005",
         "name": "Starlight",
         "date": "2015-01-25",
         "instrumentation": "piano (Nauroz Tanya), cello (Isaac Mailach), and viola (Isaac Page)",
-        "dark": true,
         "credit": "the European Southern Observatory"
     },
     {
         "id": "0004",
         "name": "Time",
         "date": "2014-06-14",
-        "instrumentation": "cello (Isaac Mailach)"
+        "instrumentation": "cello (Isaac Mailach)",
+        "light": true
     },
     {
         "id": "0003",
         "name": "The Woods of Winter",
         "date": "2014-02-16",
         "instrumentation": "cello, 2 violins, harp, piano",
-        "dark": true,
         "credit": "Carl Curman"
     },
     {
@@ -73,14 +69,12 @@
         "name": "When it Rains",
         "date": "2014-01-14",
         "instrumentation": "piano",
-        "dark": true,
         "credit": "Thamizhpparithi Maari"
     },
     {
         "id": "0001",
         "name": "Blockade",
         "date": "2013-12-17",
-        "instrumentation": "piano, cello",
-        "dark": true
+        "instrumentation": "piano, cello"
     }
 ]}
