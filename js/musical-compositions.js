@@ -153,7 +153,6 @@ $(document).ready(function () {
         current_num = num;
         current_data = item_data[num];
         current_id = query.id = current_data.id;
-        // FIX THIS
         UpdateQueries();
         if (popup_open) {
             ResetModal();
@@ -272,12 +271,12 @@ $(document).ready(function () {
     }
     function NextItem () {
         if (next_item) {
-            SetModal(current_num - 1);
+            SetModal(parseInt(current_num) - 1);
         }
     }
     function PreviousItem () {
         if (previous_item) {
-            SetModal(current_num + 1);
+            SetModal(parseInt(current_num) + 1);
         }
     }
     function UpdateSocialLinks () {
