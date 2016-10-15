@@ -41,8 +41,9 @@ $(document).ready(function () {
             }
             var template = document.importNode(item_template.content, true);
             template.querySelector('.page-content-grid-item-image').src = 'img/musical-compositions/' + temp_item_data.id + '/image.jpg';
-            template.querySelector('.page-content-grid-item-overlay-heading').innerText = temp_item_data.name;
-            template.querySelector('.page-content-grid-item-overlay-meta').innerText = temp_item_data.date;
+            template.querySelector('.page-content-grid-item-overlay-name').innerText = temp_item_data.name;
+            template.querySelector('.page-content-grid-item-overlay-date').innerText = temp_item_data.date;
+            template.querySelector('.page-content-grid-item-overlay-instrumentation').innerText = 'For ' + temp_item_data.instrumentation;
             item.appendChild(template);
             item.setAttribute('title', temp_item_data.name);
             item.addEventListener('keydown', function (e) {
@@ -192,7 +193,7 @@ $(document).ready(function () {
         audio_sources[1].src = 'audio/musical-compositions/' + current_id + '.ogg';
         $('.modal-content-body').append('<h3>' + item_data[current_num].name + '</h3><small>' + item_data[current_num].date + '</small>' + '<h2>For ' + item_data[current_num].instrumentation + '</h2>');
         if (current_data.credit) {
-            $('.modal-content-credit').text('Image by ' + current_data.credit + '.');
+            $('.modal-content-credit').text('Image credit: ' + current_data.credit + '.');
         }
         $('.page-content-grid-item[data-num=' + current_num + ']').addClass('page-content-grid-item_focus');
         audio.load();
