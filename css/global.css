@@ -139,6 +139,7 @@ a {
     font-family: Quicksand;
     left: 0;
     opacity: 0;
+     overflow: hidden;
     padding: 20px;
     position: absolute;
     right: 0;
@@ -148,13 +149,23 @@ a {
 .page-content-grid-item:focus .page-content-grid-item-overlay, .page-content-grid-item-overlay:hover, .page-content-grid-item_focus .page-content-grid-item-overlay {
     opacity: 1;
 }
-.page-content-grid-item-overlay-heading {
+.page-content-grid-item-overlay-name {
     font-size: 2.5rem;
     font-weight: 200;
+    line-height: 42px;
     margin: 0;
 }
-.page-content-grid-item-overlay-meta {
+.page-content-grid-item-overlay-date {
     display: block;
+}
+.page-content-grid-item-overlay-instrumentation {
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: normal;
+    margin: 0px 0 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .page-content-search {
     float: right;
@@ -599,8 +610,9 @@ a {
     .page-content-grid-item-overlay {
         opacity: 1;
     }
-    .page .page-content .page-content-grid-item-overlay-heading {
+    .page .page-content .page-content-grid-item-overlay-name {
         font-size: 1.5rem;
+        line-height: 28px;
     }
     .page .page-header .page-header-titlebox {
         height: 50px;
@@ -684,8 +696,9 @@ a {
     .page .page-content-grid-item-overlay {
         padding: 10px;
     }
-    .page .page-content-grid-item-overlay-heading {
-        font-size: 2rem
+    .page .page-content-grid-item-overlay-name {
+        font-size: 2rem;
+        line-height: 35px;
     }
     .page-header-titlebox {
         height: 80px;
@@ -730,8 +743,9 @@ a {
     .page-content-grid-item-overlay {
         padding: 15px;
     }
-    .page-content-grid-item-overlay-heading {
-        font-size: 2.25rem
+    .page-content-grid-item-overlay-name {
+        font-size: 2.25rem;
+        line-height: 38px;
     }
     .page .page-header-nav {
         margin: 0 0 25px 0;
