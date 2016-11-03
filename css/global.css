@@ -89,10 +89,18 @@ a {
 .page-content-aside-social {
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.page-content-aside-social * {
+    margin: 0 2px;
+}
+.page-content-aside-social-button {
+    position: relative;
+}
+.page-content-aside-social-button.fb-like {
+    top: -3px;
+}
 .page-content-aside-social-link {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 400;
-    margin: 0 5px;
 }
 .page-content-grid {
     clear: both;
@@ -139,7 +147,6 @@ a {
     font-family: Quicksand;
     left: 0;
     opacity: 0;
-     overflow: hidden;
     padding: 20px;
     position: absolute;
     right: 0;
@@ -196,7 +203,7 @@ a {
     background-color: #262626;
     clear: both;
     color: white;
-    height: 150px;
+    height: 120px;
     padding: 50px;
     text-align: center;
 }
@@ -217,17 +224,11 @@ a {
     font-size: 1.05rem;
     line-height: 25px;
     margin: 0;
-    top: 50px;
+    top: 30px;
 }
 .page-footer-nav-link {
     margin: 12px;
     text-transform: uppercase;
-}
-.page-footer-nav-social {
-    margin: 15px 0 0 0;
-}
-.page-footer-nav-social * {
-    vertical-align: middle;
 }
 .page-footer-text {
     bottom: 20px;
