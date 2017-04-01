@@ -371,7 +371,7 @@ a {
     font-size: 6rem;
     font-weight: normal;
     opacity: 0.25;
-    position: absolute;
+    position: fixed;
     top: 45%;
     transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     vertical-align: middle;

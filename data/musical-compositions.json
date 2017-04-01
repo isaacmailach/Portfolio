@@ -1,5 +1,12 @@
 { "item": [
     {
+        "id": "0013",
+        "name": "Battle of the Trees",
+        "date": "2016-11",
+        "instrumentation": "soprano (Dylann Miller) and tenor (Daniel Quintia Plamenco)",
+        "credit": "Tyler Lastovich"
+    },
+    {
         "id": "0012",
         "name": "The Matchbox",
         "date": "2016-06-24",
@@ -69,7 +76,7 @@
         "id": "0003",
         "name": "The Woods of Winter",
         "date": "2014-02-16",
-        "instrumentation": "cello, 2 violins, harp, piano",
+        "instrumentation": "cello, 2 violins, harp, and piano",
         "credit": "Carl Curman"
     },
     {
@@ -83,6 +90,6 @@
         "id": "0001",
         "name": "Blockade",
         "date": "2013-12-17",
-        "instrumentation": "piano, cello"
+        "instrumentation": "piano and cello"
     }
 ]}
