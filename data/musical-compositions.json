@@ -37,6 +37,13 @@
         "credit": "NASA/JHUAPL/SwRI"
     },
     {
+        "id": "0016",
+        "name": "Mercury",
+        "date": "2015-08",
+        "instrumentation": "solo cello (Isaac Mailach)",
+        "credit": "NASA"
+    },
+    {
         "id": "0008",
         "name": "Kung Fu Pizza Bears",
         "date": "2015-03-28",
