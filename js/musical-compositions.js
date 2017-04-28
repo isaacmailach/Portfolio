@@ -189,7 +189,7 @@ $(document).ready(function () {
         current_id = item_data[current_num].id;
         var modal_header_image = modal_content.querySelector('.modal-content-header-image');
         modal_header_image.src = 'img/musical-compositions/' + current_id + '/cover.jpg';
-        modal_header_image.previousSibling.setAttribute('srcset', 'img/musical-compositions/' + current_id + '/image.jpg');
+        modal_header_image.previousSibling.setAttribute('srcset', 'img/musical-compositions/' + current_id + '/image.jpg, img/musical-compositions/' + current_id + '/image-3x.jpg 2x');
         audio_sources[0].src = 'audio/musical-compositions/' + current_id + '.mp3';
         audio_sources[1].src = 'audio/musical-compositions/' + current_id + '.ogg';
         $('.modal-content-body').append('<h3>' + item_data[current_num].name + '</h3><small>' + item_data[current_num].date + '</small>' + '<h2>For ' + item_data[current_num].instrumentation + '</h2>');
