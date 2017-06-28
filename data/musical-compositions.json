@@ -4,7 +4,8 @@
         "name": "White Rabbit",
         "date": "2017-04-23",
         "instrumentation": "orchestra and hammered dulcimer",
-        "credit": "Sagi Kahane-Rapport"
+        "credit": "Sagi Kahane-Rapport",
+        "highlight": true
     },
     {
         "id": "0014",
@@ -41,7 +42,8 @@
         "name": "Entering Timirith",
         "date": "2016-03-20",
         "instrumentation": "orchestra (WLU Symphony Orchestra, conducted by Paul Pulford)",
-        "credit": "guitfiddle"
+        "credit": "guitfiddle",
+        "highlight": true
     },
     {
         "id": "0009",

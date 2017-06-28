@@ -1,53 +1,68 @@
 $(document).ready(function () {
     var play = false;
     var query = {};
-    var item_data = {};
+    var item = [];
     var item_num = {};
-    var current_url = 'https%3A%2F%2Fisaacmailach.im';
-    var fade_in_delay = 75;
+    const current_url = 'https%3A%2F%2Fisaacmailach.im';
+    const fade_in_delay = 75;
     var popup_open = false;
     var next_item = false;
     var previous_item = false;
-    var current_id = null;
-    var current_num = null;
+    var current_id;
+    var current_num;
     var current_data = {};
     
-    var search_input = document.querySelector('.page-content-search-input');
-    var modal = document.querySelector('.modal');
-    var modal_content = modal.querySelector('.modal-content');
-    var audio = modal_content.querySelector('.modal-content-audio');
-    var audio_sources = audio.getElementsByTagName('source');
-    var modal_header_toolbar = modal_content.querySelector('.modal-content-header-toolbar');
-    var play_button = modal_header_toolbar.querySelector('.modal-content-header-toolbar-player-play');
-    var modal_player_time = modal_header_toolbar.querySelector('.modal-content-header-toolbar-player-time');
+    const item_grid = document.querySelector('.page-content-grid');
+    const search_input = document.querySelector('.page-content-search-input');
+    const modal = document.querySelector('.modal');
+    const modal_content = modal.querySelector('.modal-content');
+    const audio = modal_content.querySelector('.modal-content-audio');
+    const audio_sources = audio.getElementsByTagName('source');
+    const modal_header_toolbar = modal_content.querySelector('.modal-content-header-toolbar');
+    const play_button = modal_header_toolbar.querySelector('.modal-content-header-toolbar-player-play');
+    const modal_player_time = modal_header_toolbar.querySelector('.modal-content-header-toolbar-player-time');
     
-    var modal_content_J = $('.modal-content');
+    const modal_content_J = $('.modal-content');
     
     $.getJSON('data/musical-compositions.json', function (database) {
         item_data = database.item;
+        function Item (num) {
+            this.data = database.item[num];
+            this.searchText = this.data.name + this.data.date + this.data.instrumentation;
+            
+            this.element = document.createElement('composition-item');
+            this.element.generate(num);
+            item_grid.appendChild(this.element);
+        }
         var item_template = document.querySelector('.page-content-grid-item_template');
-        for (var i = 0; i < database.item.length; i++) {
-            var temp_item_data = item_data[i];
-            item_num[temp_item_data.id] = i;
-            var item = document.createElement('div');
-            item.className = 'page-content-grid-item hide';
-            if (temp_item_data.align_top) {item.className += ' align-top';}
-            item.setAttribute('tabindex', 0);
-            item.dataset.num = i;
-            if (temp_item_data.id == '0010') {
-                item.setAttribute('style', 'flex-grow: 150;');
-            } else {
-                item.setAttribute('style', 'flex-grow: ' + parseInt(100 * Math.random()));
+        var composition_item_proto = Object.create(HTMLElement.prototype, {
+            createdCallback: {
+                value: function () {
+                    var template = document.importNode(item_template.content, true);
+                    this.createShadowRoot().appendChild(template);
+                }
             }
-            var template = document.importNode(item_template.content, true);
-            template.querySelector('.page-content-grid-item-image').src = 'img/musical-compositions/' + temp_item_data.id + '/image.jpg';
-            template.querySelector('.page-content-grid-item-image').setAttribute('srcset', 'img/musical-compositions/' + temp_item_data.id + '/image.jpg, img/musical-compositions/' + temp_item_data.id + '/image-3x.jpg 2x');
-            template.querySelector('.page-content-grid-item-overlay-name').innerText = temp_item_data.name;
-            template.querySelector('.page-content-grid-item-overlay-date').innerText = temp_item_data.date;
-            template.querySelector('.page-content-grid-item-overlay-instrumentation').innerText = 'For ' + temp_item_data.instrumentation;
-            item.appendChild(template);
-            item.setAttribute('title', temp_item_data.name);
-            item.addEventListener('keydown', function (e) {
+        });
+        composition_item_proto.generate = function (num) {
+            const temp_item = this;
+            const temp_item_data = item[num].data;
+            item_num[temp_item_data.id] = num;
+            temp_item.className = 'page-content-grid-item hide';
+            if (temp_item_data.align_top) {temp_item.className += ' align-top';}
+            temp_item.setAttribute('tabindex', 0);
+            temp_item.dataset.num = num;
+            if (temp_item_data.highlight) {
+                temp_item.setAttribute('style', 'flex-grow: 150;');
+            } else {
+                temp_item.setAttribute('style', 'flex-grow: ' + parseInt(100 * Math.random()));
+            }
+            temp_item.shadowRoot.querySelector('.page-content-grid-item-image').src = 'img/musical-compositions/' + temp_item_data.id + '/image.jpg';
+            temp_item.shadowRoot.querySelector('.page-content-grid-item-image').setAttribute('srcset', 'img/musical-compositions/' + temp_item_data.id + '/image.jpg, img/musical-compositions/' + temp_item_data.id + '/image-3x.jpg 2x');
+            temp_item.shadowRoot.querySelector('.page-content-grid-item-overlay-name').innerText = temp_item_data.name;
+            temp_item.shadowRoot.querySelector('.page-content-grid-item-overlay-date').innerText = temp_item_data.date;
+            temp_item.shadowRoot.querySelector('.page-content-grid-item-overlay-instrumentation').innerText = 'For ' + temp_item_data.instrumentation;
+            temp_item.setAttribute('title', temp_item_data.name);
+            temp_item.addEventListener('keydown', function (e) {
                 if (!popup_open) {
                     if (e.keyCode === 37) {
                         this.previousSibling.focus();
@@ -56,19 +71,20 @@ $(document).ready(function () {
                     }
                 }
             });
-            item.addEventListener('click', function () {
+            temp_item.addEventListener('click', function () {
                 SetModal(this.dataset.num);
             });
-            document.querySelector('.page-content-grid').appendChild(item);
+        }
+        document.registerElement('composition-item', {prototype: composition_item_proto});
+        for (let i = 0; i < database.item.length; i++) {
+            item[i] = new Item(i);
         }
         
-        var counter = 0;
-        var fade_in = setInterval(function () {
-            document.querySelectorAll('.page-content-grid-item')[counter].classList.remove('hide');
+        let counter = 0;
+        let fade_in = setInterval(function () {
+            item[counter].element.classList.remove('hide');
             counter++;
-            if (counter == database.item.length) {
-                clearInterval(fade_in);
-            }
+            if (counter == item.length) {clearInterval(fade_in);}
         }, fade_in_delay);
         document.querySelector('.page-content-search').classList.remove('hide');
         CheckQueries();
@@ -153,7 +169,7 @@ $(document).ready(function () {
     }
     function SetModal (num) {
         current_num = num;
-        current_data = item_data[num];
+        current_data = item[num].data;
         current_id = query.id = current_data.id;
         UpdateQueries();
         if (popup_open) {
@@ -239,7 +255,7 @@ $(document).ready(function () {
             next_item = true;
             $('.modal-arrow_left').removeClass('modal-arrow_disabled');
         }
-        if (current_num == item_data.length - 1) {
+        if (current_num == item.length - 1) {
             previous_item = false;
             $('.modal-arrow_right').addClass('modal-arrow_disabled');
         } else {
@@ -311,9 +327,9 @@ $(document).ready(function () {
     function SearchItems (phrase) {
         query.q = phrase;
         UpdateQueries();
-        for (var i = 0; i < item_data.length; i++) {
+        for (var i = 0; i < item.length; i++) {
             var search_item = $('[data-num="' + i + '"]');
-            var search_item_data = item_data[i];
+            var search_item_data = item[i].data;
             search_item_data.old_pos = search_item.position();
             search_item_data.old_width = search_item.width();
             if (!search_item_data.hidden) {
@@ -323,9 +339,9 @@ $(document).ready(function () {
                 search_item_data.animate = false;
             }
         }
-        for (var i = 0; i < item_data.length; i++) {
+        for (var i = 0; i < item.length; i++) {
             var search_item = $('[data-num="' + i + '"]');
-            var search_item_data = item_data[i];
+            var search_item_data = item[i].data;
             if (search_item.text().search(new RegExp(phrase, "i")) < 0) {
                 search_item_data.hidden = true;
                 search_item.css({'position': 'absolute', top: search_item_data.old_pos.top + 'px', left: search_item_data.old_pos.left + 'px', width: search_item_data.old_width + 'px'});
@@ -335,9 +351,9 @@ $(document).ready(function () {
                 search_item.css({'position': '', top: '', left: '', width: ''});
             }
         }
-        for (var i = 0; i < item_data.length; i++) {
+        for (var i = 0; i < item.length; i++) {
             var search_item = $('[data-num="' + i + '"]');
-            var search_item_data = item_data[i];
+            var search_item_data = item[i].data;
             if (!search_item_data.hidden) {
                 search_item_data.new_width = search_item.width();
                 search_item.removeClass('hide_search');
@@ -348,18 +364,18 @@ $(document).ready(function () {
             }
         }
         setTimeout(function () {
-        for (var i = 0; i < item_data.length; i++) {
+        for (var i = 0; i < item.length; i++) {
             var search_item = $('[data-num="' + i + '"]');
-            var search_item_data = item_data[i];
+            var search_item_data = item[i].data;
             if (!search_item_data.hidden) {
                 search_item.css({animation: 'search_animate 0.5s cubic-bezier(0.4, 0, 0.2, 1)'});
             }
         }
         }, 1);
         setTimeout(function () {
-            for (var i = 0; i < item_data.length; i++) {
+            for (var i = 0; i < item.length; i++) {
                 var search_item = $('[data-num="' + i + '"]');
-                var search_item_data = item_data[i];
+                var search_item_data = item[i].data;
                 if (!search_item_data.hidden) {
                     search_item.css({animation: '', transform: '', transition: ''});
                 }

@@ -105,6 +105,114 @@
                 </div>
                 <div class="page-content-grid">
                     <template class="page-content-grid-item_template">
+                        <style>
+                            :host {
+                                animation-fill-mode: forwards !important;
+                                background-color: rgba(191, 191, 191, 0.5);
+                                cursor: pointer;
+                                flex: 1 0 250px;
+                                height: 250px;
+                                margin: 5px;
+                                max-width: 500px;
+                                overflow: hidden;
+                                position: relative;
+                                transform-origin: left;
+                                transition-duration: 0.28s, 0.28s, 0.28s, 1s;
+                                transition-property: box-shadow, flex-basis, height, opacity;
+                                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                            }
+                            :host(:active), :host(:focus), :host(:hover), :host(.page-content-grid-item_focus) {
+                                box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.3);
+                            }
+                            .page-content-grid-item-image {
+                                bottom: 0;
+                                position: absolute;
+                                width: 100%;
+                            }
+                            :host(.align-top) .page-content-grid-item-image {
+                                top: 0;
+                            }
+                            .page-content-grid-item-overlay {
+                                background-color: rgba(0, 0, 0, 0.5);
+                                bottom: 0;
+                                color: white;
+                                font-family: Quicksand;
+                                left: 0;
+                                opacity: 0;
+                                padding: 20px;
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                                transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+                            }
+                            :host(:focus) .page-content-grid-item-overlay, .page-content-grid-item-overlay:hover, :host(.page-content-grid-item_focus) .page-content-grid-item-overlay {
+                                opacity: 1;
+                            }
+                            .page-content-grid-item-overlay-name {
+                                font-size: 2.5rem;
+                                font-weight: 200;
+                                line-height: 42px;
+                                margin: 0;
+                            }
+                            .page-content-grid-item-overlay-date {
+                                display: block;
+                            }
+                            .page-content-grid-item-overlay-instrumentation {
+                                font-size: 0.8rem;
+                                font-style: italic;
+                                font-weight: normal;
+                                margin: 0px 0 0 0;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+                            @media (max-width: 1500px) {
+                                :host {
+                                    flex-basis: 240px;
+                                    height: 240px;
+                                }
+                                .page-content-grid-item-overlay {
+                                    padding: 15px;
+                                }
+                                .page-content-grid-item-overlay-name {
+                                    font-size: 2.25rem;
+                                    line-height: 38px;
+                                }
+                            }
+                            @media (max-width: 1250px) {
+                                .page-content-grid-item {
+                                    flex-basis: 225px;
+                                    height: 225px;
+                                }
+                            }
+                            @media (max-width: 700px) {
+                                :host {
+                                    flex-basis: 200px;
+                                    height: 200px;
+                                }
+                                .page-content-grid-item-overlay {
+                                    padding: 10px;
+                                }
+                                .page-content-grid-item-overlay-name {
+                                    font-size: 2rem;
+                                    line-height: 35px;
+                                }
+                            }
+                            @media (max-width: 450px) {
+                                :host {
+                                    flex-basis: 100%;
+                                    flex-shrink: 1;
+                                    height: 125px;
+                                }
+                                .page-content-grid-item-overlay {
+                                    opacity: 1;
+                                }
+                                .page-content-grid-item-overlay-name {
+                                    font-size: 1.5rem;
+                                    line-height: 28px;
+                                }
+                            }
+                        </style>
                         <img class="page-content-grid-item-image" src="" />
                         <div class="page-content-grid-item-overlay">
                             <h3 class="page-content-grid-item-overlay-name"></h3>
