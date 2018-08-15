@@ -1,5 +1,19 @@
 { "item": [
     {
+        "id": "0020",
+        "name": "Before the Plate",
+        "date": "2018-07-28",
+        "instrumentation": "orchestra",
+        "credit": "Before the Plate Productions Inc"
+    },
+    {
+        "id": "0019",
+        "name": "Ten Minute Call",
+        "date": "2018-02-27",
+        "instrumentation": "solo cello and piano",
+        "credit": "Film PaniK LTD"
+    },
+    {
         "id": "0018",
         "name": "Against the Tide",
         "date": "2017-06-03",
