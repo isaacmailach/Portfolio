@@ -6,7 +6,8 @@ html, body {
 body {
     background-image: url('../img/background/background.jpg');
     background-repeat: no-repeat;
-    background-size: 1250px;
+    background-size: 1350px;
+    background-attachment: fixed;
 }
 a {
     color: inherit;
@@ -17,7 +18,7 @@ a {
 }*/
 
 .page-content, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .nsmodal-content {
-    border-radius: 3px;
+    border-radius: 5px;
 }
 .page-content a, .nsmodal a, .modal-content-body a {
     font-weight: 700;
@@ -45,7 +46,7 @@ a {
     transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page_about .page-content {
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(255, 255, 255, 0.5);
     overflow: hidden;
 }
 .page-content-about {
@@ -69,7 +70,7 @@ a {
 .page-content-aside {
     border-left: 1px solid rgba(0, 0, 0, 0.3);
     float: right;
-    margin: 0 0 30px 30px;
+    margin: 30px 0 30px 30px;
     padding: 30px 30px 15px 30px;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: padding, width;
@@ -245,7 +246,7 @@ a {
     max-width: 1250px;
 }
 .page-header-nav {
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(255, 255, 255, 0.5);
     clear: both;
     margin: 0 0 100px 0;
     overflow: auto;
@@ -279,7 +280,7 @@ a {
     float: right;
 }
 .page-header-titlebox {
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(255, 255, 255, 0.5);
     height: 120px;
     margin: 0 0 100px 0;
     padding: 15px;
@@ -334,21 +335,19 @@ a {
     margin: auto;
 }
 .nsmodal-content {
-    bottom: 0;
     left: 50px;
     max-width: 400px;
-    max-height: 200px;
     overflow: auto;
     padding: 50px;
     position: absolute;
     right: 50px;
-    top: 0;
     transition: 0.27s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: left, max-height, padding, right;
 }
 .nsmodal-content-body {
     font-size: 1.1rem;
     line-height: 1.5rem;
+    margin-bottom: 0;
 }
 .nsmodal-content-heading {
     font-family: Quicksand;
@@ -437,7 +436,7 @@ a {
     margin: 10px;
 }
 .modal-content-header-close {
-    border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 5px;
     height: 30px;
     overflow: hidden;
     position: absolute;
@@ -579,11 +578,6 @@ a {
     }
 }
 @media (max-width: 400px) {
-    .page-header-nav-link {
-        display: block;
-        float: none;
-    }
-    
     .modal-content-header-toolbar {
         height: 80px;
     }
@@ -600,8 +594,9 @@ a {
     }
     
     .nsmodal-content {
-        left: 0;
-        right: 0;
+        left: 15px;
+        right: 15px;
+        top: 15px;
     }
 }
 @media (max-width: 450px) {
@@ -616,6 +611,10 @@ a {
     .page .page-content .page-content-grid-item-overlay-name {
         font-size: 1.5rem;
         line-height: 28px;
+    }
+    .page-header-nav-link {
+        display: block;
+        float: none;
     }
     body .page .page-header .page-header-titlebox {
         height: 50px;
@@ -654,30 +653,12 @@ a {
         max-width: 300px;
         width: auto;
     }
-    .page-header-nav {
-        padding: 0;
-    }
-    .page-header-nav-link {
-        font-size: 1rem;
-        margin: 10px;
-    }
     
     .nsmodal-content {
-        max-height: 270px;
         padding: 15px;
     }
 }
 @media (max-width: 700px) {
-    body {
-        background-image: url('../img/background/background-small.jpg');
-        background-size: 700px !important;
-    }
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-        body {
-            background-image: url('../img/background/background-small-3x.jpg') !important;
-        }
-    }
-
     .page-content-about {
         padding: 15px;
     }
@@ -702,6 +683,13 @@ a {
     .page .page-content-grid-item-overlay-name {
         font-size: 2rem;
         line-height: 35px;
+    }
+    .page-header-nav {
+        padding: 0;
+    }
+    .page-header-nav-link {
+        font-size: 1rem;
+        margin: 10px;
     }
     .page .page-header-titlebox {
         height: 80px;
@@ -735,27 +723,37 @@ a {
         }
     }
 }
+@media (max-width: 756px) {
+    body {
+        background-image: url('../img/background/background-small.jpg');
+        background-size: 756px !important;
+    }
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        body {
+            background-image: url('../img/background/background-small-3x.jpg') !important;
+        }
+    }
+}
 @media (max-width: 1000px) {
     body div.page {
         padding: 0;
     }
-    .page_about .page-content {
-        background-color: rgba(255, 255, 255, 0.8);
+    .page .page-content, .page-header-nav, .page-header-titlebox {
+        background-color: rgba(255, 255, 255, 0.65);
+    }
+    .page-content {
+        margin: 0 auto;
+        padding-bottom: 100px;
+        padding-top: 20px;
     }
     .page .page-header-nav {
-        background-color: rgba(255, 255, 255, 0.8);
-        margin: 0 0 25px 0;
+        margin: 0;
     }
     .page .page-header-titlebox {
-        background-color: rgba(255, 255, 255, 0.8);
         margin: 0;
     }
 }
 @media (max-width: 1250px) {
-    body {
-        background-size: 100%;
-    }
-    
     body .page {
         padding: 50px;
     }
@@ -764,9 +762,17 @@ a {
         height: 225px;
     }
 }
+@media (max-width: 1350px) {
+    body {
+        background-size: 100%;
+    }
+}
 @media (max-width: 1500px) {
     .page {
         padding: 75px;
+    }
+    .page_musical-compositions .page-content {
+        padding-top: 20px;
     }
     .page-content-aside {
         width: 250px;
@@ -786,7 +792,7 @@ a {
         margin: 0 0 50px 0;
     }
     .page_musical-compositions .page-header-nav {
-        margin: 0 0 25px 0;
+        margin: 0;
     }
     .page-header-titlebox {
         height: 100px;
