@@ -17,15 +17,15 @@ a {
     transition: none !important; 
 }*/
 
-.page-content, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .nsmodal-content {
+.page-content, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .alert-content {
     border-radius: 5px;
 }
-.page-content a, .nsmodal a, .modal-content-body a {
+.page-content a, .alert a, .modal-content-body a {
     font-weight: 700;
     opacity: 0.75;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content a:focus, .page-content a:hover, .nsmodal a:focus, .nsmodal a:hover, .modal-content-body a:focus, .modal-content-body a:hover {
+.page-content a:focus, .page-content a:hover, .alert a:focus, .alert a:hover, .modal-content-body a:focus, .modal-content-body a:hover {
     opacity: 1;
 }
 
@@ -92,7 +92,7 @@ a {
     width: 100%;
 }
 .page-content-aside-social * {
-    margin: 0 2px;
+    margin: 2px 2px;
 }
 .page-content-aside-social-button {
     position: relative;
@@ -101,7 +101,7 @@ a {
     top: -3px;
 }
 .page-content-aside-social-link {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 400;
 }
 .page-content-embed {
@@ -318,7 +318,7 @@ a {
     transition: font-size 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal, .nsmodal {
+.modal, .alert {
     bottom: 0;
     left: 0;
     padding: 50px;
@@ -326,30 +326,47 @@ a {
     right: 0;
     top: 0;
 }
-.nsmodal {
+.alert {
     background-color: rgba(0, 0, 0, 0.3);
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: opacity;
 }
-.nsmodal-content, .modal-content {
+.alert.open {
+    opacity: 1;
+}
+.alert_no-id, .alert_no-load {
+    opacity: 0;
+    pointer-events: none;
+}
+.alert-content, .modal-content {
     background-color: white;
     box-shadow: 0px 40px 120px 0px rgba(0,0,0,0.5);
     margin: auto;
 }
-.nsmodal-content {
+.alert-content {
     left: 50px;
     max-width: 400px;
     overflow: auto;
     padding: 50px;
     position: absolute;
     right: 50px;
+    top: 50px;
     transition: 0.27s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: left, max-height, padding, right;
+    transition-property: left, padding, right, top;
 }
-.nsmodal-content-body {
+.alert-content-body {
     font-size: 1.1rem;
     line-height: 1.5rem;
     margin-bottom: 0;
 }
-.nsmodal-content-heading {
+.alert-content-button {
+    display: inline-block;
+    float: right;
+    font-size: 1.2rem;
+    margin: 20px 0 0 20px;
+    text-transform: uppercase;
+}
+.alert-content-heading {
     font-family: Quicksand;
     font-size: 2.5rem;
     font-weight: 400;
@@ -435,7 +452,7 @@ a {
     opacity: 0.75;
     margin: 10px;
 }
-.modal-content-header-close {
+.modal-content-header-close, .alert-content-close {
     border-bottom-left-radius: 5px;
     height: 30px;
     overflow: hidden;
@@ -444,7 +461,7 @@ a {
     top: 0;
     width: 30px;
 }
-.modal-content-header-close-icon {
+.modal-content-header-close-icon, .alert-content-close-icon {
     cursor: pointer;
     font-family: Quicksand;
     font-size: 2rem;
@@ -454,6 +471,9 @@ a {
 }
 .modal-content-header-close, .modal-content-header-close:focus .modal-content-header-close-icon, .modal-content-header-close:hover .modal-content-header-close-icon, .modal-content-header-toolbar {
     background-color: rgba(0, 0, 0, 0.4);
+}
+.alert-content-close:focus .alert-content-close-icon, .alert-content-close:hover .alert-content-close-icon {
+    background-color: rgba(0, 0, 0, 0.2);
 }
 .modal-content-header-image {
     width: 100%;
@@ -593,7 +613,7 @@ a {
         float: none;
     }
     
-    .nsmodal-content {
+    .alert-content {
         left: 15px;
         right: 15px;
         top: 15px;
@@ -654,7 +674,7 @@ a {
         width: auto;
     }
     
-    .nsmodal-content {
+    .alert-content {
         padding: 15px;
     }
 }
@@ -815,6 +835,7 @@ a {
     font-family: icon;
     src: url('../font/icon.eot');
     src: url('../font/icon.eot?#iefix') format('embedded-opentype'),
+         url('../font/icon.woff2') format('woff2'),
          url('../font/icon.woff') format('woff'),
          url('../font/icon.ttf') format('truetype'),
          url('../font/icon.svg#icon') format('svg');
