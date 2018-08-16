@@ -73,12 +73,16 @@ $(document).ready(function () {
         document.querySelector('.page-content-search').classList.remove('hide');
         CheckQueries();
     }).fail(function () {
-        alert('Sorry! Could not load the webpage properly. Make sure you are connected to the Internet and then try refreshing the page.');
+        OpenAlert("no-load");
+       /*window.location.reload();*/
     });
     document.addEventListener('keydown', function (e) {
         var key = e.keyCode;
-        if (key === 27 && popup_open) {
-            CloseModal();
+        if (key === 27) {
+            CloseAlert('all');
+            if (popup_open) {
+                CloseModal();
+            }
         } else if (key === 32 && popup_open) {
             ToggleAudio();
             e.preventDefault(); 
@@ -96,6 +100,13 @@ $(document).ready(function () {
     modal.addEventListener('click', CloseModal);
     modal_content.querySelector('.modal-content-header-close').addEventListener('click', CloseModal);
     
+    document.querySelector('.alert_no-id .alert-content-close').addEventListener('click', function () {
+        CloseAlert("no-id");
+    });
+    document.querySelector('.alert_no-load .alert-content-close').addEventListener('click', function () {
+        CloseAlert("no-load");
+    });
+        
     document.querySelector('.page-content-search-icon').addEventListener('click', function () {
         search_input.focus();
     });
@@ -103,7 +114,6 @@ $(document).ready(function () {
         SearchItems(query);
     }, 300);
     search_input.addEventListener('keyup', function () {
-        
         TypedSearch(this.value);
     });
     search_input.addEventListener('search', function () {
@@ -122,16 +132,6 @@ $(document).ready(function () {
             PreviousItem();
         }
         event.stopPropagation();
-    });
-    modal_content_J.on('swiperight', function () {
-        if (popup_open && next_item && document.documentElement.clientWidth <= 700) {
-            NextItem();
-        }
-    });
-    modal_content_J.on('swipeleft', function () {
-        if (popup_open && previous_item && document.documentElement.clientWidth <= 700) {
-            PreviousItem();
-        }
     });
     audio.addEventListener('loadedmetadata', UpdateAudioTime, false);
     audio.onprogress = function () {
@@ -152,14 +152,18 @@ $(document).ready(function () {
         modal_player_time.innerText = ConvertTime(audio.currentTime) + ' / ' + ConvertTime(audio.duration);
     }
     function SetModal (num) {
-        current_num = num;
-        current_data = item_data[num];
-        current_id = query.id = current_data.id;
-        UpdateQueries();
-        if (popup_open) {
-            ResetModal();
+        if (item_data[num]) {
+            current_num = num;
+            current_data = item_data[num];
+            current_id = query.id = current_data.id;
+            UpdateQueries();
+            if (popup_open) {
+                ResetModal();
+            } else {
+                OpenModal();
+            }
         } else {
-            OpenModal();
+            OpenAlert("no-id");
         }
     }
     function ToggleAudio () {
@@ -291,6 +295,24 @@ $(document).ready(function () {
         $('.modal-content-header-toolbar-share-icon_tumblr').attr('href', 'https://www.tumblr.com/share/link?url=' + current_url + '%3Fid%3D' + current_id + '&name=' + current_name);
         $('.modal-content-header-toolbar-share-icon_twitter').attr('href', 'https://twitter.com/share?url=' + current_url + '%3Fid%3D' + current_id + '&text=' + current_name);
     }
+    function OpenAlert (type) {
+        $('.alert_' + type).css('pointer-events', 'auto');
+        $('.alert_' + type).addClass('open');
+        $('.alert_' + type + ' .alert-content-close').focus();
+    }
+    function CloseAlert (type) {
+        if (type == "all") {
+            $('.alert').css('pointer-events', 'none');
+            $('.alert').removeClass('open');
+        } else {
+            $('.alert_' + type).css('pointer-events', 'none');
+            $('.alert_' + type).removeClass('open');
+        }
+        if (type == "no-id" || type == "all") {
+            query.id = '';
+            UpdateQueries();
+        }
+    }
     function UpdateQueries () {
         var queryString = '';
         var queryLength = 0;
@@ -309,8 +331,8 @@ $(document).ready(function () {
         document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + current_data.name : '');
     }
     function SearchItems (phrase) {
-        query.q = phrase;
-        UpdateQueries();
+        /*query.q = phrase;
+        UpdateQueries();*/
         for (var i = 0; i < item_data.length; i++) {
             var search_item = $('[data-num="' + i + '"]');
             var search_item_data = item_data[i];
@@ -376,10 +398,10 @@ $(document).ready(function () {
         if (query.id) {
             SetModal(item_num[query.id]);
         }
-        if (query.q) {
+        /*if (query.q) {
             var query_text = decodeURI(query.q);
             SearchItems(query_text);
             search_input.value = query_text;
-        }
+        }*/
     }
 });
