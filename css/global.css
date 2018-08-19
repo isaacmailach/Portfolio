@@ -17,7 +17,7 @@ a {
     transition: none !important; 
 }*/
 
-.page-content, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .alert-content {
+.page-content, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .alert-content {
     border-radius: 5px;
 }
 .page-content a, .alert a, .modal-content-body a {
@@ -43,11 +43,14 @@ a {
     transition: background-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page_about .page-content, .page_recordings .page-content {
+    background-color: rgba(255, 255, 255, 0.5);
     transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page_about .page-content {
-    background-color: rgba(255, 255, 255, 0.5);
     overflow: hidden;
+}
+.page_recordings .page-content {
+    padding: 12px;
 }
 .page-content-about {
     padding: 30px;
@@ -105,16 +108,18 @@ a {
     font-weight: 400;
 }
 .page-content-embed {
-    margin: 5px;
+    margin-bottom: 10px;
 }
 .page-content-grid {
+    background-color: rgba(255, 255, 255, 0.5);
     clear: both;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
     max-width: 1250px;
     overflow: visible;
-    padding: 5px;
+    padding: 6px;
+    transition: background-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-grid-item {
     animation-fill-mode: forwards !important;
@@ -122,7 +127,7 @@ a {
     cursor: pointer;
     flex: 1 0 250px;
     height: 250px;
-    margin: 5px;
+    margin: 6px;
     max-width: 500px;
     overflow: hidden;
     position: relative;
@@ -619,7 +624,7 @@ a {
         top: 15px;
     }
 }
-@media (max-width: 450px) {
+@media (max-width: 452px) {
     .page .page-content .page-content-grid-item {
         flex-basis: 100%;
         flex-shrink: 1;
@@ -759,12 +764,15 @@ a {
         padding: 0;
     }
     .page .page-content, .page-header-nav, .page-header-titlebox {
-        background-color: rgba(255, 255, 255, 0.65);
+        background-color: rgba(255, 255, 255, 0.5);
     }
     .page-content {
         margin: 0 auto;
-        padding-bottom: 100px;
+        padding-bottom: 100px !important;
         padding-top: 20px;
+    }
+    .page-content-grid {
+        background-color: rgba(255, 255, 255, 0);
     }
     .page .page-header-nav {
         margin: 0;
