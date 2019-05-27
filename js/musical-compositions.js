@@ -110,7 +110,7 @@ $(document).ready(function () {
     document.querySelector('.page-content-search-icon').addEventListener('click', function () {
         search_input.focus();
     });
-    var TypedSearch = _.debounce(function (query) {
+    var TypedSearch = debounce(function (query) {
         SearchItems(query);
     }, 300);
     search_input.addEventListener('keyup', function () {
@@ -403,4 +403,20 @@ $(document).ready(function () {
             search_input.value = query_text;
         }*/
     }
+    
+    function debounce(func, wait, immediate) {
+      var timeout;
+      return function executedFunction() {
+        var context = this;
+        var args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
+    };
 });
