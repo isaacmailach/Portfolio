@@ -289,7 +289,6 @@ $(document).ready(function () {
         var current_name = encodeURI(current_data.name);
         $('.modal-content-header-toolbar-share-icon_email').attr('href', 'mailto:?body=' + current_url + '%3Fid%3D' + current_id + '&subject=' + current_name);
         $('.modal-content-header-toolbar-share-icon_facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + current_url + '%3Fid%3D' + current_id + '&t=' + current_name);
-        $('.modal-content-header-toolbar-share-icon_google').attr('href', 'https://plus.google.com/share?url=' + current_url + '%3Fid%3D' + current_id);
         $('.modal-content-header-toolbar-share-icon_pinterest').attr('href', 'https://www.pinterest.com/pin/create/button/?url=' + current_url + '%3Fid%3D' + current_id + '&media=' + current_url + '%2Fimg%2Fmusical-compositions%2F' + current_id + '%2Fimage.jpg&description=' + current_name);
         $('.modal-content-header-toolbar-share-icon_linkedin').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url=' + current_url + '%3Fid%3D' + current_id + '&title=' + current_name);
         $('.modal-content-header-toolbar-share-icon_tumblr').attr('href', 'https://www.tumblr.com/share/link?url=' + current_url + '%3Fid%3D' + current_id + '&name=' + current_name);
