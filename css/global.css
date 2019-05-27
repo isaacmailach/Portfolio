@@ -929,7 +929,7 @@ a {
     font-family: Roboto;
     font-style: normal;
     font-weight: 200;
-    src: url('../font/Roboto-light.ttf') format('truetype');
+    src: url('../font/Roboto-Light.ttf') format('truetype');
 }
 @font-face {
     font-family: Roboto;
