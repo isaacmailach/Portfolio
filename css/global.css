@@ -57,18 +57,24 @@ a {
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: background-color, padding;
 }
-.page-content-about h3 {
-    font-family: Quicksand;
-    font-size: 2.5rem;
-    font-weight: 400;
-    margin: 0;
-    transition: font-size 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+
+.page-content-about h5 {
+    font-size: 1.8rem;
+    font-weight: 200;
+    margin: 10px 0;
+}
+.page-content-about img {
+    float: left;
+    margin: 5px 15px 5px 0;
+    width: 400px;
 }
 .page-content-about p {
     font-size: 1.1rem;
-    line-height: 1.5rem;
+    line-height: 1.7rem;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: font-size, line-height;
+}.page-content-about strong {
+    font-weight: 500;
 }
 .page-content-aside {
     border-left: 1px solid rgba(0, 0, 0, 0.3);
@@ -136,8 +142,11 @@ a {
     transition-property: box-shadow, flex-basis, height, opacity;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content-grid-item:active, .page-content-grid-item:focus, .page-content-grid-item:hover, .page-content-grid-item_focus {
+.page-content-grid-item:focus, .page-content-grid-item:hover, .page-content-grid-item_focus {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.3);
+}
+.page-content-grid-item:active {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
 }
 .page-content-grid-item-image {
     bottom: 0;
@@ -270,13 +279,26 @@ a {
     opacity: 0.75;
     text-transform: uppercase;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: opacity, font-size;
+    transition-property: opacity, font-size, text-decoration;
+}
+.page-header-nav-link u {
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    text-decoration: none;
+    transition: border-bottom-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-header-nav-link_current {
     opacity: 1;
 }
+.page .page-header-nav-link_current u {
+    border-bottom-color: rgba(0, 0, 0, 1);
+}
 .page-header-nav-link:not(.page-header-nav-link_current):focus, .page-header-nav-link:not(.page-header-nav-link_current):hover {
     opacity: 1;
+}
+.page-header-nav-link:not(.page-header-nav-link_current):focus u, .page-header-nav-link:not(.page-header-nav-link_current):hover u {
+    border-bottom-color: rgba(0, 0, 0, 1);
 }
 .page-header-nav-link_left {
     float: left;
@@ -428,6 +450,7 @@ a {
 }
 .modal-content-body blockquote {
     font-style: italic;
+    line-height: 1.5rem;
     margin: 2rem;
 }
 .modal-content-body h3 {
@@ -441,6 +464,9 @@ a {
     font-style: italic;
     font-weight: normal;
     margin: 5px 0 0 0;
+}
+.modal-content-body p {
+    line-height: 1.5rem;
 }
 .modal-content-body small {
     font-family: Quicksand;
@@ -637,9 +663,10 @@ a {
         font-size: 1.5rem;
         line-height: 28px;
     }
-    .page-header-nav-link {
+    .page .page-header .page-header-nav-link {
         display: block;
         float: none;
+        font-size: 1.1rem;
     }
     body .page .page-header .page-header-titlebox {
         height: 50px;
@@ -663,11 +690,16 @@ a {
     }
     .page .page-header .page-header-titlebox-title-heading {
         font-size: 32px;
+        font-weight: 500;
         margin: 0;
     }
     .page .page-header .page-header-titlebox-title-subheading {
         font-size: 18px;
+        font-weight: 500;
         margin: -6px 0 0 0;
+    }
+    .page .page-header-nav-link {
+        font-size: 1.0rem;
     }
 }
 @media (max-width: 550px) {
@@ -677,6 +709,19 @@ a {
         margin: auto;
         max-width: 300px;
         width: auto;
+    }
+    .page-content-about img {
+        display: block;
+        float: none;
+        margin: auto;
+        max-width: 550px;
+        width: 100%;
+    }
+    .page-content-about-image {
+        margin: 0 -15px;
+    }
+    .page-header-nav-link {
+        font-size: 1.1rem;
     }
     
     .alert-content {
@@ -692,7 +737,7 @@ a {
     }
     .page-content-about p {
         font-size: 1rem;
-        line-height: 1.4rem;
+        line-height: 1.5rem;
     }
     .page .page-content-aside {
         padding: 15px;
@@ -713,7 +758,6 @@ a {
         padding: 0;
     }
     .page-header-nav-link {
-        font-size: 1rem;
         margin: 10px;
     }
     .page .page-header-titlebox {
@@ -763,10 +807,11 @@ a {
     body div.page {
         padding: 0;
     }
-    .page .page-content, .page-header-nav, .page-header-titlebox {
+    .page .page-content{
         background-color: rgba(255, 255, 255, 0.5);
     }
     .page-content {
+        border-radius: 0;
         margin: 0 auto;
         padding-bottom: 100px !important;
         padding-top: 20px;
@@ -775,9 +820,15 @@ a {
         background-color: rgba(255, 255, 255, 0);
     }
     .page .page-header-nav {
+        background-color: rgba(255, 255, 255, 0);
+        background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.5));
+        border-radius: 0;
         margin: 0;
     }
     .page .page-header-titlebox {
+        background-color: rgba(255, 255, 255, 0);
+        background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.75));
+        border-radius: 0;
         margin: 0;
     }
 }
@@ -853,20 +904,32 @@ a {
 @font-face {
     font-family: Quicksand;
     font-style: normal;
-    font-weight: 400;
-    src: url('../font/Quicksand-Regular.ttf') format('truetype');
-}
-@font-face {
-    font-family: Quicksand;
-    font-style: normal;
     font-weight: 200;
     src: url('../font/Quicksand-Light.ttf') format('truetype');
 }
 @font-face {
     font-family: Quicksand;
     font-style: normal;
+    font-weight: 400;
+    src: url('../font/Quicksand-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: 500;
+    src: url('../font/Quicksand-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: Quicksand;
+    font-style: normal;
     font-weight: 700;
     src: url('../font/Quicksand-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 200;
+    src: url('../font/Roboto-light.ttf') format('truetype');
 }
 @font-face {
     font-family: Roboto;
@@ -879,6 +942,12 @@ a {
     font-style: italic;
     font-weight: 400;
     src: url('../font/Roboto-Italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    src: url('../font/Roboto-Medium.ttf') format('truetype');
 }
 @font-face {
     font-family: Roboto;
