@@ -22,11 +22,11 @@ a {
 }
 .page-content a, .alert a, .modal-content-body a {
     font-weight: 700;
-    opacity: 0.75;
+    opacity: 1;
     transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content a:focus, .page-content a:hover, .alert a:focus, .alert a:hover, .modal-content-body a:focus, .modal-content-body a:hover {
-    opacity: 1;
+    opacity: 0.75;
 }
 
 .page {
@@ -42,14 +42,21 @@ a {
     transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
     transition: background-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page_about .page-content, .page_recordings .page-content {
-    background-color: rgba(255, 255, 255, 0.5);
+.page_about .page-content, .page_filmography .page-content, .page_recordings .page-content {
+    background-color: rgba(255, 255, 255, 0.6);
     transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page_about .page-content {
     overflow: hidden;
 }
+.page_filmography .page-content {
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 15px;
+    transition: padding 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+}
 .page_recordings .page-content {
+    box-sizing: border-box;
     padding: 12px;
 }
 .page-content-about {
@@ -116,8 +123,38 @@ a {
 .page-content-embed {
     margin-bottom: 10px;
 }
+.page-content-frame {
+    box-sizing: border-box;
+    float: left;
+    min-width: 50%;
+    padding: 15px;
+    transition: padding 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-content-frame-heading {
+    font-family: Quicksand;
+    font-size: 1.5rem;
+    margin: 0 0 15px 0;
+}
+.page-content-frame-list {
+    list-style-type: none;
+    padding-left: 15px;
+}
+.page-content-frame-list > li {
+    margin-bottom: 10px;
+}
+.page-content-frame-list > li > ul > li {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+.page-content-frame-list h5, .page-content-frame-list h5 a {
+    display: inline;
+    font-weight: 400;
+    font-size: 1.2rem;
+    transition: 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: font-size, opacity;
+}
 .page-content-grid {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.6);
     clear: both;
     display: flex;
     flex-wrap: wrap;
@@ -260,13 +297,13 @@ a {
     max-width: 1250px;
 }
 .page-header-nav {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.6);
     clear: both;
     margin: 0 0 100px 0;
     overflow: auto;
     padding: 15px 0;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: background-color, margin;
+    transition-property: background-color, margin, padding;
 }
 .page_musical-compositions .page-header-nav {
     margin: 0 0 50px 0;
@@ -279,7 +316,7 @@ a {
     opacity: 0.75;
     text-transform: uppercase;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: opacity, font-size, text-decoration;
+    transition-property: opacity, font-size, margin, text-decoration;
 }
 .page-header-nav-link u {
     border-bottom-color: rgba(0, 0, 0, 0);
@@ -307,7 +344,7 @@ a {
     float: right;
 }
 .page-header-titlebox {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.6);
     height: 120px;
     margin: 0 0 100px 0;
     padding: 15px;
@@ -663,11 +700,6 @@ a {
         font-size: 1.5rem;
         line-height: 28px;
     }
-    .page .page-header .page-header-nav-link {
-        display: block;
-        float: none;
-        font-size: 1.1rem;
-    }
     body .page .page-header .page-header-titlebox {
         height: 50px;
     }
@@ -698,9 +730,6 @@ a {
         font-weight: 500;
         margin: -6px 0 0 0;
     }
-    .page .page-header-nav-link {
-        font-size: 1.0rem;
-    }
 }
 @media (max-width: 550px) {
     .page-content-aside {
@@ -720,12 +749,30 @@ a {
     .page-content-about-image {
         margin: 0 -15px;
     }
-    .page-header-nav-link {
-        font-size: 1.1rem;
-    }
     
     .alert-content {
         padding: 15px;
+    }
+}
+@media (max-width: 600px) {
+    .page-content-frame-list h5, .page-content-frame-list h5 a {
+        font-size: 1rem;
+    }
+    .page .page-header .page-header-nav-link {
+        display: block;
+        float: none;
+        font-size: 1.1rem;
+    }
+}
+@media (max-width: 650px) {
+    .page_filmography .page-content {
+        padding: 7.5px;
+    }
+    .page-content-frame {
+        padding: 10px 7.5px;
+    }
+    .page .page-header-nav-link {
+        font-size: 1.0rem;
     }
 }
 @media (max-width: 700px) {
@@ -754,11 +801,8 @@ a {
         font-size: 2rem;
         line-height: 35px;
     }
-    .page-header-nav {
-        padding: 0;
-    }
     .page-header-nav-link {
-        margin: 10px;
+        font-size: 1.1rem;
     }
     .page .page-header-titlebox {
         height: 80px;
@@ -792,6 +836,14 @@ a {
         }
     }
 }
+@media (max-width: 750px) {
+    .page-header-nav {
+        padding: 0;
+    }
+    .page-header-nav-link {
+        margin: 10px;
+    }
+}
 @media (max-width: 756px) {
     body {
         background-image: url('../img/background/background-small.jpg');
@@ -808,20 +860,20 @@ a {
         padding: 0;
     }
     .page .page-content{
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.6);
     }
     .page-content {
         border-radius: 0;
         margin: 0 auto;
         padding-bottom: 100px !important;
-        padding-top: 20px;
+        padding-top: 20px !important;
     }
     .page-content-grid {
         background-color: rgba(255, 255, 255, 0);
     }
     .page .page-header-nav {
         background-color: rgba(255, 255, 255, 0);
-        background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.5));
+        background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.6));
         border-radius: 0;
         margin: 0;
     }
