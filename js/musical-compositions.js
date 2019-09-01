@@ -210,6 +210,9 @@ $(document).ready(function () {
         UpdateSocialLinks();
         $.get('text/musical-compositions/' + current_id + '.html', function (text) {
             $('.modal-content-body').append(text);
+            if (item_data[current_num].video) {
+                $('.modal-content-body').append('<div class="modal-content-body-video"><iframe src="https://www.youtube.com/embed/' + item_data[current_num].video + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
+            }
         });
     }
     function ClearModal () {
