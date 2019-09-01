@@ -11,14 +11,16 @@
         "name": "Before the Plate",
         "date": "2018-07-28",
         "instrumentation": "orchestra",
-        "credit": "Before the Plate Productions Inc"
+        "credit": "Before the Plate Productions Inc",
+        "video": "uoss-LrSFJg"
     },
     {
         "id": "0019",
         "name": "Ten Minute Call",
         "date": "2018-02-27",
         "instrumentation": "solo cello and piano",
-        "credit": "Film PaniK LTD"
+        "credit": "Film PaniK LTD",
+        "video": "Bf_T6vhCeIE"
     },
     {
         "id": "0018",
@@ -32,7 +34,8 @@
         "name": "White Rabbit",
         "date": "2017-04-23",
         "instrumentation": "orchestra and hammered dulcimer",
-        "credit": "Sagi Kahane-Rapport"
+        "credit": "Sagi Kahane-Rapport",
+        "video": "vXkzh01jyL4"
     },
     {
         "id": "0014",
@@ -120,25 +123,5 @@
         "date": "2014-06-14",
         "instrumentation": "cello (Isaac Mailach)",
         "light": true
-    },
-    {
-        "id": "0003",
-        "name": "The Woods of Winter",
-        "date": "2014-02-16",
-        "instrumentation": "cello, 2 violins, harp, and piano",
-        "credit": "Carl Curman"
-    },
-    {
-        "id": "0002",
-        "name": "When it Rains",
-        "date": "2014-01-14",
-        "instrumentation": "piano",
-        "credit": "Thamizhpparithi Maari"
-    },
-    {
-        "id": "0001",
-        "name": "Blockade",
-        "date": "2013-12-17",
-        "instrumentation": "piano and cello"
     }
 ]}
