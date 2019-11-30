@@ -437,13 +437,13 @@ a {
     margin: 0;
 }
 .modal {
+    backdrop-filter: blur(5px);
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
     overflow: auto;
     pointer-events: none;
     transition: 0.5s,0.27s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: opacity, padding;
-    backdrop-filter: blur(5px);
 }
 .modal.open {
     opacity: 1;
