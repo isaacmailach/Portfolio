@@ -1,15 +1,40 @@
 { "item": [
     {
+        "id": "0024",
+        "name": "At What Cost?",
+        "date": "2020",
+        "instrumentation": "solo cello, solo violin, bowed vibraphone, hammered dulcimer",
+        "credit": "Valerie Tan"
+    },
+    {
+        "id": "0023",
+        "name": "Time Stamp",
+        "date": "2020",
+        "instrumentation": "analog synthesizer, string orchestra, solo cello",
+        "credit": "Robert Butler III and Cade Huseby",
+        "align_top": true
+    },
+    {
+        "id": "0022",
+        "name": "The Common Ground",
+        "date": "2020",
+        "instrumentation": "piano, solo cello, flute",
+        "credit": "Johanna Vogt",
+        "align_top": true,
+        "video": "biOS8YUdk8c"
+    },
+    {
         "id": "0021",
         "name": "Cello Concerto",
-        "date": "2019-03-27",
+        "date": "2019",
         "instrumentation": "solo cello (Katie Schlaikjer) and string orchestra (conducted by Isaac Mailach)",
-        "credit": "Johanna Vogt"
+        "credit": "Johanna Vogt",
+        "video": "vtebljtnyI4"
     },
     {
         "id": "0020",
         "name": "Before the Plate",
-        "date": "2018-07-28",
+        "date": "2018",
         "instrumentation": "orchestra",
         "credit": "Before the Plate Productions Inc",
         "video": "uoss-LrSFJg"
@@ -17,7 +42,7 @@
     {
         "id": "0019",
         "name": "Ten Minute Call",
-        "date": "2018-02-27",
+        "date": "2018",
         "instrumentation": "solo cello and piano",
         "credit": "Film PaniK LTD",
         "video": "Bf_T6vhCeIE"
@@ -32,7 +57,7 @@
     {
         "id": "0017",
         "name": "White Rabbit",
-        "date": "2017-04-23",
+        "date": "2017",
         "instrumentation": "orchestra and hammered dulcimer",
         "credit": "Sagi Kahane-Rapport",
         "video": "vXkzh01jyL4"
@@ -40,88 +65,99 @@
     {
         "id": "0014",
         "name": "Timirith Falls",
-        "date": "2017-03-01",
+        "date": "2017",
         "instrumentation": "orchestra (WLU Symphony Orchestra, conducted by Paul Pulford)",
-        "credit": "BelleDeesse"
+        "credit": "BelleDeesse",
+        "hidden": true
     },
     {
         "id": "0013",
         "name": "Battle of the Trees",
-        "date": "2016-11",
+        "date": "2016",
         "instrumentation": "soprano (Dylann Miller) and tenor (Daniel Quintia Plamenco)",
-        "credit": "Tyler Lastovich"
+        "credit": "Tyler Lastovich",
+        "hidden": true
     },
     {
         "id": "0012",
         "name": "The Matchbox",
-        "date": "2016-06-24",
+        "date": "2016",
         "instrumentation": "cello (Isaac Mailach) and shakuhachi (Isaac Mailach)",
         "align_top": true,
-        "credit": "Sagi Kahane-Rapport"
+        "credit": "Sagi Kahane-Rapport",
+        "hidden": true
     },
     {
         "id": "0011",
         "name": "Antarctica",
-        "date": "2016-03-27",
+        "date": "2016",
         "instrumentation": "mezzo-soprano (Isabelle Zoulalian), harp (Nicole Lancaster), thin bass drum (David Sirega), and contrabass (Shawn Murphy)",
         "align_top": true,
-        "credit": "Marie Byrd Land and Stephen Hudson"
+        "credit": "Marie Byrd Land and Stephen Hudson",
+        "hidden": true
     },
     {
         "id": "0010",
         "name": "Entering Timirith",
-        "date": "2016-03-20",
+        "date": "2016",
         "instrumentation": "orchestra (WLU Symphony Orchestra, conducted by Paul Pulford)",
-        "credit": "guitfiddle"
+        "credit": "guitfiddle",
+        "hidden": true
     },
     {
         "id": "0009",
         "name": "Pluto",
-        "date": "2015-10-07",
+        "date": "2015",
         "instrumentation": "solo cello (Isaac Mailach)",
-        "credit": "NASA/JHUAPL/SwRI"
+        "credit": "NASA/JHUAPL/SwRI",
+        "hidden": true
     },
     {
         "id": "0016",
         "name": "Mercury",
-        "date": "2015-08",
+        "date": "2015",
         "instrumentation": "solo cello (Isaac Mailach)",
         "credit": "NASA"
     },
     {
         "id": "0008",
         "name": "Kung Fu Pizza Bears",
-        "date": "2015-03-28",
+        "date": "2015",
         "instrumentation": "synthesizer",
-        "align_top": true
+        "align_top": true,
+        "hidden": true
     },
     {
         "id": "0007",
         "name": "When Woods Fail",
-        "date": "2015-03-22",
+        "date": "2015",
         "instrumentation": "string quartet",
-        "credit": "Ivan Shishkin"
+        "credit": "Ivan Shishkin",
+        "hidden": true
     },
     {
         "id": "0006",
         "name": "Man, Woman, and the Sparrow",
-        "date": "2015-02-22",
+        "date": "2015",
         "instrumentation": "shakuhachi (Rebecca Chapeskie)",
         "credit": "Katsushika Hokusai",
-        "light": true
+        "light": true,
+        "hidden": true
     },
     {
         "id": "0005",
         "name": "Starlight",
-        "date": "2015-01-25",
+        "date": "2015",
         "instrumentation": "piano (Nauroz Tanya), cello (Isaac Mailach), and viola (Isaac Page)",
-        "credit": "European Southern Observatory (ESO)"
+        "credit": "European Southern Observatory (ESO)",
+        "hidden": true
     },
     {
         "id": "0004",
         "name": "Time",
-        "date": "2014-06-14",
+        "date": "2014",
         "instrumentation": "cello (Isaac Mailach)",
-        "light": true
+        "light": true,
+        "hidden": true
     }
 ]}
