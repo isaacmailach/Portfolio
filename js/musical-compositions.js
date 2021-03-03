@@ -11,7 +11,7 @@ $(document).ready(function () {
     var current_id = null;
     var current_num = null;
     var current_data = {};
-    
+
     var search_input = document.querySelector('.page-content-search-input');
     var modal = document.querySelector('.modal');
     var modal_content = modal.querySelector('.modal-content');
@@ -20,48 +20,50 @@ $(document).ready(function () {
     var modal_header_toolbar = modal_content.querySelector('.modal-content-header-toolbar');
     var play_button = modal_header_toolbar.querySelector('.modal-content-header-toolbar-player-play');
     var modal_player_time = modal_header_toolbar.querySelector('.modal-content-header-toolbar-player-time');
-    
+
     var modal_content_J = $('.modal-content');
-    
+
     $.getJSON('data/musical-compositions.json', function (database) {
         item_data = database.item;
         var item_template = document.querySelector('.page-content-grid-item_template');
         for (var i = 0; i < database.item.length; i++) {
             var temp_item_data = item_data[i];
             item_num[temp_item_data.id] = i;
-            var item = document.createElement('div');
-            item.className = 'page-content-grid-item hide';
-            if (temp_item_data.align_top) {item.className += ' align-top';}
-            item.setAttribute('tabindex', 0);
-            item.dataset.num = i;
-            if (temp_item_data.id == '0010') {
-                item.setAttribute('style', 'flex-grow: 150;');
-            } else {
-                item.setAttribute('style', 'flex-grow: ' + parseInt(100 * Math.random()));
-            }
-            var template = document.importNode(item_template.content, true);
-            template.querySelector('.page-content-grid-item-image').src = 'img/musical-compositions/' + temp_item_data.id + '/image.jpg';
-            template.querySelector('.page-content-grid-item-image').setAttribute('srcset', 'img/musical-compositions/' + temp_item_data.id + '/image.jpg, img/musical-compositions/' + temp_item_data.id + '/image-3x.jpg 2x');
-            template.querySelector('.page-content-grid-item-overlay-name').innerText = temp_item_data.name;
-            template.querySelector('.page-content-grid-item-overlay-date').innerText = temp_item_data.date;
-            template.querySelector('.page-content-grid-item-overlay-instrumentation').innerText = 'For ' + temp_item_data.instrumentation;
-            item.appendChild(template);
-            item.setAttribute('title', temp_item_data.name);
-            item.addEventListener('keydown', function (e) {
-                if (!popup_open) {
-                    if (e.keyCode === 37) {
-                        this.previousSibling.focus();
-                    } else if (e.keyCode === 39) {
-                        this.nextSibling.focus();
-                    }
+            if (!temp_item_data.hidden) {
+                var item = document.createElement('div');
+                item.className = 'page-content-grid-item hide';
+                if (temp_item_data.align_top) {item.className += ' align-top';}
+                item.setAttribute('tabindex', 0);
+                item.dataset.num = i;
+                if (temp_item_data.id == '0010') {
+                    item.setAttribute('style', 'flex-grow: 150;');
+                } else {
+                    item.setAttribute('style', 'flex-grow: ' + parseInt(100 * Math.random()));
                 }
-            });
-            item.addEventListener('click', function () {
-                SetModal(this.dataset.num);
-            });
-            document.querySelector('.page-content-grid').appendChild(item);
+                var template = document.importNode(item_template.content, true);
+                template.querySelector('.page-content-grid-item-image').src = 'img/musical-compositions/' + temp_item_data.id + '/image.jpg';
+                template.querySelector('.page-content-grid-item-image').setAttribute('srcset', 'img/musical-compositions/' + temp_item_data.id + '/image.jpg, img/musical-compositions/' + temp_item_data.id + '/image-3x.jpg 2x');
+                template.querySelector('.page-content-grid-item-overlay-name').innerText = temp_item_data.name;
+                template.querySelector('.page-content-grid-item-overlay-date').innerText = temp_item_data.date;
+                template.querySelector('.page-content-grid-item-overlay-instrumentation').innerText = 'For ' + temp_item_data.instrumentation;
+                item.appendChild(template);
+                item.setAttribute('title', temp_item_data.name);
+                item.addEventListener('keydown', function (e) {
+                    if (!popup_open) {
+                        if (e.keyCode === 37) {
+                            this.previousSibling.focus();
+                        } else if (e.keyCode === 39) {
+                            this.nextSibling.focus();
+                        }
+                    }
+                });
+                item.addEventListener('click', function () {
+                    SetModal(this.dataset.num);
+                });
+                document.querySelector('.page-content-grid').appendChild(item);
+            }
         }
-        
+
         var counter = 0;
         var fade_in = setInterval(function () {
             document.querySelectorAll('.page-content-grid-item')[counter].classList.remove('hide');
@@ -85,7 +87,7 @@ $(document).ready(function () {
             }
         } else if (key === 32 && popup_open) {
             ToggleAudio();
-            e.preventDefault(); 
+            e.preventDefault();
         } else if (key === 37 && popup_open) {
             NextItem();
         } else if (key === 39 && popup_open) {
@@ -99,14 +101,14 @@ $(document).ready(function () {
     });
     modal.addEventListener('click', CloseModal);
     modal_content.querySelector('.modal-content-header-close').addEventListener('click', CloseModal);
-    
+
     document.querySelector('.alert_no-id .alert-content-close').addEventListener('click', function () {
         CloseAlert("no-id");
     });
     document.querySelector('.alert_no-load .alert-content-close').addEventListener('click', function () {
         CloseAlert("no-load");
     });
-        
+
     document.querySelector('.page-content-search-icon').addEventListener('click', function () {
         search_input.focus();
     });
@@ -119,7 +121,7 @@ $(document).ready(function () {
     search_input.addEventListener('search', function () {
         SearchItems(this.value);
     });
-    
+
     play_button.addEventListener('click', ToggleAudio);
     document.querySelector('.modal-arrow_left').addEventListener('click', function () {
         if (popup_open && next_item) {
@@ -147,7 +149,7 @@ $(document).ready(function () {
     modal_header_toolbar.querySelector('.modal-content-header-toolbar-player-progress').addEventListener('click', function (e) {
         audio.currentTime = ((e.pageX - $(this).offset().left) / $(this).innerWidth()) * audio.duration;
     });
-    
+
     function UpdateAudioTime () {
         modal_player_time.innerText = ConvertTime(audio.currentTime) + ' / ' + ConvertTime(audio.duration);
     }
@@ -406,7 +408,7 @@ $(document).ready(function () {
             search_input.value = query_text;
         }*/
     }
-    
+
     function debounce(func, wait, immediate) {
       var timeout;
       return function executedFunction() {
