@@ -7,6 +7,14 @@
         "credit": "Valerie Tan"
     },
     {
+        "id": "0025",
+        "name": "ShadowLight",
+        "date": "2020",
+        "instrumentation": "solo cello, clarinet, piano, harp, string orchestra",
+        "credit": "Unknown",
+        "align_top": true
+    },
+    {
         "id": "0023",
         "name": "Time Stamp",
         "date": "2020",
@@ -19,7 +27,7 @@
         "name": "The Common Ground",
         "date": "2020",
         "instrumentation": "piano, solo cello, flute",
-        "credit": "Johanna Vogt",
+        "credit": "Christopher Bryan",
         "align_top": true,
         "video": "biOS8YUdk8c"
     },
