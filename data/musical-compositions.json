@@ -1,5 +1,12 @@
 { "item": [
     {
+        "id": "0026",
+        "name": "Paranoia",
+        "date": "2021",
+        "instrumentation": "solo cello",
+        "credit": "Alyssa Fritz"
+    },
+    {
         "id": "0024",
         "name": "At What Cost?",
         "date": "2020",
