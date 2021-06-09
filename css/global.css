@@ -14,7 +14,7 @@ a {
     text-decoration: none;
 }
 /*.mobile * {
-    transition: none !important; 
+    transition: none !important;
 }*/
 
 .page-content, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .alert-content {
@@ -697,7 +697,7 @@ a {
         display: inline-block;
         float: none;
     }
-    
+
     .alert-content {
         left: 15px;
         right: 15px;
@@ -766,7 +766,7 @@ a {
     .page-content-about-image {
         margin: 0 -15px;
     }
-    
+
     .alert-content {
         padding: 15px;
     }
@@ -835,7 +835,7 @@ a {
         font-size: 20px;
         margin: -5px 0 0 0;
     }
-    
+
     .modal {
         padding: 0;
     }
