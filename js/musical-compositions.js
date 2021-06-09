@@ -8,6 +8,8 @@ $(document).ready(function () {
     var popup_open = false;
     var next_item = false;
     var previous_item = false;
+    var first_item = null;
+    var last_item = null;
     var current_id = null;
     var current_num = null;
     var current_data = {};
@@ -64,11 +66,14 @@ $(document).ready(function () {
             }
         }
 
+        var loaded_items = document.querySelectorAll('.page-content-grid-item');
+        first_item = loaded_items[0].dataset.num;
+        last_item = loaded_items[loaded_items.length -1].dataset.num;
         var counter = 0;
         var fade_in = setInterval(function () {
-            document.querySelectorAll('.page-content-grid-item')[counter].classList.remove('hide');
+            loaded_items[counter].classList.remove('hide');
             counter++;
-            if (counter == database.item.length) {
+            if (counter === loaded_items.length) {
                 clearInterval(fade_in);
             }
         }, fade_in_delay);
@@ -241,14 +246,14 @@ $(document).ready(function () {
         }, 601);
     }
     function CheckFirstLast () {
-        if (current_num == 0) {
+        if (current_num == first_item) {
             next_item = false;
             $('.modal-arrow_left').addClass('modal-arrow_disabled');
         } else {
             next_item = true;
             $('.modal-arrow_left').removeClass('modal-arrow_disabled');
         }
-        if (current_num == item_data.length - 1) {
+        if (current_num == last_item) {
             previous_item = false;
             $('.modal-arrow_right').addClass('modal-arrow_disabled');
         } else {
@@ -282,12 +287,20 @@ $(document).ready(function () {
     }
     function NextItem () {
         if (next_item) {
-            SetModal(parseInt(current_num) - 1);
+            let i = 0;
+            do {
+                i += 1;
+            } while (item_data[parseInt(current_num) - i].hidden);
+            SetModal(parseInt(current_num) - i);
         }
     }
     function PreviousItem () {
         if (previous_item) {
-            SetModal(parseInt(current_num) + 1);
+            let i = 0;
+            do {
+                i += 1;
+            } while (item_data[parseInt(current_num) + i].hidden);
+            SetModal(parseInt(current_num) + i);
         }
     }
     function UpdateSocialLinks () {
