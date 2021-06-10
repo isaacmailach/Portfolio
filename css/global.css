@@ -456,9 +456,11 @@ a {
     font-weight: normal;
     opacity: 0.25;
     position: fixed;
-    top: 45%;
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    vertical-align: middle;
+    top: 50%;
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: opacity;
+    vertical-align: top;
+    transform: translateY(-50%);
 }
 .modal-arrow:not(.modal-arrow_disabled) {
     cursor: pointer;
@@ -713,6 +715,9 @@ a {
         margin: -6px 0 0 0;
     }
 
+    .modal .modal-arrow {
+        top: 45vw;
+    }
     .modal-content-body {
         clear: both;
         padding: 0 15px 15px 15px;
@@ -839,7 +844,7 @@ a {
         padding: 0;
     }
     .modal-arrow {
-        display: none;
+        top: 13vw;
     }
     .modal-content {
         min-height: 100%;
