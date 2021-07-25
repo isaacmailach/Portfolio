@@ -45,11 +45,12 @@ $(document).ready(function () {
                 var template = document.importNode(item_template.content, true);
                 template.querySelector('.page-content-grid-item-image').src = 'img/musical-compositions/' + temp_item_data.id + '/image.jpg';
                 template.querySelector('.page-content-grid-item-image').setAttribute('srcset', 'img/musical-compositions/' + temp_item_data.id + '/image.jpg, img/musical-compositions/' + temp_item_data.id + '/image-3x.jpg 2x');
-                template.querySelector('.page-content-grid-item-overlay-name').innerText = temp_item_data.name;
+                template.querySelector('.page-content-grid-item-image').setAttribute('alt', temp_item_data.name.replace('&shy;',''));
+                template.querySelector('.page-content-grid-item-overlay-name').innerHTML = temp_item_data.name;
                 template.querySelector('.page-content-grid-item-overlay-date').innerText = temp_item_data.date;
                 template.querySelector('.page-content-grid-item-overlay-instrumentation').innerText = 'For ' + temp_item_data.instrumentation;
                 item.appendChild(template);
-                item.setAttribute('title', temp_item_data.name);
+                item.setAttribute('title', temp_item_data.name.replace('&shy;',''));
                 item.addEventListener('keydown', function (e) {
                     if (!popup_open) {
                         if (e.keyCode === 37) {
