@@ -1,5 +1,12 @@
 { "item": [
     {
+        "id": "0027",
+        "name": "Patrón Perfect&shy;ionists",
+        "date": "2021",
+        "instrumentation": "string quartet, piano",
+        "credit": "Sagi Kahane-Rapport"
+    },
+    {
         "id": "0026",
         "name": "Paranoia",
         "date": "2021",
@@ -15,7 +22,7 @@
     },
     {
         "id": "0025",
-        "name": "ShadowLight",
+        "name": "Shadow&shy;Light",
         "date": "2020",
         "instrumentation": "solo cello, clarinet, piano, harp, string orchestra",
         "credit": "Unknown",
