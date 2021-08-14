@@ -37,6 +37,13 @@
         "align_top": true
     },
     {
+        "id": "0029",
+        "name": "Pele",
+        "date": "2020",
+        "instrumentation": "alto flute, bass oboe, french horn, harp, string orchesrta",
+        "credit": "PeakVisor"
+    },
+    {
         "id": "0022",
         "name": "The Common Ground",
         "date": "2020",
@@ -44,6 +51,13 @@
         "credit": "Christopher Bryan",
         "align_top": true,
         "video": "biOS8YUdk8c"
+    },
+    {
+        "id": "0028",
+        "name": "Salut",
+        "date": "2020",
+        "instrumentation": "symphony orchestra",
+        "credit": "The Dakota Hunter"
     },
     {
         "id": "0021",
