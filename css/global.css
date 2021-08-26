@@ -17,7 +17,7 @@ a {
     transition: none !important;
 }*/
 
-.page-content, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .alert-content {
+.page-content, .page-content-about img, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .alert-content {
     border-radius: 5px;
 }
 .page-content a, .alert a, .modal-content-body a {
@@ -90,7 +90,7 @@ a {
     padding: 30px 30px 15px 30px;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: padding, width;
-    width: 300px;
+    width: 350px;
 }
 .page-content-aside-contact {
     font-size: 1.1rem;
@@ -754,18 +754,19 @@ a {
     }
 }
 @media (max-width: 550px) {
-    .page-content-aside {
+    .page .page-content .page-content-aside {
         border: none;
         float: none;
         margin: auto;
-        max-width: 300px;
+        max-width: 400px;
         width: auto;
     }
-    .page-content-about img {
+    .page .page-content .page-content-about img {
+        border-radius: 0;
         display: block;
         float: none;
         margin: auto;
-        max-width: 550px;
+        max-width: 450px;
         width: 100%;
     }
     .page-content-about-image {
@@ -808,9 +809,12 @@ a {
         font-size: 1rem;
         line-height: 1.5rem;
     }
+    .page .page-content-about img {
+        max-width: 350px;
+    }
     .page .page-content-aside {
         padding: 15px;
-        width: 230px;
+        width: 250px;
     }
     .page .page-content-grid-item {
         flex-basis: 200px;
@@ -928,7 +932,10 @@ a {
         padding-top: 20px;
     }
     .page-content-aside {
-        width: 250px;
+        width: 300px;
+    }
+    .page-content-about img {
+        width: 350px;
     }
     .page-content-grid-item {
         flex-basis: 240px;
