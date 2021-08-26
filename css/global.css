@@ -80,7 +80,8 @@ a {
     line-height: 1.7rem;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: font-size, line-height;
-}.page-content-about strong {
+}
+.page-content-about strong {
     font-weight: 500;
 }
 .page-content-aside {
