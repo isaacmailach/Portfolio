@@ -18,7 +18,7 @@ a {
 }*/
 
 .page-content, .page-content-about img, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .alert-content {
-    border-radius: 5px;
+    border-radius: 12px;
 }
 .page-content a, .alert a, .modal-content-body a {
     font-weight: 700;
