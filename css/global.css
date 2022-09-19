@@ -309,7 +309,7 @@ a {
     transition-property: background-color, margin, padding;
 }
 .page_musical-compositions .page-header-nav {
-    margin: 0 0 50px 0;
+    margin: 0 auto 50px auto;
 }
 .page-header-nav-link {
     font-family: Quicksand;
@@ -707,7 +707,7 @@ a {
         margin: 0 auto 50px auto;
     }
     .page_musical-compositions .page-header-nav {
-        margin: 0;
+        margin: 0 auto;
     }
     .page-header-titlebox {
         height: 100px;
