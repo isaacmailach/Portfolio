@@ -526,10 +526,10 @@ a {
 }
 .modal-content-body-video iframe {
     position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
+  	top:0;
+  	left:0;
+  	width:100%;
+  	height:100%;
     margin: 0;
 }
 .modal-content-header {
@@ -567,6 +567,8 @@ a {
     background-color: rgba(0, 0, 0, 0.2);
 }
 .modal-content-header-image {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0);
     object-fit: cover;
     width: 100%;
 }
