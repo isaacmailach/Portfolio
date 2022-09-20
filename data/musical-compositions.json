@@ -8,7 +8,8 @@
     },
     {
         "id": "0027",
-        "name": "Patrón Perfect&shy;ionists",
+        "name": "Patrón Perfectionists",
+        "name_shy": "Patrón Perfect&shy;ionists",
         "date": "2021",
         "instrumentation": "string quartet, piano",
         "credit": "Sagi Kahane-Rapport"
@@ -29,7 +30,8 @@
     },
     {
         "id": "0025",
-        "name": "Shadow&shy;Light",
+        "name": "ShadowLight",
+        "name_shy": "Shadow&shy;Light",
         "date": "2020",
         "instrumentation": "solo cello, clarinet, piano, harp, string orchestra",
         "credit": "Unknown",
@@ -103,7 +105,8 @@
         "date": "2017",
         "instrumentation": "orchestra and hammered dulcimer",
         "credit": "Sagi Kahane-Rapport",
-        "video": "vXkzh01jyL4"
+        "video": "vXkzh01jyL4",
+        "hidden": true
     },
     {
         "id": "0014",
