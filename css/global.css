@@ -4,18 +4,15 @@ html, body {
     min-height: 100%;
 }
 body {
+    background-attachment: fixed;
     background-image: url('../img/background/background.jpg');
     background-repeat: no-repeat;
     background-size: 1350px;
-    background-attachment: fixed;
 }
 a {
     color: inherit;
     text-decoration: none;
 }
-/*.mobile * {
-    transition: none !important;
-}*/
 
 .page-content, .page-content-about img, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal-content, .modal-content-header-toolbar-player-progress, .alert-content {
     border-radius: 12px;
@@ -72,12 +69,12 @@ a {
 }
 .page-content-about img {
     float: left;
-    margin: 5px 15px 5px 0;
+    margin: 5px 15px 30px 0;
     width: 400px;
 }
 .page-content-about p {
-    font-size: 1.1rem;
-    line-height: 1.7rem;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
     transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: font-size, line-height;
 }
@@ -94,7 +91,7 @@ a {
     width: 350px;
 }
 .page-content-aside-contact {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 30px;
     margin: 15px 0;
 }
@@ -109,7 +106,7 @@ a {
     width: 100%;
 }
 .page-content-aside-social * {
-    margin: 2px 5px 2px 0px;
+    margin: 2px 6px 2px 0px;
 }
 .page-content-aside-social-button {
     position: relative;
@@ -118,7 +115,7 @@ a {
     top: -3px;
 }
 .page-content-aside-social-link {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 400;
 }
 .page-content-embed {
@@ -127,13 +124,15 @@ a {
 .page-content-frame {
     box-sizing: border-box;
     float: left;
+    font-size: 1.1rem;
     min-width: 50%;
     padding: 15px;
     transition: padding 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-content-frame-heading {
     font-family: Quicksand;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: bold;
     margin: 0 0 15px 0;
 }
 .page-content-frame-list {
@@ -212,19 +211,20 @@ a {
 }
 .page-content-grid-item-overlay-name {
     font-size: 2.5rem;
-    font-weight: 400;
+    font-weight: normal;
     line-height: 42px;
     margin: 0;
-
 }
 .page-content-grid-item-overlay-date {
     display: block;
+    font-weight: 500;
+    margin-top: 3px;
 }
 .page-content-grid-item-overlay-instrumentation {
     font-size: 0.8rem;
     font-style: italic;
     font-weight: normal;
-    margin: 0px 0 0 0;
+    margin-top: 3px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -271,12 +271,12 @@ a {
     bottom: 50px;
     font-family: Quicksand;
     font-size: 2.5rem;
-    font-weight: 400;
+    font-weight: normal;
     margin: 0;
 }
 .page-footer-nav {
     font-family: Quicksand;
-    font-size: 1.05rem;
+    font-size: 1rem;
     line-height: 25px;
     margin: 0;
     top: 30px;
@@ -314,7 +314,7 @@ a {
 .page-header-nav-link {
     font-family: Quicksand;
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: bold;
     margin: 0 20px;
     opacity: 0.75;
     text-transform: uppercase;
@@ -380,7 +380,7 @@ a {
     transition: font-size 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-header-titlebox-title-subheading {
-    font-weight: 500;
+    font-weight: normal;
     margin: 0;
     transition: font-size 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -408,7 +408,7 @@ a {
 }
 .alert-content, .modal-content {
     background-color: white;
-    box-shadow: 0px 40px 120px 0px rgba(0,0,0,0.5);
+    box-shadow: 0 40px 120px 0 rgba(0,0,0,0.5);
     margin: auto;
 }
 .alert-content {
@@ -423,12 +423,11 @@ a {
     transition-property: left, padding, right, top;
 }
 .alert-content-body {
-    font-size: 1.1rem;
-    line-height: 1.5rem;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
     margin-bottom: 0;
 }
 .alert-content-button {
-    display: inline-block;
     float: right;
     font-size: 1.2rem;
     margin: 20px 0 0 20px;
@@ -437,7 +436,7 @@ a {
 .alert-content-heading {
     font-family: Quicksand;
     font-size: 2.5rem;
-    font-weight: 400;
+    font-weight: normal;
     margin: 0;
 }
 .modal {
@@ -461,10 +460,10 @@ a {
     opacity: 0.25;
     position: fixed;
     top: 50%;
+    transform: translateY(-50%);
     transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: opacity;
     vertical-align: top;
-    transform: translateY(-50%);
 }
 .modal-arrow:not(.modal-arrow_disabled) {
     cursor: pointer;
@@ -486,21 +485,19 @@ a {
     transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-content-body {
+    font-size: 1.1rem;
     padding: 50px;
     transition: padding 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.modal-content-body * {
-    margin: 15px 0 0 0;
-}
 .modal-content-body blockquote {
     font-style: italic;
-    line-height: 1.5rem;
+    line-height: 1.7rem;
     margin: 2rem;
 }
 .modal-content-body h3 {
     font-family: Quicksand;
     font-size: 2.5rem;
-    font-weight: 400;
+    font-weight: normal;
     margin: 0;
 }
 .modal-content-body h2 {
@@ -510,11 +507,11 @@ a {
     margin: 5px 0 25px 0;
 }
 .modal-content-body p {
-    line-height: 1.5rem;
+    line-height: 1.7rem;
 }
 .modal-content-body small {
     font-family: Quicksand;
-    font-weight: 700;
+    font-weight: bold;
 }
 .modal-content-body-video {
     height: 0;
@@ -525,12 +522,12 @@ a {
     width: 100%;
 }
 .modal-content-body-video iframe {
-    position:absolute;
-  	top:0;
-  	left:0;
-  	width:100%;
   	height:100%;
+    left:0;
     margin: 0;
+    position:absolute;
+    top:0;
+    width:100%;
 }
 .modal-content-header {
     color: white;
@@ -540,8 +537,8 @@ a {
 .modal-content-credit {
     float: right;
     font-size: 0.8rem;
-    opacity: 0.75;
     margin: 10px;
+    opacity: 0.75;
 }
 .modal-content-header-close, .alert-content-close {
     border-bottom-left-radius: 5px;
@@ -755,6 +752,9 @@ a {
         padding-bottom: 100px !important;
         padding-top: 20px !important;
     }
+    .page-content-about img {
+        margin-bottom: 5px;
+    }
     .page-content-grid {
         background-color: rgba(255, 255, 255, 0);
     }
@@ -783,10 +783,6 @@ a {
     }
     .page-content-about h3 {
         font-size: 2rem;
-    }
-    .page-content-about p {
-        font-size: 1rem;
-        line-height: 1.5rem;
     }
     .page-content-about img {
         max-width: 350px;
@@ -818,6 +814,7 @@ a {
     }
     .page-header-titlebox-title-subheading {
         font-size: 20px;
+        font-weight: 600;
         margin: -5px 0 0 0;
     }
 
@@ -840,9 +837,9 @@ a {
     }
 }
 @media (max-width: 600px) {
-    .page-content-frame-list h5, .page-content-frame-list h5 a {
+    /* .page-content-frame-list h5, .page-content-frame-list h5 a {
         font-size: 1rem;
-    }
+    } */
 }
 @media (max-width: 550px) {
     .page-content-aside {
@@ -873,12 +870,11 @@ a {
     }
     .page-header-titlebox-title-heading {
         font-size: 32px;
-        font-weight: 500;
         margin: 0;
     }
     .page-header-titlebox-title-subheading {
         font-size: 18px;
-        font-weight: 500;
+        font-weight: 600;
         margin: -6px 0 0 0;
     }
 }
@@ -886,7 +882,7 @@ a {
     .page-content-grid-item {
         flex-basis: 100%;
         flex-shrink: 1;
-        height: 110px;
+        height: 116px;
     }
     .page-content-grid-item-overlay {
         opacity: 1;
@@ -896,13 +892,13 @@ a {
         line-height: 28px;
     }
     .page-content-grid-item-overlay-instrumentation {
-        bottom: 10px;
+        bottom: 0;
         position: absolute;
         width: 95%;
     }
-    .page-header-nav-link {
-        font-size: 1.1rem;
-    }
+    /* .page-header-nav-link {
+        font-size: 1.2rem;
+    } */
 
 
     .modal .modal-arrow {
@@ -913,7 +909,7 @@ a {
         padding: 0 25px 25px 25px;
     }
     .modal-content-body h3 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     .modal-content-header-image {
         max-height: 250px;
@@ -925,8 +921,8 @@ a {
         clear: both;
     }
     .modal-content-header-toolbar-share {
-        width: 100%;
         text-align: center;
+        width: 100%;
     }
     .modal-content-header-toolbar-share-icon {
         display: inline-block;
@@ -944,6 +940,7 @@ a {
     }
     .page-header-titlebox {
         height: 50px;
+        padding-bottom: 10px;
     }
     .page-header-titlebox-title-heading {
         font-size: 28px;
@@ -959,15 +956,16 @@ a {
         top: 15px;
     }
 }
-@media (max-width: 350px) {
-    body .page .page-header div.page-header-titlebox {
+@media (max-width: 325px) {
+    .page-header-titlebox {
         height: 40px;
     }
-    body .page .page-header h1.page-header-titlebox-title-heading {
+    .page-header-titlebox-title-heading {
         font-size: 26px;
+        font-weight: 600;
         margin: 4px 0 0 0;
     }
-    body .page .page-header h2.page-header-titlebox-title-subheading {
+    .page-header-titlebox-title-subheading {
         display: none;
     }
 }
@@ -975,38 +973,18 @@ a {
 
 @font-face {
     font-family: icon;
+    font-style: normal;
+    font-weight: 400;
     src: url('../font/icon.eot');
     src: url('../font/icon.eot?#iefix') format('embedded-opentype'),
          url('../font/icon.woff2') format('woff2'),
          url('../font/icon.woff') format('woff'),
          url('../font/icon.ttf') format('truetype'),
          url('../font/icon.svg#icon') format('svg');
-    font-weight: 400;
-    font-style: normal;
 }
 @font-face {
     font-family: Quicksand;
-    font-style: normal;
-    font-weight: 200;
-    src: url('../font/Quicksand-Light.ttf') format('truetype');
-}
-@font-face {
-    font-family: Quicksand;
-    font-style: normal;
-    font-weight: 400;
-    src: url('../font/Quicksand-Regular.ttf') format('truetype');
-}
-@font-face {
-    font-family: Quicksand;
-    font-style: normal;
-    font-weight: 500;
-    src: url('../font/Quicksand-Medium.ttf') format('truetype');
-}
-@font-face {
-    font-family: Quicksand;
-    font-style: normal;
-    font-weight: 700;
-    src: url('../font/Quicksand-Bold.ttf') format('truetype');
+    src: url('../font/Quicksand.ttf') format('truetype');
 }
 @font-face {
     font-family: Roboto;
