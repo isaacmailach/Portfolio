@@ -971,51 +971,47 @@ a {
     font-family: icon;
     font-style: normal;
     font-weight: 400;
-    src: url('../font/icon.eot');
-    src: url('../font/icon.eot?#iefix') format('embedded-opentype'),
-         url('../font/icon.woff2') format('woff2'),
-         url('../font/icon.woff') format('woff'),
-         url('../font/icon.ttf') format('truetype'),
-         url('../font/icon.svg#icon') format('svg');
+    src: url('../font/icon.woff2') format('woff2');
 }
 @font-face {
     font-family: Quicksand;
-    font-weight: 1 999;
-    src: url('../font/Quicksand.ttf') format('truetype-variations');
+    font-weight: 100 900;
+    src: url('../font/Quicksand.woff2') format('woff2 supports variations'),
+         url('../font/Quicksand.woff2') format('woff2-variations');
 }
 @font-face {
     font-family: Roboto;
     font-style: normal;
     font-weight: 200;
-    src: url('../font/Roboto-Light.ttf') format('truetype');
+    src: url('../font/Roboto-Light.woff2') format('woff2');
 }
 @font-face {
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
-    src: url('../font/Roboto-Regular.ttf') format('truetype');
+    src: url('../font/Roboto-Regular.woff2') format('woff2');
 }
 @font-face {
     font-family: Roboto;
     font-style: italic;
     font-weight: 400;
-    src: url('../font/Roboto-Italic.ttf') format('truetype');
+    src: url('../font/Roboto-Italic.woff2') format('woff2');
 }
 @font-face {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    src: url('../font/Roboto-Medium.ttf') format('truetype');
+    src: url('../font/Roboto-Medium.woff2') format('woff2');
 }
 @font-face {
     font-family: Roboto;
     font-style: normal;
     font-weight: 700;
-    src: url('../font/Roboto-Bold.ttf') format('truetype');
+    src: url('../font/Roboto-Bold.woff2') format('woff2');
 }
 @font-face {
     font-family: Roboto;
     font-style: italic;
     font-weight: 700;
-    src: url('../font/Roboto-BoldItalic.ttf') format('truetype');
+    src: url('../font/Roboto-BoldItalic.woff2') format('woff2');
 }
