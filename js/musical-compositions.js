@@ -204,7 +204,7 @@ $(document).ready(function () {
         current_id = visible_item_data[current_num].id;
         var modal_header_image = modal_content.querySelector('.modal-content-header-image');
         modal_header_image.src = 'img/musical-compositions/' + current_id + '/cover.jpg';
-        modal_header_image.previousSibling.setAttribute('srcset', 'img/musical-compositions/' + current_id + '/image.jpg, img/musical-compositions/' + current_id + '/image-3x.jpg 2x');
+        modal_header_image.previousSibling.setAttribute('srcset', 'img/musical-compositions/' + current_id + '/image-3x.jpg');
         audio_sources[0].src = 'audio/musical-compositions/' + current_id + '.mp3';
         audio_sources[1].src = 'audio/musical-compositions/' + current_id + '.ogg';
         $('.modal-content-body').append('<h3>' + visible_item_data[current_num].name_shy + '</h3><small>' + visible_item_data[current_num].date + '</small>' + '<h2>For ' + visible_item_data[current_num].instrumentation + '</h2>');
@@ -350,8 +350,7 @@ $(document).ready(function () {
         document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + current_data.name : '');
     }
     function SearchItems (phrase) {
-        /*query.q = phrase;
-        UpdateQueries();*/
+        // Store current positions
         for (var i = 0; i < visible_item_data.length; i++) {
             var search_item = $('[data-num="' + i + '"]');
             var search_item_data = visible_item_data[i];
@@ -364,6 +363,8 @@ $(document).ready(function () {
                 search_item_data.animate = false;
             }
         }
+        // Hide items and store position for when they reappear
+        // Make items re-appear
         for (var i = 0; i < visible_item_data.length; i++) {
             var search_item = $('[data-num="' + i + '"]');
             var search_item_data = visible_item_data[i];
@@ -376,6 +377,7 @@ $(document).ready(function () {
                 search_item.css({'position': '', top: '', left: '', width: ''});
             }
         }
+        // Make items appear in old positions using transforms
         for (var i = 0; i < visible_item_data.length; i++) {
             var search_item = $('[data-num="' + i + '"]');
             var search_item_data = visible_item_data[i];
@@ -388,6 +390,7 @@ $(document).ready(function () {
                 }
             }
         }
+        // Animate return to new position
         setTimeout(function () {
         for (var i = 0; i < visible_item_data.length; i++) {
             var search_item = $('[data-num="' + i + '"]');
@@ -397,6 +400,7 @@ $(document).ready(function () {
             }
         }
         }, 1);
+        // Clear animations
         setTimeout(function () {
             for (var i = 0; i < visible_item_data.length; i++) {
                 var search_item = $('[data-num="' + i + '"]');
@@ -417,11 +421,6 @@ $(document).ready(function () {
         if (query.id) {
             SetModal(visible_item_num[query.id]);
         }
-        /*if (query.q) {
-            var query_text = decodeURI(query.q);
-            SearchItems(query_text);
-            search_input.value = query_text;
-        }*/
     }
 
     function debounce(func, wait, immediate) {
