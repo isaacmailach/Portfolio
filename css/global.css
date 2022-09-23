@@ -211,7 +211,7 @@ a {
 }
 .page-content-grid-item-overlay-name {
     font-size: 2.5rem;
-    font-weight: normal;
+    font-weight: 400;
     line-height: 42px;
     margin: 0;
 }
@@ -380,7 +380,7 @@ a {
     transition: font-size 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page-header-titlebox-title-subheading {
-    font-weight: normal;
+    font-weight: 500;
     margin: 0;
     transition: font-size 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -497,7 +497,7 @@ a {
 .modal-content-body h3 {
     font-family: Quicksand;
     font-size: 2.5rem;
-    font-weight: normal;
+    font-weight: 400;
     margin: 0;
 }
 .modal-content-body h2 {
@@ -511,7 +511,7 @@ a {
 }
 .modal-content-body small {
     font-family: Quicksand;
-    font-weight: bold;
+    font-weight: 600;
 }
 .modal-content-body-video {
     height: 0;
@@ -870,11 +870,11 @@ a {
     }
     .page-header-titlebox-title-heading {
         font-size: 32px;
+        font-weight: 500;
         margin: 0;
     }
     .page-header-titlebox-title-subheading {
         font-size: 18px;
-        font-weight: 600;
         margin: -6px 0 0 0;
     }
 }
@@ -896,10 +896,6 @@ a {
         position: absolute;
         width: 95%;
     }
-    /* .page-header-nav-link {
-        font-size: 1.2rem;
-    } */
-
 
     .modal .modal-arrow {
         top: 115px;
@@ -984,7 +980,8 @@ a {
 }
 @font-face {
     font-family: Quicksand;
-    src: url('../font/Quicksand.ttf') format('truetype');
+    font-weight: 1 999;
+    src: url('../font/Quicksand.ttf') format('truetype-variations');
 }
 @font-face {
     font-family: Roboto;
