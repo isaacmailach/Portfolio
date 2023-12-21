@@ -454,18 +454,27 @@ a {
     opacity: 1;
 }
 .modal-arrow {
+    background-color: rgba(0, 0, 0, 0.4);
     color: white;
     cursor: default;
     font-family: Quicksand;
-    font-size: 6rem;
+    font-size: 5rem;
     font-weight: normal;
+    height: 50px;
     opacity: 0.25;
-    position: fixed;
+    position: absolute;
+    text-align: center;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-15px);
     transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: opacity;
-    vertical-align: top;
+    width: 30px;
+}
+.modal-arrow-icon {
+    display: inline-block;
+    line-height: 50px;
+    transform: translateY(-9px);
+    width: 100%;
 }
 .modal-arrow:not(.modal-arrow_disabled) {
     cursor: pointer;
@@ -475,10 +484,12 @@ a {
     opacity: 1;
 }
 .modal-arrow_left {
-    left: 10px;
+    border-radius: 0 12px 12px 0;
+    left: 0;
 }
 .modal-arrow_right {
-    right: 10px;
+    border-radius: 12px 0 0 12px;
+    right: 0;
 }
 .modal-content {
     max-width: 750px;
@@ -543,7 +554,7 @@ a {
     opacity: 0.75;
 }
 .modal-content-header-close, .alert-content-close {
-    border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 12px;
     height: 30px;
     overflow: hidden;
     position: absolute;
@@ -557,6 +568,7 @@ a {
     font-size: 2rem;
     line-height: 30px;
     text-align: center;
+    transform: translateY(-1px);
     transition: background-color 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-content-header-close, .modal-content-header-close:focus .modal-content-header-close-icon, .modal-content-header-close:hover .modal-content-header-close-icon, .modal-content-header-toolbar {
@@ -829,9 +841,6 @@ a {
     .modal {
         padding: 0;
     }
-    .modal-arrow {
-        top: 12vw;
-    }
     .modal-content {
         min-height: 100%;
     }
@@ -904,9 +913,6 @@ a {
         width: 95%;
     }
 
-    .modal .modal-arrow {
-        top: 115px;
-    }
     .modal-content-body {
         clear: both;
         padding: 0 25px 25px 25px;
