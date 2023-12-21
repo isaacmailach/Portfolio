@@ -272,10 +272,14 @@ $(document).ready(function () {
         popup_open = true;
         $('.modal-content-header-close').focus();
         setTimeout(function () {$('.modal').addClass('open')}, 100);
-        var previous_img = new Image();
-        previous_img.src = 'img/musical-compositions/' + visible_item_data[parseInt(current_num) - 1].id + '/cover.jpg';
-        var next_img = new Image();
-        next_img.src = 'img/musical-compositions/' + visible_item_data[parseInt(current_num) + 1].id + '/cover.jpg';
+        if (next_item) {
+            var previous_img = new Image();
+            previous_img.src = 'img/musical-compositions/' + visible_item_data[parseInt(current_num) - 1].id + '/cover.jpg';
+        }
+        if (previous_item) {
+            var next_img = new Image();
+            next_img.src = 'img/musical-compositions/' + visible_item_data[parseInt(current_num) + 1].id + '/cover.jpg';
+        }
     }
     function CloseModal () {
         $('.page-content-grid-item[data-num=' + current_num + ']').focus();
@@ -311,8 +315,21 @@ $(document).ready(function () {
         var current_name = encodeURI(current_data.name);
         $('.modal-content-header-toolbar-share-icon_email').attr('href', 'mailto:?body=' + current_url + '%3Fid%3D' + current_id + '&subject=' + current_name);
         $('.modal-content-header-toolbar-share-icon_facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + current_url + '%3Fid%3D' + current_id + '&t=' + current_name);
-        $('.modal-content-header-toolbar-share-icon_twitter').attr('href', 'https://twitter.com/share?url=' + current_url + '%3Fid%3D' + current_id + '&text=' + current_name);
-        $('.modal-content-header-toolbar-share-icon_share').css('disply','none');
+    }
+    if (!navigator.share) {
+        $('.modal-content-header-toolbar-share-icon_share').css('display','none');
+    } else {
+        document.querySelector('.modal-content-header-toolbar-share-icon_share').addEventListener('click', async () => {
+            let data = {
+                title: document.title, 
+                url: document.URL
+            };
+            try {
+                let result = await navigator.share(data);	
+            } catch(e) {
+                console.error(e);
+            }
+        });
     }
     function OpenAlert (type) {
         $('.alert_' + type).css('pointer-events', 'auto');
@@ -346,8 +363,8 @@ $(document).ready(function () {
                 queryString += prop + '=' + query[prop];
             }
         }
-        window.history.replaceState('', 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + current_data.name : ''), window.location.pathname + queryString);
-        document.title = 'Isaac Mailach - Musical Compositions' + (query.id ? ' - ' + current_data.name : '');
+        window.history.replaceState('', 'Isaac Mailach - Music' + (query.id ? ' - ' + current_data.name : ''), window.location.pathname + queryString);
+        document.title = 'Isaac Mailach - Music' + (query.id ? ' - ' + current_data.name : '');
     }
     function SearchItems (phrase) {
         // Store current positions
