@@ -132,14 +132,12 @@ $(document).ready(function () {
     });
 
     play_button.addEventListener('click', ToggleAudio);
-    document.querySelector('.modal-arrow_left').addEventListener('click', function () {
-        event.stopPropagation();
+    document.querySelector('.modal-header-arrow_left').addEventListener('click', function () {
         if (popup_open && next_item) {
             NextItem();
         }
     });
-    document.querySelector('.modal-arrow_right').addEventListener('click', function () {
-        event.stopPropagation();
+    document.querySelector('.modal-header-arrow_right').addEventListener('click', function () {
         if (popup_open && previous_item) {
             PreviousItem();
         }
@@ -239,12 +237,12 @@ $(document).ready(function () {
         $('.page-content-grid-item[data-num!=' + current_num + ']').removeClass('page-content-grid-item_focus');
     }
     function ResetModal () {
-        CheckFirstLast();
         $('.modal-content').addClass('hide');
         setTimeout(function () {
+            CheckFirstLast();
             ClearModal();
             UpdateModal();
-        }, 501);
+        }, 401);
         setTimeout(function () {
             $('.modal-content').removeClass('hide');
         }, 601);
@@ -252,17 +250,17 @@ $(document).ready(function () {
     function CheckFirstLast () {
         if (current_num == 0) {
             next_item = false;
-            $('.modal-arrow_left').addClass('modal-arrow_disabled');
+            $('.modal-header-arrow_left').addClass('modal-header-arrow_disabled');
         } else {
             next_item = true;
-            $('.modal-arrow_left').removeClass('modal-arrow_disabled');
+            $('.modal-header-arrow_left').removeClass('modal-header-arrow_disabled');
         }
         if (current_num == visible_item_data.length - 1) {
             previous_item = false;
-            $('.modal-arrow_right').addClass('modal-arrow_disabled');
+            $('.modal-header-arrow_right').addClass('modal-header-arrow_disabled');
         } else {
             previous_item = true;
-            $('.modal-arrow_right').removeClass('modal-arrow_disabled');
+            $('.modal-header-arrow_right').removeClass('modal-header-arrow_disabled');
         }
     }
     function OpenModal () {
