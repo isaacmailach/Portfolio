@@ -46,7 +46,7 @@ $(document).ready(function () {
                 item.setAttribute('style', 'flex-grow: ' + parseInt(100 * Math.random()));
                 var template = document.importNode(item_template.content, true);
                 template.querySelector('.page-content-grid-item-image').src = 'img/musical-compositions/' + temp_item_data.id + '/image.jpg';
-                template.querySelector('.page-content-grid-item-image').setAttribute('srcset', 'img/musical-compositions/' + temp_item_data.id + '/image.jpg, img/musical-compositions/' + temp_item_data.id + '/image-3x.jpg 2x');
+                template.querySelector('.page-content-grid-item-image').setAttribute('srcset', 'img/musical-compositions/' + temp_item_data.id + '/image.webp, img/musical-compositions/' + temp_item_data.id + '/image-3x.webp 2x');
                 template.querySelector('.page-content-grid-item-image').setAttribute('alt', temp_item_data.name);
                 template.querySelector('.page-content-grid-item-overlay-name').innerHTML = temp_item_data.name_shy;
                 template.querySelector('.page-content-grid-item-overlay-date').innerText = temp_item_data.date;
