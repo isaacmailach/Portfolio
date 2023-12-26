@@ -1,3 +1,11 @@
+:root {
+    --backdrop-filter: blur(5px);
+    --background-color-dark: rgba(0, 0, 0, 0.4);
+    --background-color-dark-focus: rgba(0, 0, 0, 0.6);
+    --background-color-light: rgba(255, 255, 255, 0.6);
+    --border-radius: 12px;
+    --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
 html, body {
     font-family: Roboto, Arial, sans-serif;
     margin: 0;
@@ -15,12 +23,13 @@ a {
 }
 
 .page-content, .page-content-about img, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal, .modal-header-toolbar-player-progress, .alert-content {
-    border-radius: 12px;
+    border-radius: var(--border-radius);
 }
 .page-content a, .alert a, .modal-body a {
     font-weight: 700;
     opacity: 1;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: opacity;
 }
 .page-content a:focus, .page-content a:hover, .alert a:focus, .alert a:hover, .modal-body a:focus, .modal-body a:hover {
     opacity: 0.75;
@@ -36,12 +45,11 @@ a {
     min-height: 500px;
     overflow: visible;
     margin: 0 auto 100px auto;
-    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
-    transition: background-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: padding;
 }
 .page_about .page-content, .page_filmography .page-content, .page_recordings .page-content {
-    background-color: rgba(255, 255, 255, 0.6);
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--background-color-light);
 }
 .page_about .page-content {
     overflow: hidden;
@@ -50,7 +58,6 @@ a {
     box-sizing: border-box;
     overflow: hidden;
     padding: 15px;
-    transition: padding 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .page_recordings .page-content {
     box-sizing: border-box;
@@ -58,8 +65,6 @@ a {
 }
 .page-content-about {
     padding: 30px;
-    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: background-color, padding;
 }
 
 .page-content-about h5 {
@@ -70,13 +75,14 @@ a {
 .page-content-about img {
     float: left;
     margin: 5px 20px 30px 0;
-    transition: width 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: width;
     width: 400px;
 }
 .page-content-about p {
     font-size: 1.2rem;
     line-height: 1.8rem;
-    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
     transition-property: font-size, line-height;
 }
 .page-content-about strong {
@@ -87,7 +93,7 @@ a {
     float: right;
     margin: 30px 0 30px 30px;
     padding: 30px 30px 15px 30px;
-    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
     transition-property: padding, width;
     width: 350px;
 }
@@ -129,7 +135,8 @@ a {
     font-size: 1.1rem;
     min-width: 50%;
     padding: 15px;
-    transition: padding 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: padding;
 }
 .page-content-frame-heading {
     font-family: Quicksand;
@@ -152,7 +159,7 @@ a {
     display: inline;
     font-weight: 400;
     font-size: 1.2rem;
-    transition: 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
     transition-property: font-size, opacity;
 }
 .page-content-grid {
@@ -164,7 +171,8 @@ a {
     max-width: 1250px;
     overflow: visible;
     padding: 6px;
-    transition: background-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: background-color;
 }
 .page-content-grid-item {
     animation-fill-mode: forwards !important;
@@ -174,7 +182,7 @@ a {
     height: 250px;
     margin: 6px;
     max-width: 400px;
-    overflow: hidden;
+    overflow: clip;
     position: relative;
     transform-origin: left;
     transition-duration: 0.28s, 0.28s, 0.28s, 1s;
@@ -196,7 +204,8 @@ a {
     top: 0;
 }
 .page-content-grid-item-overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: var(--backdrop-filter);
+    background-color: var(--background-color-dark);
     bottom: 0;
     color: white;
     font-family: Quicksand;
@@ -206,7 +215,8 @@ a {
     position: absolute;
     right: 0;
     top: 0;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: opacity;
 }
 .page-content-grid-item:focus .page-content-grid-item-overlay, .page-content-grid-item-overlay:hover, .page-content-grid-item_focus .page-content-grid-item-overlay {
     opacity: 1;
@@ -227,20 +237,22 @@ a {
     font-style: italic;
     font-weight: normal;
     margin-top: 3px;
-    overflow: hidden;
+    overflow: clip;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 .page-content-search {
     float: right;
     margin: 0 10px 25px 0;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: opacity;
 }
 .page-content-search-icon {
     cursor: pointer;
     display: inline-block;
     opacity: 0.3;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: opacity;
 }
 .page-content-search-input {
     border: 1px solid black;
@@ -251,7 +263,8 @@ a {
     opacity: 0.3;
     outline: 0;
     padding: 5px;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: opacity;
 }
 .page-content-search-input:focus, .page-content-search-input:focus + .page-content-search-icon {
     opacity: 1;
@@ -307,7 +320,7 @@ a {
     max-width: 1250px;
     overflow: auto;
     padding: 15px 0;
-    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
     transition-property: background-color, margin, padding;
 }
 .page_musical-compositions .page-header-nav {
@@ -320,7 +333,7 @@ a {
     margin: 0 20px;
     opacity: 0.75;
     text-transform: uppercase;
-    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
     transition-property: opacity, font-size, margin, text-decoration;
 }
 .page-header-nav-link u {
@@ -328,7 +341,8 @@ a {
     border-bottom-style: solid;
     border-bottom-width: 2px;
     text-decoration: none;
-    transition: border-bottom-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: border-bottom-color;
 }
 .page-header-nav-link_current {
     opacity: 1;
@@ -353,14 +367,15 @@ a {
     height: 120px;
     margin: 0 0 100px 0;
     padding: 15px;
-    transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
     transition-property: background-color, height, margin;
 }
 .page-header-titlebox-logo {
     float: left;
     height: 100%;
     opacity: 0.75;
-    transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: opacity;
 }
 .page-header-titlebox-logo_link:focus .page-header-titlebox-logo, .page-header-titlebox-logo:hover {
     opacity: 1;
@@ -379,12 +394,14 @@ a {
     font-size: 3.75rem;
     font-weight: 400;
     margin: 5px 0 0 0;
-    transition: font-size 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: font-size;
 }
 .page-header-titlebox-title-subheading {
     font-weight: 500;
     margin: 0;
-    transition: font-size 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: font-size;
 }
 
 .alert {
@@ -421,7 +438,7 @@ a {
     position: absolute;
     right: 50px;
     top: 50px;
-    transition: 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
     transition-property: left, padding, right, top;
 }
 .alert-content-body {
@@ -441,21 +458,9 @@ a {
     font-weight: normal;
     margin: 0;
 }
-/* .modal {
-    backdrop-filter: blur(5px);
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    overflow: auto;
-    pointer-events: none;
-    transition: 0.5s,0.27s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: opacity, padding;
-} */
 .modal {
     border: 0;
-    margin-bottom: 50px;
-    margin-left: max(50px, calc((100vw - 750px) / 2));
-    margin-right: max(50px, calc((100vw - 750px) / 2));
-    margin-top: 50px;
+    margin: 50px auto;
     max-height: calc(100% - 100px);
     max-width: 750px;
     opacity: 0;
@@ -463,6 +468,7 @@ a {
     scrollbar-width: thin;
     transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: opacity;
+    width: calc(100% - 100px);
 }
 .modal.open {
     opacity: 1;
@@ -472,7 +478,7 @@ a {
     pointer-events: none;
 }
 .modal::backdrop {
-    backdrop-filter: blur(5px);
+    backdrop-filter: var(--backdrop-filter);
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
     padding: 50px;
@@ -486,7 +492,6 @@ a {
     font-size: 1.1rem;
     padding: 50px;
     position: relative;
-    transition: padding 0.27s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-body blockquote {
     font-style: italic;
@@ -514,7 +519,7 @@ a {
 }
 .modal-body-video {
     height: 0;
-    overflow: hidden;
+    overflow: clip;
     padding-bottom: 56.25%;
     padding-top:30px;
     position: relative;
@@ -540,11 +545,11 @@ a {
     opacity: 0.75;
 }
 .modal-header-arrow, .modal-header-close, .modal-header-toolbar {
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
+    background-color: var(--background-color-dark);
+    backdrop-filter: var(--backdrop-filter);
 }
 .modal-header-arrow:focus, .modal-header-arrow:hover, .modal-header-close:focus, .modal-header-close:hover, .alert-content-close:focus, .alert-content-close:hover {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: var(--background-color-dark-focus);
 }
 .modal-header-arrow {
     color: white;
@@ -554,7 +559,7 @@ a {
     font-weight: normal;
     height: 50px;
     opacity: 1;
-    overflow: hidden;
+    overflow: clip;
     position: absolute;
     text-align: center;
     top: 50%;
@@ -577,21 +582,22 @@ a {
     cursor: pointer;
 }
 .modal-header-arrow_left {
-    border-radius: 0 12px 12px 0;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
     left: 0;
 }
 .modal-header-arrow_right {
-    border-radius: 12px 0 0 12px;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
     right: 0;
 }
 .modal-header-close, .alert-content-close {
-    border-bottom-left-radius: 12px;
+    border-bottom-left-radius: var(--border-radius);
     height: 30px;
-    overflow: hidden;
+    overflow: clip;
     position: absolute;
     right: 0;
     top: 0;
-    transition: background-color 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: background-color;
     width: 30px;
 }
 .modal-header-close-icon, .alert-content-close-icon {
@@ -616,7 +622,7 @@ a {
     grid-template-columns: 1fr auto;
     height: 40px;
     left: 0;
-    overflow: hidden;
+    overflow: clip;
     position: absolute;
     right: 0;
 }
@@ -627,7 +633,8 @@ a {
 .modal-header-toolbar-player-play, .modal-header-toolbar-share-icon {
     cursor: pointer;
     padding: 0 12px;
-    transition: background-color 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: background-color;
 }
 .modal-header-toolbar-player-play:focus, .modal-header-toolbar-player-play:hover, a:focus > .modal-header-toolbar-share-icon, .modal-header-toolbar-share-icon:hover {
     background-color: rgba(0, 0, 0, 0.4);
@@ -638,7 +645,7 @@ a {
     display: grid;
     grid-area: player;
     grid-template-columns: auto 1fr auto;
-    overflow: hidden;
+    overflow: clip;
 }
 .modal-header-toolbar-player-play {
     font-size: 1.4rem;
@@ -652,14 +659,15 @@ a {
     cursor: pointer;
     height: 20px;
     margin: 10px;
-    overflow: hidden;
+    overflow: clip;
     position: relative;
 }
 .modal-header-toolbar-player-progress-loaded {
     height: 100%;
     position: absolute;
     top: 0;
-    transition: width 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: width;
     width: 0;
 }
 .modal-header-toolbar-player-progress-played {
@@ -667,7 +675,8 @@ a {
     height: 100%;
     position: absolute;
     top: 0;
-    transition: width 0.27s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    transition-property: width;
     width: 0;
 }
 .modal-header-toolbar-player-time {
@@ -683,7 +692,7 @@ a {
     grid-template-columns: repeat(3, min-content);
     grid-template-rows: 1fr;
     justify-content: center;
-    overflow: hidden;
+    overflow: clip;
 }
 .modal-header-toolbar-share-icon {
     font-size: 1.2rem;
@@ -692,7 +701,7 @@ a {
 .hide_search {
     opacity: 0;
     pointer-events: none;
-    overflow: hidden;
+    overflow: clip;
 }
 .hide {
     opacity: 0;
@@ -999,6 +1008,13 @@ a {
     }
     .page-header-titlebox-title-subheading {
         display: none;
+    }
+}
+@media (max-height: 400px) {
+    .modal {
+        margin-bottom: 0;
+        margin-top: 0;
+        max-height: 100%;
     }
 }
 

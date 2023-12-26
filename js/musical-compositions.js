@@ -349,7 +349,6 @@ $(document).ready(function () {
     function OpenAlert (type) {
         $('.alert_' + type).css('pointer-events', 'auto');
         $('.alert_' + type).addClass('open');
-        $('.alert_' + type + ' .alert-content-close').focus();
     }
     function CloseAlert (type) {
         if (type == "all") {
