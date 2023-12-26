@@ -106,17 +106,19 @@ $(document).ready(function () {
         }
     });
     modal.addEventListener('click', function () {
-        const rect = event.target.getBoundingClientRect();
-        const clickedInDialog = (
-            rect.top <= event.clientY &&
-            event.clientY <= rect.top + rect.height &&
-            rect.left <= event.clientX &&
-            event.clientX <= rect.left + rect.width
-        );
-        if (clickedInDialog === false)
-            CloseModal();
+        if (event.target === event.currentTarget) {
+            const rect = modal.getBoundingClientRect();
+            const clickedInDialog = (
+                rect.top <= event.clientY &&
+                event.clientY <= rect.top + rect.height &&
+                rect.left <= event.clientX &&
+                event.clientX <= rect.left + rect.width
+            );
+            if (clickedInDialog === false) {
+                CloseModal();
+            }
+        }
     });
-    // modal.addEventListener('click', CloseModal);
     modal.querySelector('.modal-header-close').addEventListener('click', CloseModal);
 
     document.querySelector('.alert_no-id .alert-content-close').addEventListener('click', function () {
@@ -259,16 +261,20 @@ $(document).ready(function () {
         if (current_num == 0) {
             next_item = false;
             $('.modal-header-arrow_left').addClass('modal-header-arrow_disabled');
+            document.querySelector(".modal-header-arrow_left").tabIndex = -1;
         } else {
             next_item = true;
             $('.modal-header-arrow_left').removeClass('modal-header-arrow_disabled');
+            document.querySelector(".modal-header-arrow_left").tabIndex = 0;
         }
         if (current_num == visible_item_data.length - 1) {
             previous_item = false;
             $('.modal-header-arrow_right').addClass('modal-header-arrow_disabled');
+            document.querySelector(".modal-header-arrow_right").tabIndex = -1;
         } else {
             previous_item = true;
             $('.modal-header-arrow_right').removeClass('modal-header-arrow_disabled');
+            document.querySelector(".modal-header-arrow_right").tabIndex = 0;
         }
     }
     function OpenModal () {

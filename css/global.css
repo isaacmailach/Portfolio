@@ -461,7 +461,8 @@ a {
     opacity: 0;
     padding: 0;
     scrollbar-width: thin;
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: margin, opacity;
 }
 .modal.open {
     opacity: 1;
@@ -870,9 +871,7 @@ a {
     }
 
     .modal {
-        padding: 0;
-    }
-    .modal {
+        margin: 0;
         min-height: 100%;
     }
 }
