@@ -110,37 +110,35 @@
             </footer>
         </div>
         <!-- Popups -->
-        <div class="modal">
-            <div class="modal-content">
-                <div class="modal-content-header">
-                    <picture><source media="(max-width: 450px)" /><img class="modal-content-header-image" alt="Cover image" style="width: 100%; height: auto;" width="1000" height="300" /></picture>
-                    <div class="modal-content-header-close" title="Close" tabindex="0"><div class="modal-content-header-close-icon">&times;</div></div>
-                    <div class="modal-arrow modal-arrow_left" tabindex="0"><span class="modal-arrow-icon">&#x2039;</span></div>
-                    <div class="modal-arrow modal-arrow_right" tabindex="0"><span class="modal-arrow-icon">&#x203a;</span></div>
-                    <div class="modal-content-header-toolbar">
-                        <div class="modal-content-header-toolbar-share">
-                            <a class="modal-content-header-toolbar-share-icon_email" title="Email" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" target="_blank"><div class="modal-content-header-toolbar-share-icon icon">&#xf0e0;</div></a>
-                            <a class="modal-content-header-toolbar-share-icon_facebook" title="Facebook" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=330,width=583');return false;" target="_blank"><div class="modal-content-header-toolbar-share-icon brand">&#xf09a;</div></a>
-							<a class="modal-content-header-toolbar-share-icon_share" title="Share" target="_blank"><div class="modal-content-header-toolbar-share-icon icon">&#xf1e0;</div></a>
+        <dialog class="modal">
+            <div class="modal-header">
+                <picture><source media="(max-width: 450px)" /><img class="modal-header-image" alt="Cover image" style="width: 100%; height: auto;" width="1000" height="300" /></picture>
+                <div class="modal-header-close" title="Close" tabindex="0"><div class="modal-header-close-icon">&times;</div></div>
+                <div class="modal-header-arrow modal-header-arrow_left" tabindex="0"><div class="modal-header-arrow-icon">&#x2039;</div></div>
+                <div class="modal-header-arrow modal-header-arrow_right" tabindex="0"><div class="modal-header-arrow-icon">&#x203a;</div></div>
+                <div class="modal-header-toolbar">
+                    <div class="modal-header-toolbar-player">
+                        <div class="modal-header-toolbar-player-play icon" title="Play/Pause" tabindex="0">&#xf04b;</div>
+                        <div class="modal-header-toolbar-player-progress">
+                            <div class="modal-header-toolbar-player-progress-loaded"></div>
+                            <div class="modal-header-toolbar-player-progress-played"></div>
                         </div>
-                        <div class="modal-content-header-toolbar-player">
-                            <div class="modal-content-header-toolbar-player-play icon" title="Play/Pause" tabindex="0">&#xf04b;</div>
-                            <div class="modal-content-header-toolbar-player-time">0:00 / 0:00</div>
-                            <div class="modal-content-header-toolbar-player-progress">
-                                <div class="modal-content-header-toolbar-player-progress-loaded"></div>
-                                <div class="modal-content-header-toolbar-player-progress-played"></div>
-                            </div>
-                        </div>
+                        <div class="modal-header-toolbar-player-time">0:00 / 0:00</div>
+                    </div>
+                    <div class="modal-header-toolbar-share">
+                        <a class="modal-header-toolbar-share-icon_email" title="Email" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" target="_blank"><div class="modal-header-toolbar-share-icon icon">&#xf0e0;</div></a>
+                        <a class="modal-header-toolbar-share-icon_facebook" title="Facebook" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=330,width=583');return false;" target="_blank"><div class="modal-header-toolbar-share-icon brand">&#xf09a;</div></a>
+                        <a class="modal-header-toolbar-share-icon_share" title="Share" target="_blank" tabindex="0"><div class="modal-header-toolbar-share-icon icon">&#xf1e0;</div></a>
                     </div>
                 </div>
-                <div class="modal-content-credit"></div>
-                <div class="modal-content-body"></div>
-                <audio class="modal-content-audio" preload="auto">
-                    <source type="audio/mp3" />
-                    <source type="audio/ogg" />
-                </audio>
             </div>
-        </div>
+            <div class="modal-credit"></div>
+            <div class="modal-body"></div>
+            <audio class="modal-audio" preload="auto">
+                <source type="audio/mp3" />
+                <source type="audio/ogg" />
+            </audio>
+        </dialog>
         <div class="alert alert_no-id">
             <div class="alert-content">
                 <div class="alert-content-close" title="Close" tabindex="0"><div class="alert-content-close-icon">&times;</div></div>
