@@ -284,7 +284,6 @@ $(document).ready(function () {
         popup_open = true;
         setTimeout(function () {
             modal_J.addClass('open');
-            modal.showModal();
         }, 100);
         if (next_item) {
             var previous_img = new Image();

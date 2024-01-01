@@ -22,7 +22,7 @@ a {
     text-decoration: none;
 }
 
-.page-content, .page-content-about img, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-header-nav, .page-header-titlebox, .page-header-titlebox-logo, .modal, .modal-header-toolbar-player-progress, .alert-content {
+.page-content, .page-content-about img, .page-content-aside-portrait, .page-content-aside-search-inputbox-input, .page-content-grid, .page-content-grid-item, .page-content-grid-item-overlay, .page-content-search-input, .page-nav, .page-header, .page-header-logo, .modal, .modal-header-toolbar-player-progress, .alert-content {
     border-radius: var(--border-radius);
 }
 .page-content a, .alert a, .modal-body a {
@@ -36,17 +36,15 @@ a {
 }
 
 .page {
-    padding: 100px 100px 0 100px;
-    transition: padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    display: grid;
+    grid-template-columns: [page-start] minmax(100px, 1fr) [content-start] max(1250px) [content-end] minmax(100px, 1fr) [page-end];
+    grid-template-rows: [page-start] 100px [header-start] auto [header-end] 100px [nav-start] auto [nav-end] 100px [content-start] auto [content-end] 100px [footer-start] auto [footer-end page-end];
 }
 .page-content {
-    clear: both;
-    max-width: 1250px;
+    grid-area: content;
     min-height: 500px;
-    overflow: visible;
-    margin: 0 auto 100px auto;
-    transition: var(--transition);
-    transition-property: padding;
+    position: relative;
+    /* overflow: visible; */
 }
 .page_about .page-content, .page_filmography .page-content, .page_recordings .page-content {
     background-color: var(--background-color-light);
@@ -65,12 +63,14 @@ a {
 }
 .page-content-about {
     padding: 30px;
+    text-wrap: pretty;
 }
 
 .page-content-about h5 {
     font-size: 1.8rem;
     font-weight: 200;
     margin: 10px 0;
+    text-wrap: balance;
 }
 .page-content-about img {
     float: left;
@@ -168,11 +168,9 @@ a {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
-    max-width: 1250px;
+    min-height: 100px;
     overflow: visible;
     padding: 6px;
-    transition: var(--transition);
-    transition-property: background-color;
 }
 .page-content-grid-item {
     animation-fill-mode: forwards !important;
@@ -206,15 +204,12 @@ a {
 .page-content-grid-item-overlay {
     backdrop-filter: var(--backdrop-filter);
     background-color: var(--background-color-dark);
-    bottom: 0;
     color: white;
     font-family: Quicksand;
-    left: 0;
+    inset: 0;
     opacity: 0;
     padding: 20px;
     position: absolute;
-    right: 0;
-    top: 0;
     transition: var(--transition);
     transition-property: opacity;
 }
@@ -242,8 +237,11 @@ a {
     white-space: nowrap;
 }
 .page-content-search {
-    float: right;
-    margin: 0 10px 25px 0;
+    margin-bottom: 25px;
+    margin-right: 10px;
+    bottom: 100%;
+    position: absolute;
+    right: 0;
     transition: var(--transition);
     transition-property: opacity;
 }
@@ -271,13 +269,15 @@ a {
 }
 .page-footer {
     background-color: #262626;
-    clear: both;
     color: white;
+    grid-column: page;
+    grid-row: footer;
     height: 120px;
     padding: 50px;
+    position: relative;
     text-align: center;
 }
-.page-footer, .page-footer-logo, .page-footer-nav {
+.page-footer-logo, .page-footer-nav {
     left: 0;
     position: absolute;
     right: 0;
@@ -310,23 +310,17 @@ a {
     right: 0;
 }
 .page-header {
-    margin: 0 auto;
-    max-width: 1250px;
+    grid-column: content;
+    grid-row: header;
 }
-.page-header-nav {
+.page-nav {
     background-color: rgba(255, 255, 255, 0.6);
-    clear: both;
-    margin: 0 auto 100px auto;
-    max-width: 1250px;
+    grid-column: content;
+    grid-row: nav;
     overflow: auto;
     padding: 15px 0;
-    transition: var(--transition);
-    transition-property: background-color, margin, padding;
 }
-.page_musical-compositions .page-header-nav {
-    margin: 0 auto 50px auto;
-}
-.page-header-nav-link {
+.page-nav-link {
     font-family: Quicksand;
     font-size: 1.2rem;
     font-weight: bold;
@@ -336,7 +330,7 @@ a {
     transition: var(--transition);
     transition-property: opacity, font-size, margin, text-decoration;
 }
-.page-header-nav-link u {
+.page-nav-link u {
     border-bottom-color: rgba(0, 0, 0, 0);
     border-bottom-style: solid;
     border-bottom-width: 2px;
@@ -344,60 +338,57 @@ a {
     transition: var(--transition);
     transition-property: border-bottom-color;
 }
-.page-header-nav-link_current {
+.page-nav-link_current {
     opacity: 1;
 }
-.page .page-header-nav-link_current u {
+.page .page-nav-link_current u {
     border-bottom-color: rgba(0, 0, 0, 1);
 }
-.page-header-nav-link:not(.page-header-nav-link_current):focus, .page-header-nav-link:not(.page-header-nav-link_current):hover {
+.page-nav-link:not(.page-nav-link_current):focus, .page-nav-link:not(.page-nav-link_current):hover {
     opacity: 1;
 }
-.page-header-nav-link:not(.page-header-nav-link_current):focus u, .page-header-nav-link:not(.page-header-nav-link_current):hover u {
+.page-nav-link:not(.page-nav-link_current):focus u, .page-nav-link:not(.page-nav-link_current):hover u {
     border-bottom-color: rgba(0, 0, 0, 1);
 }
-.page-header-nav-link_left {
+.page-nav-link_left {
     float: left;
 }
-.page-header-nav-link_right {
+.page-nav-link_right {
     float: right;
 }
-.page-header-titlebox {
+.page-header {
     background-color: rgba(255, 255, 255, 0.6);
     height: 120px;
-    margin: 0 0 100px 0;
     padding: 15px;
-    transition: var(--transition);
-    transition-property: background-color, height, margin;
 }
-.page-header-titlebox-logo {
+.page-header-logo {
     float: left;
     height: 100%;
     opacity: 0.75;
     transition: var(--transition);
     transition-property: opacity;
 }
-.page-header-titlebox-logo_link:focus .page-header-titlebox-logo, .page-header-titlebox-logo:hover {
+.page-header-logo_link:focus .page-header-logo, .page-header-logo:hover {
     opacity: 1;
 }
-.page-header-titlebox-logobox-logo {
+.page-header-logobox-logo {
     height: 100%;
 }
-.page-header-titlebox-title {
+.page-header-title {
     font-family: Quicksand;
     height: 100%;
     overflow: hidden;
     padding: 0 0 0 30px;
     text-transform: uppercase;
 }
-.page-header-titlebox-title-heading {
+.page-header-title-heading {
     font-size: 3.75rem;
     font-weight: 400;
     margin: 5px 0 0 0;
     transition: var(--transition);
     transition-property: font-size;
 }
-.page-header-titlebox-title-subheading {
+.page-header-title-subheading {
     font-weight: 500;
     margin: 0;
     transition: var(--transition);
@@ -492,6 +483,7 @@ a {
     font-size: 1.1rem;
     padding: 50px;
     position: relative;
+    text-wrap: pretty;
 }
 .modal-body blockquote {
     font-style: italic;
@@ -735,10 +727,8 @@ a {
 
 @media (max-width: 1500px) {
     .page {
-        padding: 75px;
-    }
-    .page_musical-compositions .page-content {
-        padding-top: 20px;
+        grid-template-columns: [page-start] minmax(75px, 1fr) [content-start] minmax(auto, 1250px) [content-end] minmax(75px, 1fr) [page-end];
+        grid-template-rows: [page-start] 75px [header-start] auto [header-end] 75px [nav-start] auto [nav-end] 75px [content-start] auto [content-end] 100px [footer-start] auto [footer-end page-end];
     }
     .page-content-aside {
         width: 300px;
@@ -757,24 +747,20 @@ a {
         font-size: 2.25rem;
         line-height: 38px;
     }
-    .page-header-nav {
-        margin: 0 auto 50px auto;
+    .page-content-search {
+        margin-bottom: 10px;
     }
-    .page_musical-compositions .page-header-nav {
-        margin: 0 auto;
-    }
-    .page-header-titlebox {
+    .page-header {
         height: 100px;
-        margin: 0 0 50px 0;
     }
-    .page-header-titlebox-title {
+    .page-header-title {
         padding: 0 0 0 15px;
     }
-    .page-header-titlebox-title-heading {
+    .page-header-title-heading {
         font-size: 55px;
         margin: 3px 0 0 0;
     }
-    .page-header-titlebox-title-subheading {
+    .page-header-title-subheading {
         font-size: 24px;
         margin: -5px 0 0 0;
     }
@@ -786,11 +772,18 @@ a {
 }
 @media (max-width: 1250px) {
     .page {
-        padding: 50px;
+        grid-template-columns: [page-start] minmax(50px, 1fr) [content-start] minmax(auto, 1250px) [content-end] minmax(50px, 1fr) [page-end];
+        grid-template-rows: [page-start] 50px [header-start] auto [header-end] 50px [nav-start] auto [nav-end] 50px [content-start] auto [content-end] 100px [footer-start] auto [footer-end page-end];
     }
     .page-content-grid-item {
         flex-basis: 225px;
         height: 225px;
+    }
+    .page-content-search {
+        bottom: 0;
+        float: right;
+        margin-bottom: 10px;
+        position: relative;
     }
 }
 @media (max-width: 1000px) {
@@ -798,37 +791,32 @@ a {
         background-image: none;
     }
     .page {
-        padding: 20px;
+        grid-template-columns: [page-start] minmax(20px, 1fr) [content-start] minmax(auto, 1250px) [content-end] minmax(20px, 1fr) [page-end];
+        grid-template-rows: [page-start] 20px [header-start] auto [header-end] 10px [nav-start] auto [nav-end] 20px [content-start] auto [content-end] 100px [footer-start] auto [footer-end page-end];
     }
     .page-content{
         background-color: rgba(255, 255, 255, 0.6);
     }
     .page-content {
         border-radius: 0;
-        margin: 0 auto;
-        padding-bottom: 100px !important;
-        padding-top: 20px !important;
     }
     .page-content-about img {
         margin-bottom: 5px;
     }
     .page-content-grid {
-        background-color: rgba(255, 255, 255, 0);
+        background-color: transparent;
     }
-    .page-header-nav {
-        background-color: rgba(255, 255, 255, 1);
+    .page-nav {
+        background-color: white;
         border-bottom: 1px solid rgba(0, 0, 0, 0.25);
         border-radius: 0;
-        margin: 0;
         position: sticky;
         top: 0;
         z-index: 10;
     }
-    .page-header-titlebox {
-        background-color: rgba(255, 255, 255, 0);
-        background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.75));
+    .page-header {
+        background-color: transparent;
         border-radius: 0;
-        margin: 0;
     }
 }
 @media (max-width: 800px) {
@@ -842,7 +830,8 @@ a {
 }
 @media (max-width: 700px) {
     .page {
-        padding: 10px;
+        grid-template-columns: [page-start] minmax(10px, 1fr) [content-start] minmax(auto, 1250px) [content-end] minmax(10px, 1fr) [page-end];
+        grid-template-rows: [page-start] 10px [header-start] auto [header-end] 0 [nav-start] auto [nav-end] 20px [content-start] auto [content-end] 100px [footer-start] auto [footer-end page-end];
     }
     .page-content-about {
         padding: 15px;
@@ -861,17 +850,17 @@ a {
         font-size: 2rem;
         line-height: 35px;
     }
-    .page-header-titlebox {
+    .page-header {
         height: 80px;
     }
-    .page-header-titlebox-title {
+    .page-header-title {
         padding: 0 0 0 15px;
     }
-    .page-header-titlebox-title-heading {
+    .page-header-title-heading {
         font-size: 40px;
         margin: 3px 0 0 0;
     }
-    .page-header-titlebox-title-subheading {
+    .page-header-title-subheading {
         font-size: 20px;
         font-weight: 600;
         margin: -5px 0 0 0;
@@ -916,15 +905,15 @@ a {
     }
 }
 @media (max-width: 500px) {
-    .page-header-titlebox {
+    .page-header {
         height: 60px;
     }
-    .page-header-titlebox-title-heading {
+    .page-header-title-heading {
         font-size: 32px;
         font-weight: 500;
         margin: 0;
     }
-    .page-header-titlebox-title-subheading {
+    .page-header-title-subheading {
         font-size: 18px;
         margin: -6px 0 0 0;
     }
@@ -970,21 +959,22 @@ a {
 }
 @media (max-width: 400px) {
     .page {
-      padding: 5px;
+        grid-template-columns: [page-start] minmax(5px, 1fr) [content-start] minmax(auto, 1250px) [content-end] minmax(5px, 1fr) [page-end];
+        grid-template-rows: [page-start] 5px [header-start] auto [header-end] 0 [nav-start] auto [nav-end] 20px [content-start] auto [content-end] 100px [footer-start] auto [footer-end page-end];
     }
-    .page-header-nav-link {
+    .page-nav-link {
         display: block;
         float: none;
         padding: 5px 0;
     }
-    .page-header-titlebox {
+    .page-header {
         height: 50px;
         padding-bottom: 10px;
     }
-    .page-header-titlebox-title-heading {
+    .page-header-title-heading {
         font-size: 28px;
     }
-    .page-header-titlebox-title-subheading {
+    .page-header-title-subheading {
         font-size: 15px;
         margin: -6px 0 0 0;
     }
@@ -996,15 +986,15 @@ a {
     }
 }
 @media (max-width: 325px) {
-    .page-header-titlebox {
+    .page-header {
         height: 40px;
     }
-    .page-header-titlebox-title-heading {
+    .page-header-title-heading {
         font-size: 26px;
         font-weight: 600;
         margin: 4px 0 0 0;
     }
-    .page-header-titlebox-title-subheading {
+    .page-header-title-subheading {
         display: none;
     }
 }
@@ -1032,42 +1022,42 @@ a {
 @font-face {
     font-family: Quicksand;
     font-weight: 100 900;
-    src: url('../font/Quicksand.woff2') format('woff2 supports variations'),
-         url('../font/Quicksand.woff2') format('woff2-variations');
+    src: url('/font/Quicksand.woff2') format('woff2 supports variations'),
+         url('/font/Quicksand.woff2') format('woff2-variations');
 }
 @font-face {
     font-family: Roboto;
     font-style: normal;
     font-weight: 200;
-    src: url('../font/Roboto-Light.woff2') format('woff2');
+    src: url('/font/Roboto-Light.woff2') format('woff2');
 }
 @font-face {
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
-    src: url('../font/Roboto-Regular.woff2') format('woff2');
+    src: url('/font/Roboto-Regular.woff2') format('woff2');
 }
 @font-face {
     font-family: Roboto;
     font-style: italic;
     font-weight: 400;
-    src: url('../font/Roboto-Italic.woff2') format('woff2');
+    src: url('/font/Roboto-Italic.woff2') format('woff2');
 }
 @font-face {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    src: url('../font/Roboto-Medium.woff2') format('woff2');
+    src: url('/font/Roboto-Medium.woff2') format('woff2');
 }
 @font-face {
     font-family: Roboto;
     font-style: normal;
     font-weight: 700;
-    src: url('../font/Roboto-Bold.woff2') format('woff2');
+    src: url('/font/Roboto-Bold.woff2') format('woff2');
 }
 @font-face {
     font-family: Roboto;
     font-style: italic;
     font-weight: 700;
-    src: url('../font/Roboto-BoldItalic.woff2') format('woff2');
+    src: url('/font/Roboto-BoldItalic.woff2') format('woff2');
 }
