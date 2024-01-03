@@ -38,7 +38,7 @@ $(document).ready(function () {
             if (!temp_item_data.hidden) {
                 visible_item_data.push(temp_item_data);
                 visible_item_num[temp_item_data.id] = visible_item_data.length - 1;
-                var item = document.createElement('div');
+                var item = document.createElement('article');
                 item.className = 'page-content-grid-item hide';
                 if (temp_item_data.align_top) {item.className += ' align-top';}
                 item.setAttribute('tabindex', 0);
@@ -215,7 +215,7 @@ $(document).ready(function () {
         modal_header_image.previousSibling.setAttribute('srcset', 'img/musical-compositions/' + current_id + '/image-3x.jpg');
         audio_sources[0].src = 'audio/musical-compositions/' + current_id + '.mp3';
         audio_sources[1].src = 'audio/musical-compositions/' + current_id + '.ogg';
-        $('.modal-body').append('<h3>' + visible_item_data[current_num].name_shy + '</h3><small>' + visible_item_data[current_num].date + '</small>' + '<h2>For ' + visible_item_data[current_num].instrumentation + '</h2>');
+        $('.modal-body').append('<h3>' + visible_item_data[current_num].name_shy + '</h3><small>' + visible_item_data[current_num].date + '</small>' + '<h4>For ' + visible_item_data[current_num].instrumentation + '</h4>');
         if (current_data.credit) {
             $('.modal-credit').text('Image credit: ' + current_data.credit + '.');
         }
