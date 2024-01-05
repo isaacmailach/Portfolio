@@ -211,8 +211,8 @@ $(document).ready(function () {
     function UpdateModal () {
         current_id = visible_item_data[current_num].id;
         var modal_header_image = modal.querySelector('.modal-header-image');
-        modal_header_image.src = 'img/musical-compositions/' + current_id + '/cover.jpg';
-        modal_header_image.previousSibling.setAttribute('srcset', 'img/musical-compositions/' + current_id + '/image-3x.jpg');
+        modal_header_image.src = 'img/musical-compositions/' + current_id + '/cover.webp';
+        modal_header_image.previousSibling.setAttribute('srcset', 'img/musical-compositions/' + current_id + '/image-3x.webp');
         audio_sources[0].src = 'audio/musical-compositions/' + current_id + '.mp3';
         audio_sources[1].src = 'audio/musical-compositions/' + current_id + '.ogg';
         $('.modal-body').append('<h3>' + visible_item_data[current_num].name_shy + '</h3><small>' + visible_item_data[current_num].date + '</small>' + '<h4>For ' + visible_item_data[current_num].instrumentation + '</h4>');
@@ -287,11 +287,11 @@ $(document).ready(function () {
         }, 100);
         if (next_item) {
             var previous_img = new Image();
-            previous_img.src = 'img/musical-compositions/' + visible_item_data[parseInt(current_num) - 1].id + '/cover.jpg';
+            previous_img.src = 'img/musical-compositions/' + visible_item_data[parseInt(current_num) - 1].id + '/cover.webp';
         }
         if (previous_item) {
             var next_img = new Image();
-            next_img.src = 'img/musical-compositions/' + visible_item_data[parseInt(current_num) + 1].id + '/cover.jpg';
+            next_img.src = 'img/musical-compositions/' + visible_item_data[parseInt(current_num) + 1].id + '/cover.webp';
         }
     }
     function CloseModal () {
@@ -315,14 +315,14 @@ $(document).ready(function () {
         if (next_item) {
             SetModal(parseInt(current_num) - 1);
             var img = new Image();
-            img.src = 'img/musical-compositions/' + visible_item_data[parseInt(current_num) - 1].id + '/cover.jpg';
+            img.src = 'img/musical-compositions/' + visible_item_data[parseInt(current_num) - 1].id + '/cover.webp';
         }
     }
     function PreviousItem () {
         if (previous_item) {
             SetModal(parseInt(current_num) + 1);
             var img = new Image();
-            img.src = 'img/musical-compositions/' + visible_item_data[parseInt(current_num) + 1].id + '/cover.jpg';
+            img.src = 'img/musical-compositions/' + visible_item_data[parseInt(current_num) + 1].id + '/cover.webp';
         }
     }
     function UpdateSocialLinks () {

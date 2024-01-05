@@ -1,5 +1,20 @@
 { "item": [
     {
+        "id": "0032",
+        "name": "New Beginnings",
+        "date": "2023",
+        "instrumentation": "solo cello, flute (Danny Pravder), celeste, granular synthesizer, analog synthesizer",
+        "credit": "Gabriel Guarano",
+        "align_top": false
+    },
+    {
+        "id": "0031",
+        "name": "In the Static",
+        "date": "2023",
+        "instrumentation": "distorted cello, distorted breathing, analog synthesizer",
+        "credit": "Dani Fernandez"
+    },
+    {
         "id": "0030",
         "name": "she.",
         "date": "2022",
@@ -35,7 +50,7 @@
         "date": "2020",
         "instrumentation": "solo cello, clarinet, piano, harp, string orchestra",
         "credit": "Unknown",
-        "align_top": true
+        "align_top": false
     },
     {
         "id": "0023",
@@ -58,7 +73,7 @@
         "date": "2020",
         "instrumentation": "piano, solo cello, flute",
         "credit": "Christopher Bryan",
-        "align_top": true,
+        "align_top": false,
         "video": "biOS8YUdk8c"
     },
     {
