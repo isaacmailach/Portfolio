@@ -109,11 +109,13 @@
         </div>
         <!-- Popups -->
         <dialog class="modal">
-            <div class="modal-header">
+            <header class="modal-header">
                 <picture><source media="(max-width: 450px)" /><img class="modal-header-image" alt="Cover image" style="width: 100%; height: auto;" width="1000" height="300" /></picture>
                 <div class="modal-header-close" title="Close" tabindex="0"><div class="modal-header-close-icon">&times;</div></div>
-                <div class="modal-header-arrow modal-header-arrow_left" tabindex="0"><div class="modal-header-arrow-icon">&#x2039;</div></div>
-                <div class="modal-header-arrow modal-header-arrow_right" tabindex="0"><div class="modal-header-arrow-icon">&#x203a;</div></div>
+                <div class="modal-header-arrows">
+                    <div class="modal-header-arrow modal-header-arrow_left" tabindex="0"><div class="modal-header-arrow-icon">&#x2039;</div></div>
+                    <div class="modal-header-arrow modal-header-arrow_right" tabindex="0"><div class="modal-header-arrow-icon">&#x203a;</div></div>
+                </div>
                 <div class="modal-header-toolbar">
                     <div class="modal-header-toolbar-player">
                         <div class="modal-header-toolbar-player-play icon" title="Play/Pause" tabindex="0">&#xf04b;</div>
@@ -129,7 +131,7 @@
                         <a class="modal-header-toolbar-share-icon_share" title="Share" target="_blank" tabindex="0"><div class="modal-header-toolbar-share-icon icon">&#xf1e0;</div></a>
                     </div>
                 </div>
-            </div>
+            </header>
             <div class="modal-credit"></div>
             <article class="modal-body"></article>
             <audio class="modal-audio" preload="auto">
