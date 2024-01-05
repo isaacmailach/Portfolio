@@ -15,6 +15,13 @@
         "credit": "Dani Fernandez"
     },
     {
+        "id": "0033",
+        "name": "Omi",
+        "date": "2022",
+        "instrumentation": "solo cello, solo violin",
+        "credit": "Adam Lebowitz-Lockard"
+    },
+    {
         "id": "0030",
         "name": "she.",
         "date": "2022",
@@ -178,7 +185,8 @@
         "name": "Mercury",
         "date": "2015",
         "instrumentation": "solo cello (Isaac Mailach)",
-        "credit": "NASA"
+        "credit": "NASA",
+        "hidden": true
     },
     {
         "id": "0008",

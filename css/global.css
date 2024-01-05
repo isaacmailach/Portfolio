@@ -212,6 +212,7 @@ address {
     display: flex;
     flex-direction: column;
     font-family: Quicksand;
+    gap: 3px;
     inset: 0;
     opacity: 0;
     padding: 20px;
@@ -231,13 +232,13 @@ address {
 .page-content-grid-item-overlay-date {
     display: block;
     font-weight: 500;
-    margin-top: 3px;
+    margin: 0;
 }
 .page-content-grid-item-overlay-instrumentation {
     font-size: 0.8rem;
     font-style: italic;
     font-weight: normal;
-    margin-top: 3px;
+    margin: 0;
     overflow: clip;
     text-overflow: ellipsis;
     text-wrap: balance;
@@ -458,7 +459,6 @@ address {
     max-height: calc(100% - 100px);
     max-width: 750px;
     opacity: 0;
-    overflow: scroll;
     overscroll-behavior: contain;
     padding: 0;
     scrollbar-width: thin;
@@ -475,7 +475,7 @@ address {
     pointer-events: none;
 }
 .modal::backdrop {
-    backdrop-filter: var(--backdrop-filter);
+    backdrop-filter: blur(12px);
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
     padding: 50px;
