@@ -1,5 +1,5 @@
 :root {
-    --backdrop-filter: blur(5px);
+    --backdrop-filter: blur(12px);
     --background-color-dark: rgba(0, 0, 0, 0.4);
     --background-color-dark-focus: rgba(0, 0, 0, 0.6);
     --background-color-light: rgba(255, 255, 255, 0.6);
@@ -224,7 +224,7 @@ address {
     opacity: 1;
 }
 .page-content-grid-item-overlay-name {
-    font-size: 2.5rem;
+    font-size: 40px;
     font-weight: 400;
     line-height: 42px;
     margin: 0;
@@ -316,10 +316,6 @@ address {
     position: absolute;
     right: 0;
 }
-.page-header {
-    grid-column: content;
-    grid-row: header;
-}
 .page-nav {
     background-color: rgba(255, 255, 255, 0.6);
     display: flex;
@@ -364,6 +360,8 @@ address {
     background-color: rgba(255, 255, 255, 0.6);
     display: flex;
     gap: 30px;
+    grid-column: content;
+    grid-row: header;
     height: 120px;
     padding: 15px;
 }
@@ -388,12 +386,13 @@ address {
     text-transform: uppercase;
 }
 .page-header-title-heading {
-    font-size: 3.75rem;
+    font-size: clamp(1.625rem, 3vw + 1rem, 3.75rem);
     font-weight: 400;
     line-height: 100%;
     margin: 0;
 }
 .page-header-title-subheading {
+    font-size: 24px;
     font-weight: 500;
     line-height: 100%;
     margin: 0;
@@ -457,14 +456,14 @@ address {
     border: 0;
     margin: 50px auto;
     max-height: calc(100% - 100px);
-    max-width: 750px;
+    /* max-width: 750px; */
     opacity: 0;
     overscroll-behavior: contain;
     padding: 0;
     scrollbar-width: thin;
     transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: opacity;
-    width: calc(100% - 100px);
+    width: min(100% - 100px, 750px);
     /* will-change: transform; */
 }
 .modal.open {
@@ -560,7 +559,7 @@ address {
     color: white;
     cursor: default;
     font-family: Quicksand;
-    font-size: 5rem;
+    font-size: 80px;
     font-weight: normal;
     height: 50px;
     opacity: 1;
@@ -603,7 +602,7 @@ address {
 .modal-header-close-icon, .alert-content-close-icon {
     cursor: pointer;
     font-family: Quicksand;
-    font-size: 2rem;
+    font-size: 32px;
     line-height: 30px;
     text-align: center;
     transform: translateY(-1px);
@@ -647,7 +646,7 @@ address {
     overflow: clip;
 }
 .modal-header-toolbar-player-play {
-    font-size: 1.4rem;
+    font-size: 22.4px;
     text-align: center;
     width: 20px;
 }
@@ -680,6 +679,7 @@ address {
     width: 0;
 }
 .modal-header-toolbar-player-time {
+    font-size: 16px;
     height: 40px;
     line-height: 100%;
     margin: 12px 8px 12px 0;
@@ -693,7 +693,7 @@ address {
     overflow: clip;
 }
 .modal-header-toolbar-share-icon {
-    font-size: 1.2rem;
+    font-size: 19.2px;
 }
 
 .hide_search {
@@ -766,7 +766,7 @@ address {
         gap: 5px;
     }
     .page-header-title-heading {
-        font-size: 55px;
+        /* font-size: 55px; */
     }
     .page-header-title-subheading {
         font-size: 24px;
@@ -865,7 +865,7 @@ address {
         gap: 3px;
     }
     .page-header-title-heading {
-        font-size: 40px;
+        /* font-size: 40px; */
         font-weight: 500;
     }
     .page-header-title-subheading {
@@ -876,7 +876,7 @@ address {
     .modal {
         margin: 0;
         min-height: 100%;
-        width: 100%;
+        min-width: 100%;
     }
 }
 @media (max-width: 650px) {
@@ -916,7 +916,7 @@ address {
         height: 60px;
     }
     .page-header-title-heading {
-        font-size: 32px;
+        /* font-size: 32px; */
         font-weight: 600;
     }
     .page-header-title-subheading {
@@ -982,7 +982,7 @@ address {
         gap: 2px;
     }
     .page-header-title-heading {
-        font-size: 28px;
+        /* font-size: 28px; */
     }
     .page-header-title-subheading {
         font-size: 15px;
@@ -999,7 +999,7 @@ address {
         height: 40px;
     }
     .page-header-title-heading {
-        font-size: 26px;
+        /* font-size: 26px; */
     }
     .page-header-title-subheading {
         display: none;

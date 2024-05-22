@@ -26,65 +26,68 @@ $(document).ready(function () {
 
     const modal_J = $('.modal');
 
-    $.getJSON('data/musical-compositions.json', function (database) {
-        item_data = database.item;
-        var item_template = document.querySelector('.page-content-grid-item_template');
-        for (var i = 0; i < database.item.length; i++) {
-            if (!item_data[i].name_shy) {
-                item_data[i].name_shy = item_data[i].name;
-            }
-            var temp_item_data = item_data[i];
-            item_num[temp_item_data.id] = i;
-            if (!temp_item_data.hidden) {
-                visible_item_data.push(temp_item_data);
-                visible_item_num[temp_item_data.id] = visible_item_data.length - 1;
-                var item = document.createElement('article');
-                item.className = 'page-content-grid-item hide';
-                if (temp_item_data.align_top) {item.className += ' align-top';}
-                item.setAttribute('tabindex', 0);
-                item.dataset.num = visible_item_data.length - 1;
-                item.setAttribute('style', 'flex-grow: ' + parseInt(100 * Math.random()));
-                var template = document.importNode(item_template.content, true);
-                template.querySelector('.page-content-grid-item-image').src = 'img/musical-compositions/' + temp_item_data.id + '/image.jpg';
-                template.querySelector('.page-content-grid-item-image').setAttribute('srcset', 'img/musical-compositions/' + temp_item_data.id + '/image.webp, img/musical-compositions/' + temp_item_data.id + '/image-3x.webp 2x');
-                template.querySelector('.page-content-grid-item-image').setAttribute('alt', temp_item_data.name);
-                template.querySelector('.page-content-grid-item-overlay-name').innerHTML = temp_item_data.name_shy;
-                template.querySelector('.page-content-grid-item-overlay-date').innerText = temp_item_data.date;
-                template.querySelector('.page-content-grid-item-overlay-instrumentation').innerText = 'For ' + temp_item_data.instrumentation;
-                item.appendChild(template);
-                item.setAttribute('title', temp_item_data.name);
-                item.addEventListener('keydown', function (e) {
-                    if (!popup_open) {
-                        if (e.keyCode === 37) {
-                            this.previousSibling.focus();
-                        } else if (e.keyCode === 39) {
-                            this.nextSibling.focus();
-                        }
-                    }
-                });
-                item.addEventListener('click', function () {
-                    SetModal(this.dataset.num);
-                });
-                document.querySelector('.page-content-grid').appendChild(item);
-            }
-        }
 
-        var loaded_items = document.querySelectorAll('.page-content-grid-item');
-        first_item = loaded_items[0].dataset.num;
-        last_item = loaded_items[loaded_items.length -1].dataset.num;
-        var counter = 0;
-        var fade_in = setInterval(function () {
-            loaded_items[counter].classList.remove('hide');
-            counter++;
-            if (counter === loaded_items.length) {
-                clearInterval(fade_in);
+    fetch('data/musical-compositions.json')
+        .then(database => database.json())
+        .then(function (database) {
+            item_data = database.item;
+            var item_template = document.querySelector('.page-content-grid-item_template');
+            for (var i = 0; i < database.item.length; i++) {
+                if (!item_data[i].name_shy) {
+                    item_data[i].name_shy = item_data[i].name;
+                }
+                var temp_item_data = item_data[i];
+                item_num[temp_item_data.id] = i;
+                if (!temp_item_data.hidden) {
+                    visible_item_data.push(temp_item_data);
+                    visible_item_num[temp_item_data.id] = visible_item_data.length - 1;
+                    var item = document.createElement('article');
+                    item.className = 'page-content-grid-item hide';
+                    if (temp_item_data.align_top) {item.className += ' align-top';}
+                    item.setAttribute('tabindex', 0);
+                    item.dataset.num = visible_item_data.length - 1;
+                    item.setAttribute('style', 'flex-grow: ' + parseInt(100 * Math.random()));
+                    var template = document.importNode(item_template.content, true);
+                    template.querySelector('.page-content-grid-item-image').src = 'img/musical-compositions/' + temp_item_data.id + '/image.jpg';
+                    template.querySelector('.page-content-grid-item-image').setAttribute('srcset', 'img/musical-compositions/' + temp_item_data.id + '/image.webp, img/musical-compositions/' + temp_item_data.id + '/image-3x.webp 2x');
+                    template.querySelector('.page-content-grid-item-image').setAttribute('alt', temp_item_data.name);
+                    template.querySelector('.page-content-grid-item-overlay-name').innerHTML = temp_item_data.name_shy;
+                    template.querySelector('.page-content-grid-item-overlay-date').innerText = temp_item_data.date;
+                    template.querySelector('.page-content-grid-item-overlay-instrumentation').innerText = 'For ' + temp_item_data.instrumentation;
+                    item.appendChild(template);
+                    item.setAttribute('title', temp_item_data.name);
+                    item.addEventListener('keydown', function (e) {
+                        if (!popup_open) {
+                            if (e.keyCode === 37) {
+                                this.previousSibling.focus();
+                            } else if (e.keyCode === 39) {
+                                this.nextSibling.focus();
+                            }
+                        }
+                    });
+                    item.addEventListener('click', function () {
+                        SetModal(this.dataset.num);
+                    });
+                    document.querySelector('.page-content-grid').appendChild(item);
+                }
             }
-        }, fade_in_delay);
-        document.querySelector('.page-content-search').classList.remove('hide');
-        CheckQueries();
-    }).fail(function () {
-        OpenAlert("no-load");
-       /*window.location.reload();*/
+
+            var loaded_items = document.querySelectorAll('.page-content-grid-item');
+            first_item = loaded_items[0].dataset.num;
+            last_item = loaded_items[loaded_items.length -1].dataset.num;
+            var counter = 0;
+            var fade_in = setInterval(function () {
+                loaded_items[counter].classList.remove('hide');
+                counter++;
+                if (counter === loaded_items.length) {
+                    clearInterval(fade_in);
+                }
+            }, fade_in_delay);
+            document.querySelector('.page-content-search').classList.remove('hide');
+            CheckQueries();
+        })
+        .catch(function() {
+            OpenAlert("no-load");
     });
     document.addEventListener('keydown', function (e) {
         var key = e.keyCode;
@@ -227,12 +230,20 @@ $(document).ready(function () {
             $('.modal-header').removeClass('light');
         }
         UpdateSocialLinks();
-        $.get('text/musical-compositions/' + current_id + '.html', function (text) {
-            $('.modal-body').append(text);
-            if (visible_item_data[current_num].video) {
-                $('.modal-body').append('<div class="modal-body-video"><iframe src="https://www.youtube.com/embed/' + visible_item_data[current_num].video + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
-            }
-        });
+        fetch('text/musical-compositions/' + current_id + '.html')
+            .then(text => {
+                if (text.ok) {
+                    return text.text();
+                  } else {
+                    return '';
+                  }
+            })
+            .then(function (text) {
+                $('.modal-body').append(text);
+                if (visible_item_data[current_num].video) {
+                    $('.modal-body').append('<div class="modal-body-video"><iframe src="https://www.youtube.com/embed/' + visible_item_data[current_num].video + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
+                }
+            })
     }
     function ClearModal () {
         if (play) {
