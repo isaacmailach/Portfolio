@@ -1,5 +1,12 @@
 { "item": [
     {
+        "id": "0034",
+        "name": "Leica",
+        "date": "2024",
+        "instrumentation": "piano (Danny Pravder), string orchestra (Sofia Record Factory), processed camera sounds",
+        "credit": "Sagi Kahane-Rapport"
+    },
+    {
         "id": "0032",
         "name": "New Beginnings",
         "date": "2023",
