@@ -83,7 +83,7 @@ address {
 }
 .page-content-about p {
     font-size: 1.2rem;
-    line-height: 1.8rem;
+    line-height: 1.9rem;
     transition: var(--transition);
     transition-property: font-size, line-height;
 }
