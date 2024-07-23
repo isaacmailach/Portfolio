@@ -24,8 +24,6 @@ $(document).ready(function () {
     const play_button = modal_header_toolbar.querySelector('.modal-header-toolbar-player-play');
     const modal_player_time = modal_header_toolbar.querySelector('.modal-header-toolbar-player-time');
 
-    const modal_J = $('.modal');
-
 
     fetch('data/musical-compositions.json')
         .then(database => database.json())
@@ -258,14 +256,14 @@ $(document).ready(function () {
         $('.page-content-grid-item[data-num!=' + current_num + ']').removeClass('page-content-grid-item_focus');
     }
     function ResetModal () {
-        modal_J.addClass('hide');
+        modal.classList.add('hide');
         setTimeout(function () {
             CheckFirstLast();
             ClearModal();
             UpdateModal();
         }, 401);
         setTimeout(function () {
-            modal_J.removeClass('hide');
+            modal.classList.remove('hide');
         }, 601);
     }
     function CheckFirstLast () {
@@ -294,7 +292,7 @@ $(document).ready(function () {
         modal.showModal();
         popup_open = true;
         setTimeout(function () {
-            modal_J.addClass('open');
+            modal.classList.add('open');
         }, 100);
         if (next_item) {
             var previous_img = new Image();
@@ -307,7 +305,7 @@ $(document).ready(function () {
     }
     function CloseModal () {
         let focus_item = $('.page-content-grid-item[data-num=' + current_num + ']');
-        modal_J.removeClass('open');
+        modal.classList.remove('open');
         setTimeout(function () {
             ClearModal();
             modal.close();
