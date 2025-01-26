@@ -157,7 +157,13 @@ $(document).ready(function () {
     });
     audio.addEventListener('loadedmetadata', UpdateAudioTime, false);
     audio.onprogress = function () {
-        modal_header_toolbar.querySelector('.modal-header-toolbar-player-progress-loaded').style.width = audio.buffered.end(audio.buffered.length - 1) / audio.duration * 100 + '%';
+        let audio_buffer_end = 0;
+        if (audio.buffered.length > 0) {
+            audio_buffer_end = audio.buffered.end(audio.buffered.length - 1)
+        } else {
+            audio_buffer_end = 0;
+        }
+        modal_header_toolbar.querySelector('.modal-header-toolbar-player-progress-loaded').style.width = audio_buffer_end / audio.duration * 100 + '%';
     }
     audio.ontimeupdate = function () {
         UpdateAudioTime();
@@ -167,7 +173,7 @@ $(document).ready(function () {
         ToggleAudio();
     }
     modal_header_toolbar.querySelector('.modal-header-toolbar-player-progress').addEventListener('click', function (e) {
-        audio.currentTime = ((e.pageX - $(this).offset().left) / $(this).innerWidth()) * audio.duration;
+        audio.currentTime = ((e.pageX - this.getBoundingClientRect().left) / this.clientWidth) * audio.duration;
     });
 
     function UpdateAudioTime () {
@@ -200,8 +206,8 @@ $(document).ready(function () {
         }
     }
     function ConvertTime (time) {
-        var intTime = Math.ceil(time);
-        var seconds = intTime % 60;
+        let intTime = Math.ceil(time);
+        let seconds = intTime % 60;
         if (seconds < 10) {
             seconds = '0' + seconds;
         }
@@ -213,21 +219,22 @@ $(document).ready(function () {
     }
     function UpdateModal () {
         current_id = visible_item_data[current_num].id;
-        var modal_header_image = modal.querySelector('.modal-header-image');
+        const modal_header_image = modal.querySelector('.modal-header-image');
+        var modal_body = modal.querySelector('.modal-body');
         modal_header_image.src = 'img/musical-compositions/' + current_id + '/cover.webp';
         modal_header_image.previousSibling.setAttribute('srcset', 'img/musical-compositions/' + current_id + '/image-3x.webp');
         audio_sources[0].src = 'audio/musical-compositions/' + current_id + '.mp3';
         audio_sources[1].src = 'audio/musical-compositions/' + current_id + '.ogg';
-        $('.modal-body').append('<h3>' + visible_item_data[current_num].name_shy + '</h3><small>' + visible_item_data[current_num].date + '</small>' + '<h4>For ' + visible_item_data[current_num].instrumentation + '</h4>');
+        modal_body.innerHTML = '<h3>' + visible_item_data[current_num].name_shy + '</h3><small>' + visible_item_data[current_num].date + '</small>' + '<h4>For ' + visible_item_data[current_num].instrumentation + '</h4>';
         if (current_data.credit) {
-            $('.modal-credit').text('Image credit: ' + current_data.credit + '.');
+            modal.querySelector('.modal-credit').textContent = 'Image credit: ' + current_data.credit + '.';
         }
         $('.page-content-grid-item[data-num=' + current_num + ']').addClass('page-content-grid-item_focus');
         audio.load();
         if (current_data.light) {
-            $('.modal-header').addClass('light');
+            modal.querySelector('.modal-header').classList.add('light');
         } else {
-            $('.modal-header').removeClass('light');
+            modal.querySelector('.modal-header').classList.remove('light');
         }
         UpdateSocialLinks();
         fetch('text/musical-compositions/' + current_id + '.html')
@@ -239,9 +246,9 @@ $(document).ready(function () {
                   }
             })
             .then(function (text) {
-                $('.modal-body').append(text);
+                modal_body.innerHTML += text;
                 if (visible_item_data[current_num].video) {
-                    $('.modal-body').append('<div class="modal-body-video"><iframe src="https://www.youtube.com/embed/' + visible_item_data[current_num].video + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
+                    modal_body.innerHTML += '<div class="modal-body-video"><iframe src="https://www.youtube.com/embed/' + visible_item_data[current_num].video + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
                 }
             })
     }
@@ -249,11 +256,10 @@ $(document).ready(function () {
         if (play) {
             ToggleAudio();
         }
-        $('.modal-header-toolbar-icon_play').html('&#xf04b;');
         setTimeout(function () {
             $('.modal-header-toolbar-player-progress-played, .modal-header-toolbar-player-progress-loaded').css('width', 0);
         }, 1);
-        $('.modal-body').empty();
+        modal.querySelector('.modal-body').innerHTML = '';
         $('.modal-credit').empty();
         $('.page-content-grid-item[data-num!=' + current_num + ']').removeClass('page-content-grid-item_focus');
     }
