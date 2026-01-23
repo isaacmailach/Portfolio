@@ -194,7 +194,7 @@ address {
     transition-property: box-shadow, flex-basis, height, opacity;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.page-content-grid-item:focus-visible, .page-content-grid-item:hover, .page-content-grid-item_focus-visible {
+.page-content-grid-item:focus-visible, .page-content-grid-item:hover, .page-content-grid-item_focus {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.3);
 }
 .page-content-grid-item:active {
@@ -223,7 +223,7 @@ address {
     transition: var(--transition);
     transition-property: opacity;
 }
-.page-content-grid-item:focus-visible .page-content-grid-item-overlay, .page-content-grid-item-overlay:hover, .page-content-grid-item_focus-visible .page-content-grid-item-overlay {
+.page-content-grid-item:focus-visible .page-content-grid-item-overlay, .page-content-grid-item-overlay:hover, .page-content-grid-item_focus .page-content-grid-item-overlay {
     opacity: 1;
 }
 .page-content-grid-item-overlay-name {
@@ -411,7 +411,8 @@ address {
     z-index: 100;
 }
 .alert {
-    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    background-color: rgba(0, 0, 0, 0.5);
     transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: opacity;
 }
@@ -459,7 +460,6 @@ address {
     border: 0;
     margin: 50px auto;
     max-height: calc(100% - 100px);
-    /* max-width: 750px; */
     opacity: 0;
     overscroll-behavior: contain;
     padding: 0;
@@ -467,7 +467,6 @@ address {
     transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: opacity;
     width: min(100% - 100px, 750px);
-    /* will-change: transform; */
 }
 .modal.open {
     opacity: 1;
