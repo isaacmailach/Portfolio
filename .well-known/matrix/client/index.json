@@ -1,3 +1,5 @@
 {
-  "m.server": "matrix.isaacmailach.im:443"
+	"m.homeserver": {
+		"base_url": "https://matrix.isaacmailach.im"
+	}
 }
