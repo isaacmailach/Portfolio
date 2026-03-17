@@ -1,164 +1,448 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<title>Isaac Mailach - Music</title>
 
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Composer for Visual Media" />
-        <meta name="keywords" content="composer,visual,media" />
-        <meta name="author" content="Isaac Mailach" />
-        <meta name="language" content="english" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Composer for Visual Media" />
+		<meta name="keywords" content="composer,visual,media" />
+		<meta name="author" content="Isaac Mailach" />
+		<meta name="language" content="english" />
 
-		<link rel="me" href="https://mastodon.social/@isaacmailach">
+		<link rel="me" href="https://mastodon.social/@isaacmailach" />
 
-        <link rel="icon" href="img/logo/logo16.png" type="image/png" sizes="16x16">
-        <link rel="icon" href="img/logo/logo32.png" type="image/png" sizes="32x32">
-        <link rel="icon" href="img/logo/logo36.png" type="image/png" sizes="36x36">
-        <link rel="icon" href="img/logo/logo48.png" type="image/png" sizes="48x48">
-        <link rel="icon" href="img/logo/logo58.png" type="image/png" sizes="58x58">
-        <link rel="icon" href="img/logo/logo64.png" type="image/png" sizes="64x64">
-        <link rel="icon" href="img/logo/logo128.png" type="image/png" sizes="128x128">
-        <link rel="icon" href="img/logo/logo144.png" type="image/png" sizes="144x144">
-        <link rel="icon" href="img/logo/logo256.png" type="image/png" sizes="256x256">
-        <link rel="icon" href="img/logo/logo320.png" type="image/png" sizes="320x320">
-        <link rel="icon" href="img/logo/logo512.png" type="image/png" sizes="512x512">
-        <link rel="icon" href="img/logo/logo640.png" type="image/png" sizes="640x640">
+		<link
+			rel="icon"
+			href="img/logo/logo16.png"
+			type="image/png"
+			sizes="16x16"
+		/>
+		<link
+			rel="icon"
+			href="img/logo/logo32.png"
+			type="image/png"
+			sizes="32x32"
+		/>
+		<link
+			rel="icon"
+			href="img/logo/logo36.png"
+			type="image/png"
+			sizes="36x36"
+		/>
+		<link
+			rel="icon"
+			href="img/logo/logo48.png"
+			type="image/png"
+			sizes="48x48"
+		/>
+		<link
+			rel="icon"
+			href="img/logo/logo58.png"
+			type="image/png"
+			sizes="58x58"
+		/>
+		<link
+			rel="icon"
+			href="img/logo/logo64.png"
+			type="image/png"
+			sizes="64x64"
+		/>
+		<link
+			rel="icon"
+			href="img/logo/logo128.png"
+			type="image/png"
+			sizes="128x128"
+		/>
+		<link
+			rel="icon"
+			href="img/logo/logo144.png"
+			type="image/png"
+			sizes="144x144"
+		/>
+		<link
+			rel="icon"
+			href="img/logo/logo256.png"
+			type="image/png"
+			sizes="256x256"
+		/>
+		<link
+			rel="icon"
+			href="img/logo/logo320.png"
+			type="image/png"
+			sizes="320x320"
+		/>
+		<link
+			rel="icon"
+			href="img/logo/logo512.png"
+			type="image/png"
+			sizes="512x512"
+		/>
+		<link
+			rel="icon"
+			href="img/logo/logo640.png"
+			type="image/png"
+			sizes="640x640"
+		/>
 
-        <meta itemprop="name" content="Isaac Mailach">
-        <meta itemprop="description" content="Composer for Visual Media">
-        <meta itemprop="image" content="img/logo-3x.png">
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta property="og:site_name" content="Isaac Mailach" />
-        <meta property="og:title" content="Isaac Mailach" />
-        <meta property="og:type" content="website" />
-        <meta property="op:url" content="https://isaacmailach.im" />
-        <meta property="og:description" content="Composer for Visual Media" />
-        <meta property="og:image" content="img/logo/logo640.png" />
-        <meta property="og:image:width" content="640" />
-        <meta property="og:image:height" content="640" />
-        <meta property="og:image" content="img/logo/logo-wide.png" />
-        <meta property="og:image:width" content="1050" />
-        <meta property="og:image:height" content="600" />
-        <meta property="og:locale" content="en_US" />
-        <link rel="apple-touch-icon-precomposed" href="img/logo/logo58.png" sizes="58x58">
-        <link rel="apple-touch-icon-precomposed" href="img/logo/logo72.png" sizes="72x72">
-        <link rel="apple-touch-icon-precomposed" href="img/logo/logo114.png" sizes="114x114">
-        <link rel="apple-touch-icon-precomposed" href="img/logo/logo128.png" sizes="128x128">
-        <link rel="apple-touch-icon-precomposed" href="img/logo/logo144.png" sizes="144x144">
-        <link rel="apple-touch-icon-precomposed" href="img/logo/logo256.png" sizes="256x256">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="msapplication-TileImage" content="img/logo/logo144.png">
-        <meta name="msapplication-TileColor" content="#262626"/>
-        <meta name="application-name" content="Isaac Mailach" />
-        <meta name="msapplication-square70x70logo" content="img/logo/logo70.png"/>
-        <meta name="msapplication-square150x150logo" content="img/logo/logo150.png"/>
-        <meta name="msapplication-wide310x150logo" content="img/logo/logo310x150.png"/>
-        <meta name="msapplication-square310x310logo" content="img/logo/logo310.png"/>
-        <link rel="manifest" href="webapp.json">
-        <meta name="theme-color" content="#262626">
-        <meta name="msapplication-navbutton-color" content="#262626">
-        <meta name="apple-mobile-web-app-status-bar-style" content="#262626">
+		<meta itemprop="name" content="Isaac Mailach" />
+		<meta itemprop="description" content="Composer for Visual Media" />
+		<meta itemprop="image" content="img/logo-3x.png" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta property="og:site_name" content="Isaac Mailach" />
+		<meta property="og:title" content="Isaac Mailach" />
+		<meta property="og:type" content="website" />
+		<meta property="op:url" content="https://isaacmailach.im" />
+		<meta property="og:description" content="Composer for Visual Media" />
+		<meta property="og:image" content="img/logo/logo640.png" />
+		<meta property="og:image:width" content="640" />
+		<meta property="og:image:height" content="640" />
+		<meta property="og:image" content="img/logo/logo-wide.png" />
+		<meta property="og:image:width" content="1050" />
+		<meta property="og:image:height" content="600" />
+		<meta property="og:locale" content="en_US" />
+		<link
+			rel="apple-touch-icon-precomposed"
+			href="img/logo/logo58.png"
+			sizes="58x58"
+		/>
+		<link
+			rel="apple-touch-icon-precomposed"
+			href="img/logo/logo72.png"
+			sizes="72x72"
+		/>
+		<link
+			rel="apple-touch-icon-precomposed"
+			href="img/logo/logo114.png"
+			sizes="114x114"
+		/>
+		<link
+			rel="apple-touch-icon-precomposed"
+			href="img/logo/logo128.png"
+			sizes="128x128"
+		/>
+		<link
+			rel="apple-touch-icon-precomposed"
+			href="img/logo/logo144.png"
+			sizes="144x144"
+		/>
+		<link
+			rel="apple-touch-icon-precomposed"
+			href="img/logo/logo256.png"
+			sizes="256x256"
+		/>
+		<meta
+			name="apple-mobile-web-app-status-bar-style"
+			content="black-translucent"
+		/>
+		<meta name="msapplication-TileImage" content="img/logo/logo144.png" />
+		<meta name="msapplication-TileColor" content="#262626" />
+		<meta name="application-name" content="Isaac Mailach" />
+		<meta
+			name="msapplication-square70x70logo"
+			content="img/logo/logo70.png"
+		/>
+		<meta
+			name="msapplication-square150x150logo"
+			content="img/logo/logo150.png"
+		/>
+		<meta
+			name="msapplication-wide310x150logo"
+			content="img/logo/logo310x150.png"
+		/>
+		<meta
+			name="msapplication-square310x310logo"
+			content="img/logo/logo310.png"
+		/>
+		<link rel="manifest" href="webapp.json" />
+		<meta name="theme-color" content="#262626" />
+		<meta name="msapplication-navbutton-color" content="#262626" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="#262626" />
 
-        <link rel="stylesheet" type="text/css" href="css/global.css" />
-        <link rel="preload" as="font" type="font/woff2" href="font/Quicksand.woff2" crossorigin />
+		<link rel="stylesheet" type="text/css" href="css/global.css" />
+		<link
+			rel="preload"
+			as="font"
+			type="font/woff2"
+			href="font/Quicksand.woff2"
+			crossorigin
+		/>
 
-        <script src="js/library/jquery-3.7.1.min.js"></script>
-        <script src="js/musical-compositions.js"></script>
-    </head>
-    <body>
-        <div class="page page_musical-compositions">
-            <header class="page-header">
-                <a class="page-header-logo_link" href="index.html"><img class="page-header-logo" title="Isaac Mailach" src="img/logo/logo.png" srcset="img/logo/logo.webp, img/logo/logo-3x.webp 2x" alt="Logo" /></a>
-                <div class="page-header-title">
-                    <h1 class="page-header-title-heading">Isaac Mailach</h1>
-                    <h2 class="page-header-title-subheading">Composer for Visual Media</h2>
-                </div>
-            </header>
-            <nav class="page-nav">
-                <a class="page-nav-link_current page-nav-link_left page-nav-link" title="Music"><u>Music</u></a>
-                <a class="page-nav-link_left page-nav-link" href="filmography.html" title="Filmography"><u>Filmography</u></a>
-                <a class="page-nav-link_right page-nav-link" href="about.html" title="About"><u>About</u></a>
-            </nav>
-            <main class="page-content">
-                <div class="page-content-search hide" title="Search">
-                    <input class="page-content-search-input" id="search" type="search" />
-                    <div class="page-content-search-icon icon">&#xf002;</div>
-                </div>
-                <div class="page-content-grid">
-                    <template class="page-content-grid-item_template">
-                        <img class="page-content-grid-item-image" src="" />
-                        <div class="page-content-grid-item-overlay">
-                            <h3 class="page-content-grid-item-overlay-name"></h3>
-                            <small class="page-content-grid-item-overlay-date"></small>
-                            <h4 class="page-content-grid-item-overlay-instrumentation"></h4>
-                        </div>
-                    </template>
-                </div>
-            </main>
-            <footer class="page-footer">
-                <nav class="page-footer-nav">
-                    <a class="page-footer-nav-link" href="index.html" title="Music">Music</a>
-                    <a class="page-footer-nav-link" href="filmography.html" title="Filmography">Filmography</a>
-                    <a class="page-footer-nav-link" href="about.html" title="About">About</a>
-                </nav>
-                <h3 class="page-footer-logo">IM</h3>
-                <p class="page-footer-text">Copyright &copy; Isaac Mailach</p>
-            </footer>
-        </div>
-        <!-- Popups -->
-        <dialog class="modal">
-            <header class="modal-header">
-                <picture><source media="(max-width: 450px)" /><img class="modal-header-image" alt="Cover image" style="width: 100%; height: auto;" width="1000" height="300" /></picture>
-                <div class="modal-header-close" title="Close" tabindex="0"><div class="modal-header-close-icon">&times;</div></div>
-                <div class="modal-header-arrows">
-                    <div class="modal-header-arrow modal-header-arrow_left" tabindex="0"><div class="modal-header-arrow-icon">&#x2039;</div></div>
-                    <div class="modal-header-arrow modal-header-arrow_right" tabindex="0"><div class="modal-header-arrow-icon">&#x203a;</div></div>
-                </div>
-                <div class="modal-header-toolbar">
-                    <div class="modal-header-toolbar-player">
-                        <div class="modal-header-toolbar-player-play icon" title="Play/Pause" tabindex="0">&#xf04b;</div>
-                        <div class="modal-header-toolbar-player-progress">
-                            <div class="modal-header-toolbar-player-progress-loaded"></div>
-                            <div class="modal-header-toolbar-player-progress-played"></div>
-                        </div>
-                        <div class="modal-header-toolbar-player-time">0:00 / 0:00</div>
-                    </div>
-                    <div class="modal-header-toolbar-share">
-                        <a class="modal-header-toolbar-share-icon_email" title="Email" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" target="_blank"><div class="modal-header-toolbar-share-icon icon">&#xf0e0;</div></a>
-                        <a class="modal-header-toolbar-share-icon_facebook" title="Facebook" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=330,width=583');return false;" target="_blank"><div class="modal-header-toolbar-share-icon brand">&#xf09a;</div></a>
-                        <a class="modal-header-toolbar-share-icon_share" title="Share" target="_blank" tabindex="0"><div class="modal-header-toolbar-share-icon icon">&#xf1e0;</div></a>
-                    </div>
-                </div>
-            </header>
-            <div class="modal-credit"></div>
-            <article class="modal-body"></article>
-            <audio class="modal-audio" preload="auto">
-                <source type="audio/mp3" />
-                <source type="audio/ogg" />
-            </audio>
-        </dialog>
-        <div class="alert alert_no-id">
-            <div class="alert-content">
-                <div class="alert-content-close" title="Close" tabindex="0"><div class="alert-content-close-icon">&times;</div></div>
-                <h3 class="alert-content-heading">Sorry!</h3>
-                <p class="alert-content-body">The composition you requested isn't available. If you are looking for an older composition, try sending an email to <a title="Email" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#111;&#110;&#116;&#97;&#99;&#116;&#64;&#105;&#115;&#97;&#97;&#99;&#109;&#97;&#105;&#108;&#97;&#99;&#104;&#46;&#105;&#109;" target="_blank">&#99;&#111;&#110;&#116;<span style="display: none;">email</span>&#97;&#99;&#116;&#64;&#105;&#115;&#97;&#97;<span style="display: none;">email</span>&#99;&#109;&#97;&#105;&#108;&#97;&#99;&#104;&#46;&#105;&#109;<span style="display: none;">email</span></a>. Make sure to include the name of the desired composition in the email.</p>
-            </div>
-        </div>
-        <div class="alert alert_no-load">
-            <div class="alert-content">
-                <div class="alert-content-close" title="Close" tabindex="0"><div class="alert-content-close-icon">&times;</div></div>
-                <h3 class="alert-content-heading">Sorry!</h3>
-                <p class="alert-content-body">Could not load the webpage properly. Make sure you are connected to the Internet and then try refreshing the page. If you believe there is an issue with the website, please send an email to <a title="Email" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#111;&#110;&#116;&#97;&#99;&#116;&#64;&#105;&#115;&#97;&#97;&#99;&#109;&#97;&#105;&#108;&#97;&#99;&#104;&#46;&#105;&#109;" target="_blank">&#99;&#111;&#110;&#116;<span style="display: none;">email</span>&#97;&#99;&#116;&#64;&#105;&#115;&#97;&#97;<span style="display: none;">email</span>&#99;&#109;&#97;&#105;&#108;&#97;&#99;&#104;&#46;&#105;&#109;<span style="display: none;">email</span></a> describing the issue.</p>
-                <a class="alert-content-button" title="Refresh" href=".">Refresh</a>
-            </div>
-        </div>
-        <noscript class="alert alert_ns">
-            <div class="alert-content">
-                <h3 class="alert-content-heading">Sorry!</h3>
-                <p class="alert-content-body">This site requires JavaScript to run properly. Please enbale it if it is disabled or try switching to a modern browser such as <a title="Google Chrome" href="https://www.google.com/chrome/browser/desktop/" target="_blank">Google Chrome</a> or <a title="Mozilla Firefox" href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">Mozilla Firefox</a>.</p>
-            </div>
-        </noscript>
-    </body>
+		<script src="js/library/jquery-3.7.1.min.js"></script>
+		<script src="js/musical-compositions.js"></script>
+	</head>
+	<body>
+		<div class="page page_musical-compositions">
+			<header class="page-header">
+				<a class="page-header-logo_link" href="index.html"
+					><img
+						class="page-header-logo"
+						title="Isaac Mailach"
+						src="img/logo/logo.png"
+						srcset="img/logo/logo.webp, img/logo/logo-3x.webp 2x"
+						alt="Logo"
+				/></a>
+				<div class="page-header-title">
+					<h1 class="page-header-title-heading">Isaac Mailach</h1>
+					<h2 class="page-header-title-subheading">
+						Composer for Visual Media
+					</h2>
+				</div>
+			</header>
+			<nav class="page-nav">
+				<a
+					class="page-nav-link_current page-nav-link_left page-nav-link"
+					title="Music"
+					><u>Music</u></a
+				>
+				<a
+					class="page-nav-link_left page-nav-link"
+					href="filmography.html"
+					title="Filmography"
+					><u>Filmography</u></a
+				>
+				<a
+					class="page-nav-link_right page-nav-link"
+					href="about.html"
+					title="About"
+					><u>About</u></a
+				>
+			</nav>
+			<main class="page-content">
+				<div class="page-content-search hide" title="Search">
+					<input
+						class="page-content-search-input"
+						id="search"
+						type="search"
+					/>
+					<div class="page-content-search-icon icon">&#xf002;</div>
+				</div>
+				<div class="page-content-grid">
+					<template class="page-content-grid-item_template">
+						<img class="page-content-grid-item-image" src="" />
+						<div class="page-content-grid-item-overlay">
+							<h3
+								class="page-content-grid-item-overlay-name"
+							></h3>
+							<small
+								class="page-content-grid-item-overlay-date"
+							></small>
+							<h4
+								class="page-content-grid-item-overlay-instrumentation"
+							></h4>
+						</div>
+					</template>
+				</div>
+			</main>
+			<footer class="page-footer">
+				<nav class="page-footer-nav">
+					<a
+						class="page-footer-nav-link"
+						href="index.html"
+						title="Music"
+						>Music</a
+					>
+					<a
+						class="page-footer-nav-link"
+						href="filmography.html"
+						title="Filmography"
+						>Filmography</a
+					>
+					<a
+						class="page-footer-nav-link"
+						href="about.html"
+						title="About"
+						>About</a
+					>
+				</nav>
+				<h3 class="page-footer-logo">IM</h3>
+				<p class="page-footer-text">Copyright &copy; Isaac Mailach</p>
+			</footer>
+		</div>
+		<!-- Popups -->
+		<dialog class="modal">
+			<header class="modal-header">
+				<picture
+					><source media="(max-width: 450px)" />
+					<img
+						class="modal-header-image"
+						alt="Cover image"
+						style="width: 100%; height: auto"
+						width="1000"
+						height="300"
+				/></picture>
+				<div class="modal-header-close" title="Close" tabindex="0">
+					<div class="modal-header-close-icon">&times;</div>
+				</div>
+				<div class="modal-header-arrows">
+					<div
+						class="modal-header-arrow modal-header-arrow_left"
+						tabindex="0"
+					>
+						<div class="modal-header-arrow-icon">&#x2039;</div>
+					</div>
+					<div
+						class="modal-header-arrow modal-header-arrow_right"
+						tabindex="0"
+					>
+						<div class="modal-header-arrow-icon">&#x203a;</div>
+					</div>
+				</div>
+				<div class="modal-header-toolbar">
+					<div class="modal-header-toolbar-player">
+						<div
+							class="modal-header-toolbar-player-play icon"
+							title="Play/Pause"
+							tabindex="0"
+						>
+							&#xf04b;
+						</div>
+						<div class="modal-header-toolbar-player-progress">
+							<div
+								class="modal-header-toolbar-player-progress-loaded"
+							></div>
+							<div
+								class="modal-header-toolbar-player-progress-played"
+							></div>
+						</div>
+						<div class="modal-header-toolbar-player-time">
+							0:00 / 0:00
+						</div>
+					</div>
+					<div class="modal-header-toolbar-share">
+						<a
+							class="modal-header-toolbar-share-icon_email"
+							title="Email"
+							onclick="
+								javascript: window.open(
+									this.href,
+									'',
+									'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600',
+								);
+								return false;
+							"
+							target="_blank"
+							><div class="modal-header-toolbar-share-icon icon">
+								&#xf0e0;
+							</div></a
+						>
+						<a
+							class="modal-header-toolbar-share-icon_facebook"
+							title="Facebook"
+							onclick="
+								javascript: window.open(
+									this.href,
+									'',
+									'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=330,width=583',
+								);
+								return false;
+							"
+							target="_blank"
+							><div class="modal-header-toolbar-share-icon brand">
+								&#xf09a;
+							</div></a
+						>
+						<a
+							class="modal-header-toolbar-share-icon_share"
+							title="Share"
+							target="_blank"
+							tabindex="0"
+							><div class="modal-header-toolbar-share-icon icon">
+								&#xf1e0;
+							</div></a
+						>
+					</div>
+				</div>
+			</header>
+			<div class="modal-credit"></div>
+			<article class="modal-body"></article>
+			<audio class="modal-audio" preload="auto">
+				<source type="audio/mp3" />
+				<source type="audio/ogg" />
+			</audio>
+		</dialog>
+		<div class="alert alert_no-id">
+			<div class="alert-content">
+				<div class="alert-content-close" title="Close" tabindex="0">
+					<div class="alert-content-close-icon">&times;</div>
+				</div>
+				<h3 class="alert-content-heading">Sorry!</h3>
+				<p class="alert-content-body">
+					The composition you requested isn't available. If you are
+					looking for an older composition, try sending an email to
+					<a
+						title="Email"
+						href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#111;&#110;&#116;&#97;&#99;&#116;&#64;&#105;&#115;&#97;&#97;&#99;&#109;&#97;&#105;&#108;&#97;&#99;&#104;&#46;&#105;&#109;"
+						target="_blank"
+						>&#99;&#111;&#110;&#116;<span style="display: none"
+							>email</span
+						>&#97;&#99;&#116;&#64;&#105;&#115;&#97;&#97;<span
+							style="display: none"
+							>email</span
+						>&#99;&#109;&#97;&#105;&#108;&#97;&#99;&#104;&#46;&#105;&#109;<span
+							style="display: none"
+							>email</span
+						></a
+					>. Make sure to include the name of the desired composition
+					in the email.
+				</p>
+			</div>
+		</div>
+		<div class="alert alert_no-load">
+			<div class="alert-content">
+				<div class="alert-content-close" title="Close" tabindex="0">
+					<div class="alert-content-close-icon">&times;</div>
+				</div>
+				<h3 class="alert-content-heading">Sorry!</h3>
+				<p class="alert-content-body">
+					Could not load the webpage properly. Make sure you are
+					connected to the Internet and then try refreshing the page.
+					If you believe there is an issue with the website, please
+					send an email to
+					<a
+						title="Email"
+						href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#111;&#110;&#116;&#97;&#99;&#116;&#64;&#105;&#115;&#97;&#97;&#99;&#109;&#97;&#105;&#108;&#97;&#99;&#104;&#46;&#105;&#109;"
+						target="_blank"
+						>&#99;&#111;&#110;&#116;<span style="display: none"
+							>email</span
+						>&#97;&#99;&#116;&#64;&#105;&#115;&#97;&#97;<span
+							style="display: none"
+							>email</span
+						>&#99;&#109;&#97;&#105;&#108;&#97;&#99;&#104;&#46;&#105;&#109;<span
+							style="display: none"
+							>email</span
+						></a
+					>
+					describing the issue.
+				</p>
+				<a class="alert-content-button" title="Refresh" href="."
+					>Refresh</a
+				>
+			</div>
+		</div>
+		<noscript class="alert alert_ns">
+			<div class="alert-content">
+				<h3 class="alert-content-heading">Sorry!</h3>
+				<p class="alert-content-body">
+					This site requires JavaScript to run properly. Please enbale
+					it if it is disabled or try switching to a modern browser
+					such as
+					<a
+						title="Google Chrome"
+						href="https://www.google.com/chrome/browser/desktop/"
+						target="_blank"
+						>Google Chrome</a
+					>
+					or
+					<a
+						title="Mozilla Firefox"
+						href="https://www.mozilla.org/en-US/firefox/new/"
+						target="_blank"
+						>Mozilla Firefox</a
+					>.
+				</p>
+			</div>
+		</noscript>
+	</body>
 </html>
