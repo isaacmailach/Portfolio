@@ -5,7 +5,8 @@
 			"name": "Culture Keepers: Sofia Tupuola",
 			"date": "2026",
 			"instrumentation": "flute quartet, harp, solo cello",
-			"credit": "Culture Keepers"
+			"credit": "Culture Keepers",
+			"align_top": true
 		},
 		{
 			"id": "0035",
