@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <!-- Background Nebula Gradients (Intermediate Radius) -->
+    <radialGradient id="nebula-pink" cx="45%" cy="30%" r="78%">
+      <stop offset="0%" stop-color="#ff7ca8" stop-opacity="0.9" />
+      <stop offset="45%" stop-color="#b8336a" stop-opacity="0.82" />
+      <stop offset="78%" stop-color="#4a1532" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0b0813" stop-opacity="1" />
+    </radialGradient>
+
+    <radialGradient id="nebula-blue" cx="85%" cy="75%" r="63%">
+      <stop offset="0%" stop-color="#1e5f8a" stop-opacity="0.72" />
+      <stop offset="55%" stop-color="#0d2b45" stop-opacity="0.82" />
+      <stop offset="100%" stop-color="#050714" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Base Space/Nebula Layer -->
+  <rect width="1000" height="1000" fill="#07040a" />
+  <rect width="1000" height="1000" fill="url(#nebula-pink)" />
+  <rect width="1000" height="1000" fill="url(#nebula-blue)" style="mix-blend-mode: screen;" />
+
+  <!-- Monogram Foreground Layer ("I M") -->
+  <g id="monogram" 
+     fill="none" 
+     stroke="#ffffff" 
+     stroke-width="42" 
+     stroke-linecap="round" 
+     stroke-linejoin="round">
+    
+    <!-- Letter 'I' -->
+    <line x1="152" y1="230" x2="152" y2="770" />
+
+    <!-- Letter 'M' -->
+    <path d="M 401,770 
+             L 401,230 
+             L 626,538 
+             L 851,230 
+             L 851,770" />
+  </g>
+</svg>
