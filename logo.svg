@@ -17,8 +17,8 @@
 <rect x="0" y="0" width="1000" height="1000" fill="#07040a"/>
 <rect x="0" y="0" width="1000" height="1000" fill="url(#_Radial1)"/>
 <rect x="0" y="0" width="1000" height="1000" fill="url(#_Radial2)"/>
-<g id="monogram" fill="none" stroke="#ffffff" stroke-width="42" stroke-linecap="round" stroke-linejoin="round">
-<path d="M152,230l0,540"/>
-<path d="M401,770l0,-540l225,308l225,-308l0,540"/>
+<g id="monogram">
+<path d="M182,230L182,770" fill="none" fill-rule="nonzero" stroke="#ffffff" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M371,770L371,230L596,538L821,230L821,770" fill="none" fill-rule="nonzero" stroke="#ffffff" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </svg>
